@@ -2,7 +2,7 @@ import React from "react";
 import fireWolf from "./fire-wolf.png";
 import mountain from "./mountain.png";
 
-const ShowCaseItem = ({ title, subTitle, image }) => {
+const ShowCaseItem = ({ title, subTitle, image, link }) => {
 	return (
 		<div
 			className="show-case-item-container"
@@ -16,16 +16,27 @@ const ShowCaseItem = ({ title, subTitle, image }) => {
 			<h2>{title}</h2>
 			<h4>{subTitle}</h4>
 
-			<button>BOOK NOW</button>
+			<button onClick={link}>BOOK NOW</button>
 		</div>
 	);
 };
 
 const SaharaDesert = () => (
-	<ShowCaseItem title="Sahara Desert" subTitle="Beautiful" image={fireWolf} />
+	<ShowCaseItem
+		title="Sahara Desert"
+		subTitle="Beautiful"
+		image={fireWolf}
+		link={"https://www.google.com/"}
+	/>
 );
 const MountainClimb = () => (
-	<ShowCaseItem title="Mountain Climb" subTitle="Gorgeous" image={mountain} />
+	<ShowCaseItem
+		title="Mountain Climb"
+		subTitle="Gorgeous"
+		image={mountain}
+		image={fireWolf}
+		link={"https://www.youtube.com/"}
+	/>
 );
 
 function ShowCase() {
