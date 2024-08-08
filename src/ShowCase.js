@@ -16,7 +16,9 @@ const ShowCaseItem = ({ title, subTitle, image, link }) => {
 			<h2>{title}</h2>
 			<h4>{subTitle}</h4>
 
-			<button onClick={link}>BOOK NOW</button>
+			<a href={link} target="_blank">
+				BOOK NOW
+			</a>
 		</div>
 	);
 };
@@ -43,6 +45,7 @@ function ShowCase() {
 		<div className="show-case">
 			<SaharaDesert />
 			<MountainClimb />
+			<SaharaDesert />
 			<MountainClimb />
 		</div>
 	);

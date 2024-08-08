@@ -1,3 +1,6 @@
+html{
+  height: -webkit-fill-available;
+}
 
 img{
   width: 100%;
@@ -9,7 +12,6 @@ img{
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   position: relative;
   height: 100vh;
-
 }
 .show-case-item-container{
 position: relative;
@@ -33,9 +35,11 @@ h4{
     top: 40%;
     font-size: 1rem;
 }
-button{
-  display: block;
+a{
+    display: block;
     margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
     width: clamp(150px, 50%, 300px); 
     height: clamp(40px, 10vh, 50px); /* The button height will be between 40px and 100px, scaling with viewport height */
    
@@ -49,7 +53,7 @@ button{
 
     transition: color 0.3s, background-color 0.3s;
 }
-button:hover{
+a:hover{
   background-color: black;
   color: white;
 }
