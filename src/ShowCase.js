@@ -1,7 +1,6 @@
 import React from "react";
-import fireWolf from "../fire-wolf.png";
-import mountain from "../mountain.png";
-import "./ShowCase.css";
+import fireWolf from "./fire-wolf.png";
+import mountain from "./mountain.png";
 
 const ShowCaseItem = ({ title, subTitle, image }) => {
 	return (

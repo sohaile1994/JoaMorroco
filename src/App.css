@@ -1,38 +1,52 @@
-.App {
-  text-align: center;
+
+img{
+  width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.show-case{
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  position: relative;
+  height: 100vh;
+  
+
+}
+.show-case-item-container{
+position: relative;
+width: 100%;
+
+  h2,h4{
+      position: relative;
+      margin: 0 auto;
+      text-align: center;
+      color: rgb(255, 255, 255);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      z-index: 3;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  h2{
+    top: 35%;
+    font-size: 2rem;
   }
-  to {
-    transform: rotate(360deg);
+  h4{
+      top: 40%;
+      font-size: 1rem;
+  }
+
+  button{
+    display: block;
+      margin: 0 auto;
+      width: clamp(150px, 50%, 300px); 
+      height: clamp(40px, 10vh, 50px); /* The button height will be between 40px and 100px, scaling with viewport height */
+     
+      position: relative; /* Positions the button relative to the container */
+      background-color: white;
+      top: 50%;
+   
+      font-size: clamp(0.8rem, 2vw, 1.2rem); /* Font size scales between 0.8rem and 1.2rem based on viewport width */
+      border-radius: 5px;
+      z-index: 6;
   }
 }
