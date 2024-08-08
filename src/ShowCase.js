@@ -34,7 +34,6 @@ const MountainClimb = () => (
 		title="Mountain Climb"
 		subTitle="Gorgeous"
 		image={mountain}
-		image={fireWolf}
 		link={"https://www.youtube.com/"}
 	/>
 );
@@ -44,7 +43,6 @@ function ShowCase() {
 		<div className="show-case">
 			<SaharaDesert />
 			<MountainClimb />
-			<SaharaDesert />
 			<MountainClimb />
 		</div>
 	);
