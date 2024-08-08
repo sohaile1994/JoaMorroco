@@ -5,10 +5,14 @@ import "./ShowCase.css";
 
 const ShowCaseItem = ({ title, subTitle, image }) => {
 	return (
-		<div className="show-case-item-container">
+		<div
+			className="show-case-item-container"
+			style={{ background: `url(${image})` }}
+		>
 			<h2>{title}</h2>
 			<h4>{subTitle}</h4>
-			<img src={image} alt={title} />
+
+			<button>BOOK NOW</button>
 		</div>
 	);
 };
