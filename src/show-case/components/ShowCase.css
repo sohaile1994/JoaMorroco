@@ -10,9 +10,7 @@ img{
     position: relative;
     height: 100vh;
     
-    background-size: cover;
-    background-position: left; 
-    background-repeat: no-repeat;
+  
 }
 .show-case-item-container{
 position: relative;
@@ -23,22 +21,29 @@ width: 100%;
         margin: 0 auto;
         text-align: center;
         color: rgb(255, 255, 255);
-        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         z-index: 3;
     }
 
     h2{
       top: 35%;
+      font-size: 2rem;
     }
     h4{
         top: 40%;
+        font-size: 1rem;
     }
   
     button{
-        width: 50%;
-        height: 5%;
-        position: relative;
+        margin: 0 auto;
+        width: clamp(150px, 50%, 300px); 
+        height: clamp(40px, 10vh, 50px); /* The button height will be between 40px and 100px, scaling with viewport height */
+       
+        position: relative; /* Positions the button relative to the container */
         background-color: white;
         top: 50%;
+        font-size: clamp(0.8rem, 2vw, 1.2rem); /* Font size scales between 0.8rem and 1.2rem based on viewport width */
+        border-radius: 5px;
+        z-index: 5;
     }
 }

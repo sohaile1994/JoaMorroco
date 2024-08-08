@@ -7,7 +7,12 @@ const ShowCaseItem = ({ title, subTitle, image }) => {
 	return (
 		<div
 			className="show-case-item-container"
-			style={{ background: `url(${image})` }}
+			style={{
+				backgroundImage: `url(${image})`,
+				backgroundSize: "cover",
+				backgroundPosition: "left",
+				backgroundRepeat: "no-repeat",
+			}}
 		>
 			<h2>{title}</h2>
 			<h4>{subTitle}</h4>
