@@ -1,9 +1,11 @@
-import logo from "./logo.svg";
 import "./App.css";
-import ShowCase from "./ShowCase.js";
+import ShowCase from "./Pages/Home/ShowCase.js";
+import Header from "./Pages/Home/Header.js";
+
 function App() {
 	return (
 		<div className="App">
+			<Header />
 			<ShowCase />
 		</div>
 	);
