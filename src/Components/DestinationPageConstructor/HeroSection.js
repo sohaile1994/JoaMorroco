@@ -4,7 +4,10 @@ const HeroSection = ({ image, reviews, title, price, duration }) => {
 			className="hero-destination-page background-image"
 			style={{ backgroundImage: `url(${image})` }}
 		>
-			<h1>{title}</h1>
+			<div className="flex-center">
+				<h1>{title}</h1>
+			</div>
+
 			<h4>{price + "/" + duration + (duration > 1 ? " days" : "day")}</h4>
 			{/* <img src={scrollImage}></img>*/}
 			<h4>{reviews}</h4>
