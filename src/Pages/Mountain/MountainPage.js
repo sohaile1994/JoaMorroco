@@ -43,7 +43,7 @@ function MountainPage() {
 
 	return (
 		<DestinationPage
-			image={"/assets/desert-show-case.jpg"}
+			image={"https://thumbs.dreamstime.com/z/ifrane-morocco-ifrane-morocco-snowfall-white-mountain-sky-cold-tree-fog-landscape-beautiful-164071116.jpg"}
 			information={information}
 			tourPlan={tourPlan}
 			gallery={gallery}

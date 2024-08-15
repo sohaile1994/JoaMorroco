@@ -43,7 +43,9 @@ function BeachPage() {
 
 	return (
 		<DestinationPage
-			image={"/assets/desert-show-case.jpg"}
+			image={
+				"https://womenbesttravel.com/wp-content/uploads/2020/08/Best-Morocco-beaches-1-768x768.jpg"
+			}
 			information={information}
 			tourPlan={tourPlan}
 			gallery={gallery}
