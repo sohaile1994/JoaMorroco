@@ -7,6 +7,9 @@ import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import BeachPage from "./Pages/Beach/BeachPage.js";
+import ForestPage from "./Pages/Forest/ForestPage.js";
+import DesertPage from "./Pages/Desert/DesertPage.js";
+import MountainPage from "./Pages/Mountain/MountainPage.js";
 
 const router = createBrowserRouter([
 	{
@@ -16,6 +19,18 @@ const router = createBrowserRouter([
 	{
 		path: "beachPage",
 		element: <BeachPage />,
+	},
+	{
+		path: "forestPage",
+		element: <ForestPage />,
+	},
+	{
+		path: "desertPage",
+		element: <DesertPage />,
+	},
+	{
+		path: "mountainPage",
+		element: <MountainPage />,
 	},
 ]);
 

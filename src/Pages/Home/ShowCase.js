@@ -1,5 +1,5 @@
 import React from "react";
-import desertImage from "../../assets/desert-show-case.jpg";
+
 import { Link } from "react-router-dom";
 
 const ShowCaseItem = ({ title, subTitle, image, link }) => {
@@ -27,8 +27,8 @@ const DesertShowCaseItem = () => (
 	<ShowCaseItem
 		title="Sahara Desert"
 		subTitle="Beautiful"
-		image={desertImage}
-		link={"https://www.google.com/"}
+		image="/assets/desert-show-case.jpg"
+		link={"desertPage"}
 	/>
 );
 const ForestShowCaseItem = () => (
@@ -38,7 +38,7 @@ const ForestShowCaseItem = () => (
 		image={
 			"https://thumbs.dreamstime.com/b/akchour-green-forest-morocco-floresta-densa-e-verde-de-perto-chefchaouen-no-marroco-inverno-190874481.jpg"
 		}
-		link={"beachPage"}
+		link={"forestPage"}
 	/>
 );
 const MountainShowCaseItem = () => (
@@ -48,7 +48,7 @@ const MountainShowCaseItem = () => (
 		image={
 			"https://thumbs.dreamstime.com/z/ifrane-morocco-ifrane-morocco-snowfall-white-mountain-sky-cold-tree-fog-landscape-beautiful-164071116.jpg"
 		}
-		link={"beachPage"}
+		link={"mountainPage"}
 	/>
 );
 const BeachShowCaseItem = () => (

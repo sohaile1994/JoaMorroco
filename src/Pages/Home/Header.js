@@ -1,11 +1,11 @@
 import React from "react";
-import logo from "../../assets/logo.png";
+
 import { Link } from "react-router-dom";
 
 const Logo = () => {
 	return (
 		<div className="logo-container">
-			<img src={logo} />
+			<img src="/assets/logo.png" alt="logo" />
 		</div>
 	);
 };
