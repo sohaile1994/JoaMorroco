@@ -1,0 +1,47 @@
+.menu-destination-page {
+    grid-area: menu;
+    width: var(--width-content);
+    max-width: var(--max-width-content);
+    height: 64px;
+    display: flex;
+    padding: 0;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none; 
+  
+  }
+  
+  .menu-destination-page li {
+      display: flex; 
+      align-items: center;
+      justify-content: center; 
+      height: 100%; 
+      width: 100%;
+      text-align: center; /* Center the text inside the li */
+      padding: 0 20px; /* Optional: Adds padding on the sides */
+      border-right: 1px solid #ddd; /* Adds a border between items */
+      font-size: 16px; /* Adjusts font size */
+      color: var(--primary-color); /* Adjusts text color */
+  }
+  
+  .menu-destination-page li:last-child {
+    border-right: none; /* Removes the border from the last item */
+  }
+  
+  /* Additional styling to match the icons and colors */
+  .menu-destination-page li i {
+    margin-right: 8px; /* Space between the icon and text */
+  }
+  
+  .menu-destination-page li.active {
+    background-color: var(--primary-background-color);
+    color: var(--active-color); 
+    border-right: none;
+  }
+  
+  .menu-destination-page li:hover {
+    cursor: pointer;
+    color: var(--active-color); /* Change color on hover */
+  }
+  

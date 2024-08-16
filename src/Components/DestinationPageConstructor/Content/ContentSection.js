@@ -6,6 +6,8 @@ import ReviewsContent from "./Reviews";
 import BookFormSection from "./BookForm";
 import { MenuTypes } from "../Menu";
 
+import "./ContentSection.css";
+
 class ContentSection extends Component {
 	render() {
 		const { selectedContent, information, tourPlan, gallery, reviews } =

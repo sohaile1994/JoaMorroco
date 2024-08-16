@@ -1,3 +1,5 @@
+import "./HeroSection.css";
+
 const HeroSection = ({ image, reviews, title, price, duration }) => {
 	return (
 		<section

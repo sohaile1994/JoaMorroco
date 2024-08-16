@@ -1,0 +1,26 @@
+.content-destination-page{
+    width: 100vw;
+    background-color: var(--primary-background-color);
+    padding-top: 64px ;
+  }
+.content-container {
+    display: flex;
+    justify-content: space-around; /* Space between content and book form */
+    align-items: flex-start; /* Align items to the top */
+    width: var(--width-content);
+    max-width: var(--max-width-content);
+    margin: 0 auto;
+    background-color: var(--primary-background-color);
+  
+      padding: 20px;
+   
+  }
+  
+.content-container .content {
+    width: 75%;
+  }
+
+  .content{
+    padding-right: 4rem;
+  }
+  

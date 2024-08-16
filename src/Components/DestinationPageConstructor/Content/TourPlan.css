@@ -1,0 +1,55 @@
+
+  .day-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    position: relative;
+  }
+  
+  .day-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ff5722;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+  }
+  
+  .day-content {
+    max-width: 600px;
+  }
+  
+  .day-content h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .day-content p {
+    margin-bottom: 15px;
+    line-height: 1.5;
+  }
+  
+  .day-content ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .day-content ul li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  
+  .day-content ul li:before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: #ff5722;
+  }
+  

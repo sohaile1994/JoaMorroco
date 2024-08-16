@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
+import "./ShowCase.css";
 
 const ShowCaseItem = ({ title, subTitle, image, link }) => {
 	return (

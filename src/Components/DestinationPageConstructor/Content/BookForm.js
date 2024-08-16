@@ -1,6 +1,8 @@
+import "./BookForm.css";
+
 const BookFormSection = () => {
 	return (
-		<section className="book-form content">
+		<section className="book-form">
 			<h2>Book This Tour</h2>
 			<form>
 				<input id="input-name" type="text" placeholder="Name *" required />

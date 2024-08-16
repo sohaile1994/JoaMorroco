@@ -1,3 +1,5 @@
+import "./Gallery.css";
+
 const GalleryContent = ({ info }) => {
 	return (
 		<div className="gallery-destination-page content">

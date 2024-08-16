@@ -1,6 +1,7 @@
 
 :root {
   --primary-color: #000000; 
+  --white-color: #fff; 
   --secondary-color: #3498db; 
   --active-color: #e74c3c;  
   --primary-background-color: #ffffff; 
@@ -9,6 +10,7 @@
   --max-width-content:1160px;
   --width-content:85%;
 }
+
 img{
   width: 100%;
 }
@@ -30,69 +32,6 @@ section{
   top: 0;
   z-index: 10;
 }
-.show-case{
-  position: fixed;
-  top: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  height: 100vh;
-  width: 100vw;
-  
-}
-
-
-.show-case h2,h4{
-  position: relative;
-  margin: 0 auto;
-  text-align: center;
-  width: 100%;
-  color: var(--primary-color);
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
-  z-index: 3;
-}
-.show-case h2{
-  top: 40%;
-  font-size: 3rem;
-}
-
-.show-case h4{
-    top: 40%;
-    font-size: 1.5rem;
-    font-style: italic;
-}
-
-.show-case .book-btn p{
-  width: 100%;
-  text-align: center;
-}
-
-.show-case .book-btn{
-    position: relative; 
-    top: 42%;
-
-    width: clamp(150px, 50%, 200px); 
-    height: clamp(40px, 10vh, 50px);
-
-    display: flex;
-    margin: 0 auto;
-    justify-content: center; 
-    align-items: center; 
-
-    font-size: clamp(0.9em, 5vw, 1.05em); 
-    font-weight: bold;
-    text-decoration: none;
-    color: var(--primary-color);
-
-    background-color: var(--primary-background-color);
-    border-radius: 0% 0%;
-
-    transition: color 0.3s, background-color 0.3s;
-    z-index: 6;
-}
-.show-case .book-btn:hover{
-  background-color: var(--secondary-background-color);
-  color: var(--secondary-color);
-}
 
 .destination-page-container{
   display: grid;
@@ -102,119 +41,4 @@ section{
     "content";
   width: 100vw;
   background-color: var(--secondary-background-color);
-}
-.hero-destination-page{
-  grid-area: hero;
-  width:100%;
-  height: 90vh;
-  position: relative;
-}
-.hero-destination-page .flex-center{
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.hero-destination-page .flex-center h1{
- text-align: center;
- font-size: 9rem;
- color: white;
- font-weight: 3px;
-}
-.menu-destination-page {
-  grid-area: menu;
-  width: var(--width-content);
-  max-width: var(--max-width-content);
-  height: 64px;
-  display: flex;
-  padding: 0;
-  margin: 0 auto;
-  justify-content: space-between;
-  align-items: center;
-  list-style-type: none; 
-
-}
-
-.menu-destination-page li {
-    display: flex; 
-    align-items: center;
-    justify-content: center; 
-    height: 100%; 
-    width: 100%;
-    text-align: center; /* Center the text inside the li */
-    padding: 0 20px; /* Optional: Adds padding on the sides */
-    border-right: 1px solid #ddd; /* Adds a border between items */
-    font-size: 16px; /* Adjusts font size */
-    color: var(--primary-color); /* Adjusts text color */
-}
-
-.menu-destination-page li:last-child {
-  border-right: none; /* Removes the border from the last item */
-}
-
-/* Additional styling to match the icons and colors */
-.menu-destination-page li i {
-  margin-right: 8px; /* Space between the icon and text */
-}
-
-.menu-destination-page li.active {
-  background-color: var(--primary-background-color);
-  color: var(--active-color); 
-  border-right: none;
-}
-
-.menu-destination-page li:hover {
-  cursor: pointer;
-  color: var(--active-color); /* Change color on hover */
-}
-.content-destination-page{
-  width: 100vw;
-  background-color: var(--primary-background-color);
-  padding-top: 64px ;
-}
-.content-container {
-  display: flex;
-  justify-content: space-around; /* Space between content and book form */
-  align-items: flex-start; /* Align items to the top */
-  width: var(--width-content);
-  max-width: var(--max-width-content);
-  margin: 0 auto;
-  background-color: var(--primary-background-color);
-}
-
-.content-container .content {
-  width: 75%;
-}
-
-.content-container .book-form {
-  width: 20%;
-  margin: 0 auto;
-}
-
-.content-container .book-form form {
- 
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.content-container .book-form input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.content-container .book-form button {
-  padding: 10px 15px;
-  background-color: green;
-  color: var(--primary-color);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.content-container .book-form button:hover {
-  background-color: darkgreen;
 }

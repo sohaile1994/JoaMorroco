@@ -1,3 +1,5 @@
+import "./Reviews.css";
+
 const ReviewsContent = ({ info }) => {
 	return (
 		<div className="reviews-destination-page content">

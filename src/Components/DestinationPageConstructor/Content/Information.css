@@ -1,0 +1,55 @@
+.information-destination-page {
+    font-family: Arial, sans-serif;
+    color: #333;
+
+    background-color: var(--primary-background-color);
+  }
+  
+  
+  
+  .information-destination-page h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .information-destination-page h4 {
+    font-size: 1.2rem;
+    color: #e74c3c; /* Use your active color or the red color shown in the image */
+    margin-top: 10px;
+  }
+  
+  .information-destination-page p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+  }
+  
+  .information-destination-page ul {
+    list-style: none;
+    padding-left: 10px;
+    margin-top: 20px;
+  }
+  
+  .information-destination-page ul li {
+    display: flex;
+    justify-content: flex-start; /* Aligns items to the start */
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+  }
+  
+  
+  .information-destination-page ul li h6 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    width: 40%; 
+  }
+  
+  .information-destination-page ul li p {
+    font-size: 1rem;
+    color: #666;
+    margin: 5px 0 0;
+  }
+  
