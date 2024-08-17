@@ -1,6 +1,6 @@
 import "./App.css";
-import ShowCase from "./Pages/Home/ShowCase.js";
-import Header from "./Pages/Home/Header.js";
+import ShowCase from "./Home/ShowCase.js";
+import Header from "./Home/Header.js";
 
 function App() {
 	return (

@@ -12,7 +12,7 @@ const HeroSection = ({ image, reviews, title, price, duration }) => {
 
 			<h4>{price + "/" + duration + (duration > 1 ? " days" : "day")}</h4>
 			{/* <img src={scrollImage}></img>*/}
-			<h4>{reviews}</h4>
+			<h4>{reviews.stars}</h4>
 		</section>
 	);
 };
