@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import HeroSection from "./HeroSection";
 import MenuContent from "./Menu";
 import ContentSection from "./Content/ContentSection";
+import Navbar from "../../Home/Navbar/Navbar.js";
 
 import { MenuTypes } from "./Menu";
 
