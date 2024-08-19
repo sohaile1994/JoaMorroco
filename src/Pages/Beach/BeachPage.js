@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "../../Home/Navbar/Navbar.js";
 
 import DestinationPage from "../../Components/DestinationPageConstructor/DestinationPageConstructor.js";
 

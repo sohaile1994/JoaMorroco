@@ -23,6 +23,8 @@ class DestinationPage extends Component {
 
 		return (
 			<div className="destination-page-container">
+				<Navbar />
+
 				<HeroSection
 					image={image}
 					reviews={reviews}
