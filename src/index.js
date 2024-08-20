@@ -10,11 +10,21 @@ import BeachPage from "./Pages/Beach/BeachPage.js";
 import ForestPage from "./Pages/Forest/ForestPage.js";
 import DesertPage from "./Pages/Desert/DesertPage.js";
 import MountainPage from "./Pages/Mountain/MountainPage.js";
+import AboutPage from "./Pages/About/AboutPage.js";
+import ContactPage from "./Pages/Contact/ContactPage.js";
 
 const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <App />,
+	},
+	{
+		path: "aboutPage",
+		element: <AboutPage />,
+	},
+	{
+		path: "contactPage",
+		element: <ContactPage />,
 	},
 	{
 		path: "beachPage",
