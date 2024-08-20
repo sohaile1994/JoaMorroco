@@ -1,4 +1,3 @@
-// AboutUsPage.js
 import React from "react";
 import Navbar from "../../Home/Navbar/Navbar";
 import HeroSection from "./HeroSection";
@@ -16,6 +15,10 @@ const AboutPage = () => {
 			<ServicesSection />
 			<AboutAgencySection />
 			<PopularAdventuresSection />
+			<script
+				src="https://kit.fontawesome.com/3e495ab38b.js"
+				crossorigin="anonymous"
+			></script>
 		</>
 	);
 };

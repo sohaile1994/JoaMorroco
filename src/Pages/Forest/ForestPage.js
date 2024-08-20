@@ -8,6 +8,11 @@ import gallery from "./gallery.js";
 import reviews from "./reviews.js";
 
 function ForestPage() {
+	const averageReviews =
+		reviews.reduce((sum, review) => {
+			return sum + review;
+		}, 0) / reviews.length;
+
 	return (
 		<DestinationPage
 			image={

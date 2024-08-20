@@ -8,6 +8,11 @@ import gallery from "./gallery.js";
 import reviews from "./reviews.js";
 
 function DesertPage() {
+	const averageReviews =
+		reviews.reduce((sum, review) => {
+			return sum + review;
+		}, 0) / reviews.length;
+
 	return (
 		<DestinationPage
 			image={"/assets/desert-show-case.jpg"}

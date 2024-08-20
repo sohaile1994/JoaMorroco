@@ -6,12 +6,13 @@ import reportWebVitals from "./reportWebVitals";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import AboutPage from "./Pages/About/AboutPage.js";
+import ContactPage from "./Pages/Contact/Contact.js";
+
 import BeachPage from "./Pages/Beach/BeachPage.js";
 import ForestPage from "./Pages/Forest/ForestPage.js";
 import DesertPage from "./Pages/Desert/DesertPage.js";
 import MountainPage from "./Pages/Mountain/MountainPage.js";
-import AboutPage from "./Pages/About/AboutPage.js";
-import ContactPage from "./Pages/Contact/ContactPage.js";
 
 const router = createBrowserRouter([
 	{
@@ -19,17 +20,18 @@ const router = createBrowserRouter([
 		element: <App />,
 	},
 	{
-		path: "aboutPage",
+		path: "about",
 		element: <AboutPage />,
 	},
 	{
-		path: "contactPage",
+		path: "contact",
 		element: <ContactPage />,
 	},
 	{
 		path: "beachPage",
 		element: <BeachPage />,
 	},
+
 	{
 		path: "forestPage",
 		element: <ForestPage />,

@@ -33,11 +33,11 @@ class Navbar extends Component {
 						</li>
 
 						<li>
-							<Link to="/aboutPage">About</Link>
+							<Link to="/about">About</Link>
 						</li>
 
 						<li>
-							<Link to="/contactPage">Contact</Link>
+							<Link to="/contact">Contact</Link>
 						</li>
 					</ul>
 				</div>

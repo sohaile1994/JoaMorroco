@@ -1,4 +1,3 @@
-// PopularAdventuresSection.js
 import React from "react";
 
 const PopularAdventuresSection = () => {
@@ -23,15 +22,15 @@ const PopularAdventuresSection = () => {
 	return (
 		<section className="popular-adventures-section">
 			<h2>Most Popular Adventures We Have</h2>
-			<div className="adventures-container">
+			<article>
 				{adventures.map((adventure, index) => (
-					<div key={index} className="adventure">
+					<section key={index}>
 						<img src={adventure.img} alt={adventure.title} />
 						<h3>{adventure.title}</h3>
 						<p>{adventure.price}</p>
-					</div>
+					</section>
 				))}
-			</div>
+			</article>
 		</section>
 	);
 };

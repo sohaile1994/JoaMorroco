@@ -15,7 +15,7 @@ p {
 }
 
 /* Hero Section */
-.hero-section {
+section.hero-section {
     background-image: url('https://www.shutterstock.com/image-photo/panoramic-beautiful-deep-forest-waterfall-260nw-794958832.jpg');
     background-size: contain;
     background-repeat: no-repeat;
@@ -25,146 +25,186 @@ p {
     color: white;
     margin: 0 auto;
     width: 72vw;
-}
 
-.hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 10px;
+    }
 
-.hero-content p {
-    font-size: 1.5rem;
+    p {
+        font-size: 1.5rem;
+    }
 }
 
 /* Services Section */
-.services-section {
+/* Services Section */
+section.services-section {
     background-color: #ff681a;
     padding: 50px 0;
     text-align: center;
- 
+
+    article {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        width: 64%;
+
+        section {
+            flex: 1 1 200px;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 8px;
+            color: white;
+            position: relative; /* Required for absolute positioning of child elements */
+
+
+            .icon-outline, .icon-container {
+                position: absolute;
+                width: 80px; /* Adjust size as needed */
+                height: 80px;
+                border-radius: 50%;
+                top: 0;
+                left: 50%;
+                transform: translate(-50%, -50%); /* Center and hide the circle */
+                transform-origin: center; /* Ensures scaling from the center */
+                transition: transform 0.3s ease, opacity 0.3s ease;
+            }
+
+            .icon-outline {
+                background-color: #ffd4be8c; /* Adjust color as needed */
+               scale: 1;
+                opacity: 0; /* Adjust transparency */
+                z-index: 0; /* Place behind the icon */
+            }
+
+            .icon-outline:hover {
+                transform: translate(-50%, -50%) scale(1.2); /* Scale up on hover */
+                opacity: 0.8; /* Adjust transparency */
+            }
+
+            .icon-container {
+                pointer-events: none;
+                background-color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1; 
+                
+            }
+
+            .icon-container svg {
+                color: #ff681a; /* Icon color */
+                font-size: 2rem; /* Adjust size if needed */
+            }
+
+            h3 {
+                margin-bottom: 10px;
+                font-size: 1.2rem;
+                font-weight: 3;
+                padding: 5px;
+                padding-top: 44px;
+                border-radius: 4px;
+            }
+
+            p {
+                font-size: 1rem;
+                color: white;
+            }
+
+            /* Show the icon-outline on hover */
+           
+        }
+    }
 }
 
-.services-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    width: 64%;
-}
 
-.service {
-    flex: 1 1 200px;
-    margin: 10px;
-    padding: 20px;
-    border-radius: 8px;
-    color: white;
-
-}
-
-.service img {
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    margin-bottom: 15px;
-}
-
-.service h3 {
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-}
-
-.service p {
-    font-size: 1rem;
-   color: white;
-}
 
 /* About Agency Section */
-.about-agency-section {
+section.about-agency-section {
     padding: 50px;
-}
 
-.about-agency-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
+    article {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
 
-.about-agency-image img {
-    width: 100%;
-    max-width: 500px;
-    border-radius: 8px;
-}
+        figure img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 8px;
+        }
 
-.about-agency-content {
-    max-width: 600px;
-    padding: 20px;
-}
+        section {
+            max-width: 600px;
+            padding: 20px;
 
-.about-agency-content h2 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-}
+            h2 {
+                margin-bottom: 20px;
+                font-size: 2rem;
+            }
 
-.about-agency-content p {
-    margin-bottom: 20px;
-    font-size: 1rem;
-}
+            p {
+                margin-bottom: 20px;
+                font-size: 1rem;
+            }
 
-.about-agency-content button {
-    background-color: #ff7b54;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    border-radius: 4px;
-}
+            button {
+                background-color: #ff7b54;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                font-size: 1rem;
+                border-radius: 4px;
+            }
 
-.about-agency-content button:hover {
-    background-color: #e66a41;
+            button:hover {
+                background-color: #e66a41;
+            }
+        }
+    }
 }
 
 /* Popular Adventures Section */
-.popular-adventures-section {
+section.popular-adventures-section {
     padding: 50px;
     text-align: center;
     background-color: #f4f4f4;
 
-}
+    h2 {
+        margin-bottom: 20px;
+        font-size: 2rem;
+    }
 
-.popular-adventures-section h2 {
-    margin-bottom: 20px;
+    article {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        width: 50%;
 
-    font-size: 2rem;
-}
+        section {
+            background-color: white;
+            border-radius: 8px;
+            text-align: center;
 
-.adventures-container {
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-   width: 50%;
-}
+            img {
+                width: 72%;
+                height: 100%;
+            }
 
-.adventure {
-    background-color: white;
-    border-radius: 8px;
-    text-align: center;
-}
+            h3 {
+                margin: 15px 0;
+                font-size: 1.5rem;
+            }
 
-.adventure img {
-    width: 72%;
-    height: 100%;
-}
-
-.adventure h3 {
-    margin: 15px 0;
-    font-size: 1.5rem;
-}
-
-.adventure p {
-    color: #ff7b54;
-    font-weight: bold;
-    font-size: 1.25rem;
-    margin-bottom: 15px;
+            p {
+                color: #ff7b54;
+                font-weight: bold;
+                font-size: 1.25rem;
+                margin-bottom: 15px;
+            }
+        }
+    }
 }

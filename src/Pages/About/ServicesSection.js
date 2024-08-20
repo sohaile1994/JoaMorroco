@@ -1,41 +1,51 @@
-// ServicesSection.js
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+	faMountain,
+	faTag,
+	faCalendar,
+	faPalette,
+} from "@fortawesome/free-solid-svg-icons";
 
 const ServicesSection = () => {
 	const services = [
 		{
-			icon: "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0b/cf/e5/cb.jpg",
+			icon: faMountain,
 			title: "Adventure Time",
-			description: "Lorem ipsum...",
+			description: "Experience thrilling adventures with our guided tours.",
 		},
 		{
-			icon: "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0b/cf/e5/cb.jpg",
+			icon: faTag,
 			title: "Branding Projects",
-			description: "Lorem ipsum...",
+			description: "Enhance your brand with creative and impactful solutions.",
 		},
 		{
-			icon: "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0b/cf/e5/cb.jpg",
+			icon: faCalendar,
 			title: "Promotion & Event",
-			description: "Lorem ipsum...",
+			description:
+				"Organize successful events and promotions with expert help.",
 		},
 		{
-			icon: "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0b/cf/e5/cb.jpg",
+			icon: faPalette,
 			title: "Color it All",
-			description: "Lorem ipsum...",
+			description: "Add a splash of color and creativity to your projects.",
 		},
 	];
 
 	return (
 		<section className="services-section">
-			<div className="services-container">
+			<article>
 				{services.map((service, index) => (
-					<div key={index} className="service">
-						<img src={service.icon} alt={service.title} />
+					<section key={index}>
+						<div className="icon-outline"></div>
+						<div className="icon-container">
+							<FontAwesomeIcon icon={service.icon} size="2x" />
+						</div>
 						<h3>{service.title}</h3>
 						<p>{service.description}</p>
-					</div>
+					</section>
 				))}
-			</div>
+			</article>
 		</section>
 	);
 };
