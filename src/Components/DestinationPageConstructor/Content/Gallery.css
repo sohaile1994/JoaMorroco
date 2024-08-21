@@ -1,0 +1,20 @@
+.gallery-destination-page {
+    column-count: 3; /* Adjust the number of columns based on your needs */
+    column-gap: 16px; /* Space between the columns */
+  }
+  
+  .gallery-item {
+    break-inside: avoid; /* Prevents the items from breaking across columns */
+    margin-bottom: 16px; /* Space between the images */
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
