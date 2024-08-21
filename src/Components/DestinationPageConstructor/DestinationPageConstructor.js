@@ -4,6 +4,8 @@ import MenuContent from "./Menu";
 import ContentSection from "./Content/ContentSection";
 import Navbar from "../../Home/Navbar/Navbar.js";
 
+import "./DestinationPageConstructor.css";
+
 import { MenuTypes } from "./Menu";
 
 class DestinationPage extends Component {

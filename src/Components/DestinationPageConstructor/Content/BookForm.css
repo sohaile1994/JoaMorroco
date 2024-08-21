@@ -1,13 +1,14 @@
 
 .book-form {
-    width: 20%;
+    min-width: (20%,100dvw);
     margin: 0 auto;
     align-items: flex-end;
   }
   
+
   .book-form form {
-   
     display: flex;
+    width: 100%;
     flex-direction: column;
     gap: 10px;
   }

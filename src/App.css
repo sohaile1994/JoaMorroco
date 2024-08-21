@@ -10,9 +10,12 @@
   --max-width-content:1160px;
   --width-content:85%;
 }
-
 img{
   width: 100%;
+}
+
+html{
+  overflow-x: hidden;
 }
 
 section{
@@ -27,18 +30,33 @@ section{
 
 
 .logo-container{
-  width: clamp(88px,16vw, 200px);
+  width: clamp(88px,16dvw, 200px);
   position: absolute;
   top: 0;
   z-index: 10;
 }
 
-.destination-page-container{
-  display: grid;
-  grid-template-areas: 
-    "hero"
-    "menu "
-    "content";
-  width: 100vw;
-  background-color: var(--secondary-background-color);
+
+@media (max-width: 700px) {
+  .menu-destination-page{
+    flex-direction: column;
+    height: 48dvh;
+    
+  }
+  .menu-destination-page li{
+    height: 10dvh;
+    color: gold;
+  }
+  .content-container{
+    flex-wrap: wrap;
+
+  }
+  
+  .book-form{
+    padding-top: 5dvh;
+    padding-bottom: 5dvh;
+    
+  }
+
+ 
 }

@@ -1,0 +1,11 @@
+
+.destination-page-container{
+    overflow-x: hidden;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100dvw;
+    background-color: var(--secondary-background-color);
+  }
+  

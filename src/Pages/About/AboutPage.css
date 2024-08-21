@@ -24,7 +24,7 @@ section.hero-section {
     text-align: center;
     color: white;
     margin: 0 auto;
-    width: 72vw;
+    width: 72dvw;
 
     h1 {
         font-size: 3rem;
@@ -56,7 +56,7 @@ section.services-section {
             padding: 20px;
             border-radius: 8px;
             color: white;
-            position: relative; /* Required for absolute positioning of child elements */
+            position: relative; 
 
 
             .icon-outline, .icon-container {

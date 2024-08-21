@@ -19,7 +19,7 @@
       height: 100%; 
       width: 100%;
       text-align: center; /* Center the text inside the li */
-      padding: 0 20px; /* Optional: Adds padding on the sides */
+      /* Optional: Adds padding on the sides */
       border-right: 1px solid #ddd; /* Adds a border between items */
       font-size: 16px; /* Adjusts font size */
       color: var(--primary-color); /* Adjusts text color */

@@ -1,5 +1,14 @@
 import "./Information.css";
 
+const InformationItem = ({ title, description }) => {
+	return (
+		<li className="info-item">
+			<h6>{title}</h6>
+			<p>{description}</p>
+		</li>
+	);
+};
+
 const InformationContent = ({ info }) => {
 	const {
 		title,
@@ -12,6 +21,7 @@ const InformationContent = ({ info }) => {
 		included,
 		notIncluded,
 	} = info;
+
 	return (
 		<div className="information-destination-page content">
 			<div className="description">
@@ -20,30 +30,19 @@ const InformationContent = ({ info }) => {
 				<p>{description}</p>
 			</div>
 			<ul>
-				<li>
-					<h6>Destination</h6>
-					<p>{destination}</p>
-				</li>
-				<li>
-					<h6>Departure</h6>
-					<p>{departure}</p>
-				</li>
-				<li>
-					<h6>Departure Time</h6>
-					<p>{departureTime}</p>
-				</li>
-				<li>
-					<h6>Dress Code</h6>
-					<p>{dressCode}</p>
-				</li>
-				<li className="included">
-					<h6>Included</h6>
-					<p>{included}</p>
-				</li>
-				<li className="not-included">
-					<h6>Not Included</h6>
-					<p>{notIncluded}</p>
-				</li>
+				<InformationItem title="Destination" description={destination} />
+				<InformationItem title="Departure Time" description={departureTime} />
+				<InformationItem title="Dress Code" description={dressCode} />
+				<InformationItem
+					className="included info-item"
+					title="Included"
+					description={included}
+				/>
+				<InformationItem
+					className="not-included info-item"
+					title="Not Included"
+					description={notIncluded}
+				/>
 			</ul>
 		</div>
 	);

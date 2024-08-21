@@ -31,7 +31,7 @@
     margin-top: 20px;
   }
   
-  .information-destination-page ul li {
+  .info-item {
     display: flex;
     justify-content: flex-start; /* Aligns items to the start */
     align-items: center;
@@ -40,16 +40,27 @@
   }
   
   
-  .information-destination-page ul li h6 {
+  .info-item h6 {
     font-size: 1rem;
     font-weight: bold;
     color: #333;
-    width: 40%; 
+    width: 40%;
   }
   
-  .information-destination-page ul li p {
+  .info-item p {
     font-size: 1rem;
     color: #666;
     margin: 5px 0 0;
   }
   
+  @media (max-width:600px){
+    .info-item {
+      flex-direction: column;
+      width: 100%;
+    }
+   .info-item h6, .info-item p {
+    text-align: left;
+    width: 100% ;
+   }
+  
+  }

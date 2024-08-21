@@ -3,8 +3,8 @@
     top: 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    height: 100vh;
-    width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
     
   }
   
@@ -46,7 +46,7 @@
       justify-content: center; 
       align-items: center; 
   
-      font-size: clamp(0.9em, 5vw, 1.05em); 
+      font-size: clamp(0.9em, 5dvw, 1.05em); 
       font-weight: bold;
       text-decoration: none;
       color: var(--primary-color);
