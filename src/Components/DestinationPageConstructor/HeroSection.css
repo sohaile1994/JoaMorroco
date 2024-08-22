@@ -1,6 +1,6 @@
 .hero-destination-page{
     
-    height: 100dvh;
+    height: 90dvh;
     width: 100dvw;
     position: relative;
   }
@@ -17,5 +17,13 @@
    font-size: 9rem;
    color: white;
    font-weight: 3px;
+  }
+  
+  @media (max-width:700px)
+  {
+    .hero-destination-page {
+      height: 44dvh;
+      width: 100dvw;
+    }
   }
   

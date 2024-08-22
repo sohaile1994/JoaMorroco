@@ -1,10 +1,12 @@
+
 .menu-destination-page {
-    grid-area: menu;
+  
     width: var(--width-content);
     max-width: var(--max-width-content);
     height: 64px;
     display: flex;
     padding: 0;
+    padding: 1dvh 0;
     margin: 0 auto;
     justify-content: space-between;
     align-items: center;
@@ -45,3 +47,10 @@
     color: var(--active-color); /* Change color on hover */
   }
   
+  @media (max-width:700px)
+{
+  .menu-destination-page {
+    height: 44dvh;
+    width: 100vw;
+  }
+}
