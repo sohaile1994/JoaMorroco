@@ -24,7 +24,6 @@ class MenuContent extends Component {
 
 	render() {
 		const { activeContent } = this.state;
-
 		return (
 			<ul className="menu-destination-page">
 				<li

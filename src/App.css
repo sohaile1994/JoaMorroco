@@ -4,11 +4,14 @@
   --white-color: #fff; 
   --secondary-color: #3498db; 
   --active-color: #e74c3c;  
-  --primary-background-color: #fff; 
+  --primary-background-color: #ffffff; 
   --secondary-background-color: #e9e9e9; 
 
   --max-width-content:1160px;
   --width-content:85%;
+
+  --desktop-min-width:1000px;
+  --tablet-min-width:500px;
 }
 img{
   width: 100%;
@@ -37,7 +40,7 @@ section{
 }
 
 
-@media (max-width: 700px) {
+@media (min-width: 780px) {
   .menu-destination-page{
     flex-direction: column;
     height: 48dvh;
@@ -47,10 +50,7 @@ section{
     height: 10dvh;
     color: gold;
   }
-  .content-container{
-    flex-wrap: wrap;
 
-  }
   
   .book-form{
     padding-top: 5dvh;

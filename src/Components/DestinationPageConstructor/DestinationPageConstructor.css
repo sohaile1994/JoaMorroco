@@ -9,7 +9,7 @@
     background-color: var(--secondary-background-color);
   }
   
-  @media (max-width:700px) {
+  @media (min-width: 780px) {
 
   .hero-menu-divider{
     height: 2dvh;

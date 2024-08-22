@@ -1,20 +1,26 @@
 .gallery-destination-page {
     column-count: 3; /* Adjust the number of columns based on your needs */
-    column-gap: 16px; /* Space between the columns */
+    column-gap: 1rem; /* Space between the columns */
   }
   
   .gallery-item {
     break-inside: avoid; /* Prevents the items from breaking across columns */
-    margin-bottom: 16px; /* Space between the images */
+    margin-bottom: 1rempx; /* Space between the images */
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
   }
   
   .gallery-item img {
     width: 100%;
     height: auto;
     display: block;
+  }
+
+  @media (max-width:700px){
+    .gallery-destination-page {
+      column-count: 2;
+    }
   }
   

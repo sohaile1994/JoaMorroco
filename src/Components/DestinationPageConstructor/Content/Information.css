@@ -1,10 +1,9 @@
 .information-destination-page {
     font-family: Arial, sans-serif;
     color: #333;
-
+    padding: 1rem;
     background-color: var(--primary-background-color);
   }
-  
   
   
   .information-destination-page h2 {
@@ -16,7 +15,6 @@
   .information-destination-page h4 {
     font-size: 1.2rem;
     color: #e74c3c; /* Use your active color or the red color shown in the image */
-    margin-top: 10px;
   }
   
   .information-destination-page p {
@@ -27,8 +25,8 @@
   
   .information-destination-page ul {
     list-style: none;
+    padding-top: 10dvh;
     padding-left: 10px;
-    margin-top: 20px;
   }
   
   .info-item {
@@ -41,7 +39,7 @@
   
   
   .info-item h6 {
-    font-size: 1rem;
+   
     font-weight: bold;
     color: #333;
     width: 40%;
@@ -50,10 +48,10 @@
   .info-item p {
     font-size: 1rem;
     color: #666;
-    margin: 5px 0 0;
+
   }
   
-  @media (max-width:600px){
+  @media (max-width: 780px){
     .info-item {
       flex-direction: column;
       width: 100%;
@@ -61,6 +59,8 @@
    .info-item h6, .info-item p {
     text-align: left;
     width: 100% ;
+    margin: 10px;
+    padding-left: 2rem;
    }
   
   }

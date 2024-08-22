@@ -19,7 +19,7 @@
    font-weight: 3px;
   }
   
-  @media (max-width:700px)
+  @media (min-width: 780px)
   {
     .hero-destination-page {
       height: 44dvh;
