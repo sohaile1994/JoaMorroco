@@ -1,4 +1,17 @@
 import "./HeroSection.css";
+import "./Content/Reviews.css";
+const ReviewRating = ({ stars }) => {
+	const starElements = [];
+	for (let i = 0; i < 5; i++) {
+		starElements.push(
+			<span key={i} className={`star ${i < stars ? "filled" : "empty"}`}>
+				&#9733;
+			</span>
+		);
+	}
+
+	return <div className="review-rating">{starElements}</div>;
+};
 
 const HeroSection = ({ image, reviews, title, price, duration }) => {
 	return (
@@ -16,14 +29,7 @@ const HeroSection = ({ image, reviews, title, price, duration }) => {
 							{price + "/" + duration + (duration > 1 ? " days" : " day")}
 						</h4>
 					</li>
-					<li>
-						<h4>
-							{[...Array(reviews.stars)].map((_, i) => (
-								<span key={i}>*</span>
-							))}{" "}
-							stars
-						</h4>
-					</li>
+					<ReviewRating stars={reviews.stars} />
 				</ul>
 			</div>
 		</section>

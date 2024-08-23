@@ -15,10 +15,9 @@
 }
 
 html{
-  padding: 0 !important;
-  margin: 0 !important;
+
   height: 100vh;
-  background-color: #303030;
+  background-color: var(--primary-color);
 }
 body{
   font-family: var(--font-family);
