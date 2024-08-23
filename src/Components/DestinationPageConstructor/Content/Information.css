@@ -1,66 +1,32 @@
-.information-destination-page {
-    font-family: Arial, sans-serif;
-    color: #333;
-    padding: 1rem;
-    background-color: var(--primary-background-color);
-  }
-  
-  
-  .information-destination-page h2 {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .information-destination-page h4 {
-    font-size: 1.2rem;
-    color: #e74c3c; /* Use your active color or the red color shown in the image */
-  }
-  
-  .information-destination-page p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #666;
-  }
-  
-  .information-destination-page ul {
-    list-style: none;
-    padding-top: 10dvh;
-    padding-left: 10px;
-  }
-  
-  .info-item {
-    display: flex;
-    justify-content: flex-start; /* Aligns items to the start */
-    align-items: center;
-    padding: 10px 0;
-    border-top: 1px solid #ddd;
-  }
-  
-  
-  .info-item h6 {
-   
-    font-weight: bold;
-    color: #333;
-    width: 40%;
-  }
-  
-  .info-item p {
-    font-size: 1rem;
-    color: #666;
 
-  }
+
+li{
+  list-style-type: none;
+}
+
+.information-destination-page{
+  font-size: 1rem;
+  padding: 0 20px;
+}
+
+.information-destination-page h2{
+  font-size: 2rem;
   
-  @media (max-width: 780px){
-    .info-item {
-      flex-direction: column;
-      width: 100%;
-    }
-   .info-item h6, .info-item p {
-    text-align: left;
-    width: 100% ;
-    margin: 10px;
-    padding-left: 2rem;
-   }
-  
-  }
+}
+.information-destination-page h4{
+  margin: 5px 0 20px;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--primary-color);
+}
+.information-destination-page h6{
+  margin: 20px 0;
+ 
+  font-size: 1.1rem;
+  color: var(--primary-text-color);
+}
+
+.information-destination-page li{
+  padding: 20px 10px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}

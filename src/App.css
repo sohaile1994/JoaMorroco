@@ -1,34 +1,47 @@
 
 :root {
-  --primary-color: #000000; 
+  --primary-color: #ff681a; 
+  --primary-text-color: #303030; 
+  --font-family: sans-serif; 
   --white-color: #fff; 
-  --secondary-color: #3498db; 
-  --active-color: #e74c3c;  
+  --secondary-color: #595959; 
+  --secondary-text-color: #595959; 
+ 
   --primary-background-color: #ffffff; 
-  --secondary-background-color: #e9e9e9; 
+  --secondary-background-color: #f4f4f4; 
 
   --max-width-content:1160px;
   --width-content:85%;
-
-  --desktop-min-width:1000px;
-  --tablet-min-width:500px;
+}
+body{
+  font-family: var(--font-family);
+  color: var(--primary-text-color);
+  background-color: var(--primary-background-color);
+}
+h1, h2, h3, h4, h5, h6, p{
+  font-size: 1rem;
+  font-family: var(--font-family);
+  color: var(--primary-text-color);
+}
+p{
+  opacity: 0.7;
+  color: var(--secondary-text-color);
 }
 img{
   width: 100%;
-}
-
-html{
-  overflow-x: hidden;
+  
 }
 
 section{
   display: block;
+  
 }
 
 .background-image{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  
 }
 
 

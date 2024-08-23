@@ -23,7 +23,7 @@ const InformationContent = ({ info }) => {
 	} = info;
 
 	return (
-		<div className="information-destination-page content">
+		<div className="information-destination-page">
 			<div className="description">
 				<h2>{title}</h2>
 				<h4>{price} / per person</h4>

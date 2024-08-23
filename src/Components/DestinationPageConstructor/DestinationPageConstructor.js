@@ -25,7 +25,7 @@ class DestinationPage extends Component {
 		const { selectedContent } = this.state;
 
 		return (
-			<div className="destination-page-container">
+			<div className="destination-page-containe">
 				<Navbar />
 
 				<HeroSection

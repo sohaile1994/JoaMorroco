@@ -32,7 +32,7 @@ class ContentSection extends Component {
 		return (
 			<section className="content-destination-page">
 				<div className="content-container">
-					{content}
+					<div className="content">{content}</div>
 					<BookFormSection />
 				</div>
 			</section>

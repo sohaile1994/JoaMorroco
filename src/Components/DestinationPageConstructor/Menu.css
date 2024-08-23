@@ -4,8 +4,8 @@
   width: 100dvw; /* Use vw instead of dvw for consistency */
   display: flex;
   flex-direction: column;
-  margin: 0;
-  padding: 1rem 0rem;
+ margin: 0 auto;
+ padding: 0;
 }
 
 .menu-destination-page li{
@@ -17,8 +17,7 @@
   width: 100%;
   text-align: center; /* Center the text inside the li */
   border-right: 0.2rem solid #ddd; /* Border between items */
-  font-size: 1rem; /* Font size */
-  color: var(--primary-color); /* Text color */
+
 }
 
 
@@ -29,7 +28,7 @@
 
 .menu-destination-page li.active {
   background-color: var(--primary-background-color);
-  color: var(--active-color);
+  color: var(--primary-color);
   border-right: none; /* Remove border on active item */
 }
 
@@ -49,7 +48,7 @@
 
   .menu-destination-page li:hover {
     cursor: pointer;
-    color: var(--active-color); /* Change color on hover */
+    color: var(--primary-color); /* Change color on hover */
   }
   
   .menu-destination-page li:last-child {

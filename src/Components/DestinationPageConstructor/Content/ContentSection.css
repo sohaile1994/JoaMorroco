@@ -1,11 +1,12 @@
+
 .content-destination-page{
-    width: 100dvw;
+    width: 100vw;
     background-color: var(--primary-background-color);
-    padding: 2rem 1rem;
   }
 
 .content {
-    width: 100dvw ;
+    width: 100vw ;
+    padding: 2rem 0;
   }
   
   @media (min-width: 780px) {
@@ -24,4 +25,5 @@
     .content{
       width: 75%;
     }
+
   }

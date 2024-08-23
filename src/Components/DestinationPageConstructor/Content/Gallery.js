@@ -2,7 +2,7 @@ import "./Gallery.css";
 
 const GalleryContent = ({ info }) => {
 	return (
-		<div className="gallery-destination-page content">
+		<div className="gallery-destination-page">
 			{info.map((item, index) => (
 				<div className="gallery-item" key={index}>
 					<img src={item.image} alt={item.title} />

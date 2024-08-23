@@ -36,7 +36,7 @@ const ReviewRating = ({ stars }) => {
 // Main ReviewsContent component
 const ReviewsContent = ({ info }) => {
 	return (
-		<div className="review-content content">
+		<div className="review-content">
 			{info.map((review, index) => (
 				<div key={index} className="review-item">
 					<ReviewImage image={review.profileImage} />

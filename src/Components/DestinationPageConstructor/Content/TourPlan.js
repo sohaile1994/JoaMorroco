@@ -3,7 +3,7 @@ import "./TourPlan.css";
 
 const TourPlan = ({ info }) => {
 	return (
-		<div className="tour-plan-destination-page content">
+		<div className="tour-plan-destination-page">
 			{info.map((item, index) => (
 				<div key={index} className="day-item">
 					<div className="day-number">
