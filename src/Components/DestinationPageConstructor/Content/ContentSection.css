@@ -1,13 +1,18 @@
 
+.content-section{
+  width: 80%;
+ margin: 0 auto;
+  background-color: black;
+}
 .content-destination-page{
-    width: 100vw;
+    width: 100%;
     background-color: var(--primary-background-color);
   }
 .content-container{
   margin: 4rem auto;
 }
 .content {
-    width: 100vw ;
+    width: 100% ;
   }
   
   @media (min-width: 780px) {

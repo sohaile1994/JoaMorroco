@@ -14,7 +14,9 @@ const TourPlan = ({ info }) => {
 						<p>{item.description}</p>
 						<ul>
 							{item.activities.map((activity, i) => (
-								<li key={i}>{activity}</li>
+								<li className="list-item" key={i}>
+									{activity}
+								</li>
 							))}
 						</ul>
 					</div>

@@ -1,30 +1,55 @@
-.hero-destination-page{
-    
-    height: 90dvh;
-    width: 100dvw;
-    position: relative;
-  }
-.flex-center{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-.flex-center h1{
-   text-align: center;
-   font-size: 6rem;
-   width: 100%;
-   color: white;
-   font-weight: 3px;
-  }
-  
-  @media (min-width: 780px)
-  {
-    .hero-destination-page {
-      height: 44dvh;
-      width: 100dvw;
-    }
-  }
-  
+.hero-destination-page {
+  height: 76vh;
+  width: 100%;
+  position: relative;
+  background-size: cover; /* Ensures the background image covers the entire area */
+  background-position: center; /* Centers the background image */
+}
+
+.flex-center {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-center h1 {
+  text-align: center;
+  font-size: 6rem;
+  width: 100%;
+  color: white;
+  font-weight: 300; /* Use a valid font-weight value */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: Adds a shadow for better text visibility on images */
+}
+
+.flex-space-between {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%); /* Center the container horizontally */
+  position: absolute;
+  width: 90%;
+  padding: 10px 0; /* Optional: Adds some padding around the content */
+  background: rgba(0, 0, 0, 0.5); /* Optional: Adds a semi-transparent background for readability */
+  border-radius: 5px; /* Optional: Rounds the corners */
+}
+
+.flex-space-between ul {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none; /* Removes default list styling */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 8;
+}
+
+.flex-space-between li {
+  margin: 0 10px; /* Optional: Adds space between list items */
+}
+
+.flex-space-between * {
+  color: white;
+  font-size: 1.2rem; /* Adjusts text size for better readability */
+}

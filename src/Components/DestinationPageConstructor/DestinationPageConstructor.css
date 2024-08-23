@@ -1,6 +1,8 @@
 
 .destination-page-container{
-    background-color: var(--secondary-background-color);
+ 
+  width: 100%;
+
   }
   
   @media (min-width: 780px) {

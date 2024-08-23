@@ -1,6 +1,6 @@
 /* Base styles for the menu */
 .menu-container{
-  width:100dvw;
+  width:100vw;
   overflow: hidden;
   background-color: var(--secondary-background-color);
 }
@@ -49,6 +49,10 @@
 
 /* Media query for larger screens */
 @media (min-width: 780px) {
+  .menu-container{
+width: 100%;
+
+  }
   .menu {
     width: var(--width-content); /* Use CSS variables for width */
     max-width: var(--max-width-content); /* Use CSS variables for max-width */

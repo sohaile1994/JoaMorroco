@@ -30,10 +30,12 @@ class ContentSection extends Component {
 		}
 
 		return (
-			<section className="content-destination-page">
-				<div className="content-container">
-					<div className="content">{content}</div>
-					<BookFormSection />
+			<section className="content-section">
+				<div className="content-destination-page">
+					<div className="content-container">
+						<div className="content">{content}</div>
+						<BookFormSection />
+					</div>
 				</div>
 			</section>
 		);

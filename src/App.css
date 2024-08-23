@@ -13,6 +13,13 @@
   --max-width-content:1160px;
   --width-content:85%;
 }
+
+html{
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 100vh;
+  background-color: #303030;
+}
 body{
   font-family: var(--font-family);
   color: var(--primary-text-color);
