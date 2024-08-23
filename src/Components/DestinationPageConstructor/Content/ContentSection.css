@@ -3,10 +3,11 @@
     width: 100vw;
     background-color: var(--primary-background-color);
   }
-
+.content-container{
+  margin: 4rem auto;
+}
 .content {
     width: 100vw ;
-    padding: 2rem 0;
   }
   
   @media (min-width: 780px) {
@@ -17,9 +18,8 @@
       align-items: flex-start; /* Align items to the top */
       width: var(--width-content);
       max-width: var(--max-width-content); /* Changed to vw for viewport width */
-      margin: 0 auto;
+    
       background-color: var(--primary-background-color);
-      padding-top: 20px;
     }
 
     .content{

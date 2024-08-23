@@ -25,32 +25,34 @@ class MenuContent extends Component {
 	render() {
 		const { activeContent } = this.state;
 		return (
-			<ul className="menu-destination-page">
-				<li
-					onClick={() => this.handleMenuClick(MenuTypes.INFORMATION)}
-					className={activeContent === MenuTypes.INFORMATION ? "active" : ""}
-				>
-					<span>Information</span>
-				</li>
-				<li
-					onClick={() => this.handleMenuClick(MenuTypes.TOURPLAN)}
-					className={activeContent === MenuTypes.TOURPLAN ? "active" : ""}
-				>
-					<span>Tour Plan</span>
-				</li>
-				<li
-					onClick={() => this.handleMenuClick(MenuTypes.GALLERY)}
-					className={activeContent === MenuTypes.GALLERY ? "active" : ""}
-				>
-					<span>Gallery</span>
-				</li>
-				<li
-					onClick={() => this.handleMenuClick(MenuTypes.REVIEWS)}
-					className={activeContent === MenuTypes.REVIEWS ? "active" : ""}
-				>
-					<span>Reviews</span>
-				</li>
-			</ul>
+			<div className="menu-container">
+				<ul className="menu">
+					<li
+						onClick={() => this.handleMenuClick(MenuTypes.INFORMATION)}
+						className={activeContent === MenuTypes.INFORMATION ? "active" : ""}
+					>
+						<span>Information</span>
+					</li>
+					<li
+						onClick={() => this.handleMenuClick(MenuTypes.TOURPLAN)}
+						className={activeContent === MenuTypes.TOURPLAN ? "active" : ""}
+					>
+						<span>Tour Plan</span>
+					</li>
+					<li
+						onClick={() => this.handleMenuClick(MenuTypes.GALLERY)}
+						className={activeContent === MenuTypes.GALLERY ? "active" : ""}
+					>
+						<span>Gallery</span>
+					</li>
+					<li
+						onClick={() => this.handleMenuClick(MenuTypes.REVIEWS)}
+						className={activeContent === MenuTypes.REVIEWS ? "active" : ""}
+					>
+						<span>Reviews</span>
+					</li>
+				</ul>
+			</div>
 		);
 	}
 }

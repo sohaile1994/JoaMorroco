@@ -1,14 +1,21 @@
 /* Base styles for the menu */
-.menu-destination-page {
-  height: 44dvh; /* Use vh instead of dvh for consistency */
-  width: 100dvw; /* Use vw instead of dvw for consistency */
+.menu-container{
+  width:100dvw;
+  overflow: hidden;
+  background-color: var(--secondary-background-color);
+}
+.menu {
+  height: 44dvh;
+  width: 100%; 
   display: flex;
   flex-direction: column;
- margin: 0 auto;
- padding: 0;
+  margin:20px auto;
+  padding:  16px 0;
+   border: none;
+
 }
 
-.menu-destination-page li{
+.menu li{
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -16,43 +23,58 @@
   height: 100%;
   width: 100%;
   text-align: center; /* Center the text inside the li */
-  border-right: 0.2rem solid #ddd; /* Border between items */
-
+  border: 1px solid #ddd;
+  
 }
+
+.menu li:first-child {
+  border-top: none; /* Remove border from the last item */
+}
+.menu li:last-child {
+  border-bottom: none; /* Remove border from the last item */
+}
+
 
 
 /* Additional styling for icons */
-.menu-destination-page li i {
-  margin-right: 0.5rem; /* Space between icon and text */
-}
 
-.menu-destination-page li.active {
+.menu li.active {
   background-color: var(--primary-background-color);
   color: var(--primary-color);
-  border-right: none; /* Remove border on active item */
+  scale: 1.05;
+  border: none;
+
 }
 
 
 /* Media query for larger screens */
 @media (min-width: 780px) {
-  .menu-destination-page {
+  .menu {
     width: var(--width-content); /* Use CSS variables for width */
     max-width: var(--max-width-content); /* Use CSS variables for max-width */
     height: 64px; /* Fixed height for larger screens */
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin: 0 auto;
     padding: 0;
   }
 
-
-  .menu-destination-page li:hover {
-    cursor: pointer;
-    color: var(--primary-color); /* Change color on hover */
+  .menu li{
+    border: none;
+    border-left: 1px solid #ddd;
   }
-  
-  .menu-destination-page li:last-child {
+  .menu li.active{
+    scale: 1.01;
+  }
+  .menu li:first-child {
+    border-left: none; /* Remove border from the last item */
+  }
+  .menu li:last-child {
     border-right: none; /* Remove border from the last item */
   }
-  
+  .menu li:hover {
+    cursor: pointer;
+    color: var(--primary-color);
+  }
 }

@@ -53,23 +53,3 @@ section{
 }
 
 
-@media (min-width: 780px) {
-  .menu-destination-page{
-    flex-direction: column;
-    height: 48dvh;
-    
-  }
-  .menu-destination-page li{
-    height: 10dvh;
-    color: gold;
-  }
-
-  
-  .book-form{
-    padding-top: 5dvh;
-    padding-bottom: 5dvh;
-    
-  }
-
- 
-}

@@ -35,7 +35,6 @@ class DestinationPage extends Component {
 					price={information.price}
 					duration={information.duration}
 				/>
-				<div className="hero-menu-divider"></div>
 				<MenuContent
 					onMenuClick={this.handleMenuClick}
 					selectedContent={selectedContent} // Pass current selectedContent to MenuContent

@@ -116,7 +116,7 @@
 }
 
 .nav-links a:hover {
-    color: #ff7b54;
+    color: var(--primary-color);
 }
 
 @keyframes fadeInSlideIn {
