@@ -10,7 +10,7 @@ li{
 }
 
 .information-destination-page h2{
-  font-size: 2rem;
+  font-size: 2.4rem;
   
 }
 .information-destination-page h4{
@@ -25,8 +25,40 @@ li{
   font-size: 1.1rem;
   color: var(--primary-text-color);
 }
+.information-destination-page p{
+  
+    font-size: 1rem; /* Adjust the size as needed */
+    line-height: 1.6; /* Line height for better readability */
+    color: #555555; /* A soft, grey color */
+    font-weight: 300; /* Light font weight */
+    margin: 0; /* Reset margin to avoid extra space */
+    padding: 10px 20px; /* Optional: padding around the text */
+
+}
 
 .information-destination-page li{
   padding: 20px 10px;
   border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+@media (min-width:780px){
+
+.info-item {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+
+  .info-item h6 {
+    flex-basis: 40%; /* Adjust the width of the title */
+    margin: 0; /* Remove margin for better alignment */
+  }
+
+  .description p {
+
+    flex-basis: 70%; /* Adjust the width of the description */
+    margin: 0; /* Remove margin for better alignment */
+    padding: 10px 0;
+    text-align: left;
+  }
 }

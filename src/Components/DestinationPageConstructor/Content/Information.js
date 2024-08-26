@@ -1,3 +1,4 @@
+import GalleryContent from "./Gallery.js";
 import "./Information.css";
 
 const InformationItem = ({ title, description }) => {
@@ -9,7 +10,7 @@ const InformationItem = ({ title, description }) => {
 	);
 };
 
-const InformationContent = ({ info }) => {
+const InformationContent = ({ info, gallery }) => {
 	const {
 		title,
 		price,
@@ -44,6 +45,7 @@ const InformationContent = ({ info }) => {
 					description={notIncluded}
 				/>
 			</ul>
+			<GalleryContent info={gallery} />
 		</div>
 	);
 };

@@ -21,21 +21,22 @@ class Navbar extends Component {
 
 		return (
 			<nav className="navbar">
-				<div className="hamburger" onClick={this.toggleMenu}>
-					<div className={`line ${isOpen ? "open" : ""}`}></div>
-					<div className={`line ${isOpen ? "open" : ""}`}></div>
-					<div className={`line ${isOpen ? "open" : ""}`}></div>
+				<div
+					className={`hamburger ${isOpen ? "open" : ""}`}
+					onClick={this.toggleMenu}
+				>
+					<div className="line"></div>
+					<div className="line"></div>
+					<div className="line"></div>
 				</div>
 				<div className={`nav-links ${isOpen ? "open" : ""}`}>
 					<ul>
 						<li>
-							<Link to="/">Home</Link>
+							<Link to="/">Tours</Link>
 						</li>
-
 						<li>
 							<Link to="/about">About</Link>
 						</li>
-
 						<li>
 							<Link to="/contact">Contact</Link>
 						</li>

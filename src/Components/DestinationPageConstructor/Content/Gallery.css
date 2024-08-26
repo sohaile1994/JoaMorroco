@@ -1,4 +1,9 @@
-.gallery-destination-page {
+.gallery-title{
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+.gallery-content {
     column-count: 1; /* Adjust the number of columns based on your needs */
     column-gap: 1rem; /* Space between the columns */
 
@@ -20,7 +25,7 @@
   }
 
   @media (min-width:780px){
-    .gallery-destination-page {
+    .gallery-content {
       column-count: 3;
     }
   }

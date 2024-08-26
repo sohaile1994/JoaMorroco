@@ -1,8 +1,11 @@
-/* Hero Section */
+.contact-page{
+    height: 100vh;
+    overflow: hidden;
+}
 .hero-section {
     background-size: cover;
     background-position: center;
-    height: 50vh; /* Adjust the height as needed */
+    height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

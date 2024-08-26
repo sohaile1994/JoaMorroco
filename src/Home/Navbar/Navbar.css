@@ -4,81 +4,104 @@
     z-index: 9; /* Keep the navbar on top */
     top: 0;
     right: 0;
+    width: 100%; /* Ensure it spans across the screen */
 }
 
 .hamburger {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 48px;
-    height: 36px;
+    align-items: flex-end;
+    width: 2rem;
+    height: 2rem;
     cursor: pointer;
-    z-index: 10; /* Ensure the hamburger menu is on top of the nav-links */
+    z-index: 11; /* Ensure the hamburger menu is on top of the nav-links */
     position: fixed;
     top: 2rem;
     right: 2rem;
-    /* Position it relative so that z-index works */
+    transition: transform 0.3s;
 }
 
+/* Style for lines */
 .line {
-    color: white;
-    width: 100%;
-    height: 4px;
+    padding: 0;
+    margin: 0;
+    width: 75%;
+    height: 2px;
     background-color: white;
-    box-shadow: 1px 1px gray;
     transition: all 0.3s ease;
+    z-index: 12; /* Ensure lines are above the nav-links */
 }
 
-.line.open{
-    background-color: #333;
-    box-shadow: none;
+.line:nth-child(2) {
+    width: 0.8rem;
 }
 
-.line.open:nth-child(1) {
-    transform: rotate(45deg) translate(12px, 12px);
+.hamburger.open .line{
+    background-color: black;
+}
+/* Default hover animation when the hamburger is not open */
+.hamburger:not(.open):hover .line:nth-child(1) {
+    transform: rotate(90deg) translate(10px, 0px);
 }
 
-.line.open:nth-child(2) {
+.hamburger:not(.open):hover .line:nth-child(2) {
+    opacity: 0; /* Hide the middle line */
+}
+
+.hamburger:not(.open):hover .line:nth-child(3) {
+    transform: translate(0px, -13px);
+}
+
+/* Styles when the hamburger is open */
+.hamburger.open .line:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger.open .line:nth-child(2) {
     opacity: 0;
 }
 
-.line.open:nth-child(3) {
+.hamburger.open .line:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
 .nav-links {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: fixed;
-    pointer-events: none;
     top: 50%;
     left: 50%;
-    translate: -50% -50%;
+    transform: translate(-50%, -50%);
     width: 100dvw;
     height: 100dvh;
-
     background-color: rgba(255, 255, 255, 0.9);
     text-align: center;
     padding: 20px 0;
-
     z-index: 7;
+    opacity: 0;
+    pointer-events: none; /* Prevents clicks when hidden */
+    transition: opacity 0.3s ease;
 }
 
+/* Show nav links when the menu is open */
 .nav-links.open {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    opacity: 1;
+    pointer-events: all; /* Allows clicks when visible */
 }
 
 .nav-links ul {
     display: flex;
     gap: 20%;
-    height: 20%;
-    width: 100%;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-    font-size: 2rem;
+    font-size: 3rem;
+    width: 100%; /* Make sure the list spans the width */
+    padding: 0;
+    margin: 0;
 }
 
 .nav-links li {
@@ -87,6 +110,12 @@
     margin: 10px 0;
     opacity: 0; /* Start hidden */
     transform: translateX(-100px); /* Start from the left */
+    animation: fadeInSlideIn 0.24s forwards; /* Apply animation */
+}
+
+.nav-links.open li {
+    opacity: 1;
+    transform: translateX(0); /* Reset transform */
     animation: fadeInSlideIn 0.24s forwards; /* Apply animation */
 }
 
@@ -109,7 +138,6 @@
 .nav-links a {
     user-select: none;
     text-decoration: none;
-    pointer-events: all;
     color: #333;
     font-weight: bold;
     transition: color 0.3s ease;

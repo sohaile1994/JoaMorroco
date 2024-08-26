@@ -9,7 +9,7 @@ import "./AboutPage.css";
 
 const AboutPage = () => {
 	return (
-		<>
+		<div className="about-container">
 			<Navbar />
 			<HeroSection />
 			<ServicesSection />
@@ -19,7 +19,7 @@ const AboutPage = () => {
 				src="https://kit.fontawesome.com/3e495ab38b.js"
 				crossorigin="anonymous"
 			></script>
-		</>
+		</div>
 	);
 };
 

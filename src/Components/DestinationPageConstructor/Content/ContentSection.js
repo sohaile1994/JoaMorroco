@@ -26,7 +26,7 @@ class ContentSection extends Component {
 				content = <ReviewsContent info={reviews} />;
 				break;
 			default:
-				content = <InformationContent info={information} />;
+				content = <InformationContent info={information} gallery={gallery} />;
 		}
 
 		return (

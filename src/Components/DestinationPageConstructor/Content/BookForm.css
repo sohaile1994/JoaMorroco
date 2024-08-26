@@ -45,6 +45,7 @@
     }
     
     .book-form button {
+      width: 100%;
       cursor: pointer;
     }
     .book-form button:hover {
