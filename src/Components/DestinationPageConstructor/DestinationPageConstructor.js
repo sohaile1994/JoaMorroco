@@ -27,8 +27,6 @@ class DestinationPage extends Component {
 
 		return (
 			<div className="destination-page-container">
-				<Navbar color="#000" />
-
 				<HeroSection
 					image={image}
 					reviews={reviews}

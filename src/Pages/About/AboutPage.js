@@ -8,7 +8,6 @@ import PopularAdventuresSection from "./PopularSection";
 const AboutPage = () => {
 	return (
 		<div className="about-container">
-			<Navbar color="#000" />
 			<HeroSection />
 			<ServicesSection />
 			<AboutAgencySection />

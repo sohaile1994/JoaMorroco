@@ -1,0 +1,11 @@
+
+.logo-container{
+    padding: 10px 20px;
+    width: clamp(88px,16dvw, 120px);
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    filter: drop-shadow(2px 1px 1px rgb(247, 255, 223));
+  }
+  
+  

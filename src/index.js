@@ -1,49 +1,53 @@
+// src/index.js
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import AboutPage from "./Pages/About/AboutPage.js";
-import ContactPage from "./Pages/Contact/Contact.js";
-
-import BeachPage from "./Pages/Beach/BeachPage.js";
-import ForestPage from "./Pages/Forest/ForestPage.js";
-import DesertPage from "./Pages/Desert/DesertPage.js";
-import MountainPage from "./Pages/Mountain/MountainPage.js";
+import App from "./App";
+import ShowCase from "./Home/ShowCase/ShowCase";
+import AboutPage from "./Pages/About/AboutPage";
+import ContactPage from "./Pages/Contact/Contact";
+import BeachPage from "./Pages/Beach/BeachPage";
+import ForestPage from "./Pages/Forest/ForestPage";
+import DesertPage from "./Pages/Desert/DesertPage";
+import MountainPage from "./Pages/Mountain/MountainPage";
 
 const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <App />,
-	},
-	{
-		path: "about",
-		element: <AboutPage />,
-	},
-	{
-		path: "contact",
-		element: <ContactPage />,
-	},
-	{
-		path: "beachPage",
-		element: <BeachPage />,
-	},
-
-	{
-		path: "forestPage",
-		element: <ForestPage />,
-	},
-	{
-		path: "desertPage",
-		element: <DesertPage />,
-	},
-	{
-		path: "mountainPage",
-		element: <MountainPage />,
+		children: [
+			{
+				index: true,
+				element: <ShowCase />,
+			},
+			{
+				path: "about",
+				element: <AboutPage />,
+			},
+			{
+				path: "contact",
+				element: <ContactPage />,
+			},
+			{
+				path: "beachPage",
+				element: <BeachPage />,
+			},
+			{
+				path: "forestPage",
+				element: <ForestPage />,
+			},
+			{
+				path: "desertPage",
+				element: <DesertPage />,
+			},
+			{
+				path: "mountainPage",
+				element: <MountainPage />,
+			},
+		],
 	},
 ]);
 
@@ -54,7 +58,4 @@ root.render(
 	</React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
