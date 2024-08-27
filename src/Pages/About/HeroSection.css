@@ -1,0 +1,22 @@
+.hero-section {
+    background-image: url('https://www.shutterstock.com/image-photo/panoramic-beautiful-deep-forest-waterfall-260nw-794958832.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Enables parallax effect */
+   
+    text-align: center;
+    color: white;
+    margin: 0 auto;
+    width: 100vw;
+    height: 55vh;
+
+    h1 {
+        font-size: 7.3rem;
+        margin-bottom:-0.8rem;
+    }
+
+    p {
+        
+        font-size: 1.3rem;
+    }
+}

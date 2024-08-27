@@ -37,8 +37,7 @@ const ServicesSection = () => {
 		<section className="services-section">
 			<article>
 				{services.map((service, index) => (
-					<section key={index}>
-						<div className="icon-outline"></div>
+					<section className="service-container" key={index}>
 						<div className="icon-container">
 							<FontAwesomeIcon icon={service.icon} size="2x" />
 						</div>

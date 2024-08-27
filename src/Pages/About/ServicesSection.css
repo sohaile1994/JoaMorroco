@@ -1,13 +1,44 @@
 .services-section {
     background-color: #ff681a;
-    height: 50vh;
+    height: 53vh;
     text-align: center;
+    display: grid;
 }
 .services-section  article {
         display: flex;
         justify-content: space-around;
-        flex-wrap: wrap;
         margin: 0 auto;
         width: 64%;
-    }
+        gap: 8rem;
+        place-self: center;
+}
+.icon-container{
+    display: grid;
+    background-color: white;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    color: var(--primary-color);
+    margin-bottom: 1.8rem;
+}   
+.icon-container *{
+    place-self: center;
+}
+.service-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+  
+}
+.service-container h3{
+    font-size: 1.1rem;
+    color: white;
+    margin: 0 auto;
+}
     
+.service-container p{
+    font-size: 1rem;
+    color: white;
+    margin: 0.5rem auto;
+}
