@@ -1,0 +1,40 @@
+.popular-adventures-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #f4f4f4;
+
+    h2 {
+        margin-bottom: 20px;
+        font-size: 2rem;
+    }
+
+    article {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        width: 50%;
+
+        section {
+            background-color: white;
+            border-radius: 8px;
+            text-align: center;
+
+            img {
+                width: 72%;
+                height: 100%;
+            }
+
+            h3 {
+                margin: 15px 0;
+                font-size: 1.5rem;
+            }
+
+            p {
+                color: #ff7b54;
+                font-weight: bold;
+                font-size: 1.25rem;
+                margin-bottom: 15px;
+            }
+        }
+    }
+}

@@ -6,6 +6,7 @@ import {
 	faCalendar,
 	faPalette,
 } from "@fortawesome/free-solid-svg-icons";
+import "./ServicesSection.css";
 
 const ServicesSection = () => {
 	const services = [

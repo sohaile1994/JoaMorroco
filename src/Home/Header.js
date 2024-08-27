@@ -45,7 +45,6 @@ function Header() {
 	return (
 		<div className="Header">
 			<Logo />
-			<NavBar />
 		</div>
 	);
 }

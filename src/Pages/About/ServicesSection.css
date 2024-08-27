@@ -1,0 +1,13 @@
+.services-section {
+    background-color: #ff681a;
+    height: 50vh;
+    text-align: center;
+}
+.services-section  article {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        width: 64%;
+    }
+    

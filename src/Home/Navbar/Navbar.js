@@ -18,16 +18,19 @@ class Navbar extends Component {
 
 	render() {
 		const { isOpen } = this.state;
-
+		const { color } = this.props;
+		const lineColor = {
+			backgroundColor: color,
+		};
 		return (
 			<nav className="navbar">
 				<div
 					className={`hamburger ${isOpen ? "open" : ""}`}
 					onClick={this.toggleMenu}
 				>
-					<div className="line"></div>
-					<div className="line"></div>
-					<div className="line"></div>
+					<div className="line" style={lineColor}></div>
+					<div className="line" style={lineColor}></div>
+					<div className="line" style={lineColor}></div>
 				</div>
 				<div className={`nav-links ${isOpen ? "open" : ""}`}>
 					<ul>

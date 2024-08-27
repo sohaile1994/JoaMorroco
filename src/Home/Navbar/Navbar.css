@@ -38,7 +38,7 @@
 }
 
 .hamburger.open .line{
-    background-color: black;
+    background: black !important;
 }
 /* Default hover animation when the hamburger is not open */
 .hamburger:not(.open):hover .line:nth-child(1) {

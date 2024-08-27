@@ -21,12 +21,13 @@ class DestinationPage extends Component {
 	};
 
 	render() {
-		const { image, reviews, information, tourPlan, gallery } = this.props;
+		const { image, reviews, information, tourPlan, gallery, navbarColor } =
+			this.props;
 		const { selectedContent } = this.state;
 
 		return (
 			<div className="destination-page-container">
-				<Navbar />
+				<Navbar color="#000" />
 
 				<HeroSection
 					image={image}

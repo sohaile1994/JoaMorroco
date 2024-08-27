@@ -1,0 +1,47 @@
+.about-agency-section {
+   
+    height: 60vh;
+
+    article {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 90px 0px;
+        height: 100%;
+        width: 100%;
+
+        figure img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        section {
+            padding: 20px;
+
+            h2 {
+                margin-bottom: 20px;
+                font-size: 2rem;
+            }
+
+            p {
+                margin-bottom: 20px;
+                font-size: 1rem;
+            }
+
+            button {
+                background-color: #ff7b54;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                font-size: 1rem;
+                border-radius: 4px;
+            }
+
+            button:hover {
+                background-color: #e66a41;
+            }
+        }
+    }
+}

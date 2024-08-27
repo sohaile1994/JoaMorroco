@@ -5,12 +5,10 @@ import ServicesSection from "./ServicesSection";
 import AboutAgencySection from "./AboutUsSection";
 import PopularAdventuresSection from "./PopularSection";
 
-import "./AboutPage.css";
-
 const AboutPage = () => {
 	return (
 		<div className="about-container">
-			<Navbar />
+			<Navbar color="#000" />
 			<HeroSection />
 			<ServicesSection />
 			<AboutAgencySection />

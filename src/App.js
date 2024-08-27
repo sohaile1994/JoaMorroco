@@ -7,7 +7,7 @@ function App() {
 	return (
 		<div className="App">
 			<Header />
-			<Navbar />
+			<Navbar color="#fff" />
 			<ShowCase />
 		</div>
 	);
