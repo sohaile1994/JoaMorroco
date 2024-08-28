@@ -4,13 +4,12 @@
     background-repeat: no-repeat;
     background-attachment: fixed; /* Enables parallax effect */
    
-    text-align: center;
     color: white;
-    margin: 0 auto;
-    width: 100vw;
     height: 55vh;
 
     h1 {
+        width: 100%;
+        text-align: left !important;
         font-size: 7.3rem;
         margin-bottom:-0.8rem;
     }

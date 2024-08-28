@@ -1,16 +1,16 @@
 .services-section {
     background-color: #ff681a;
-    height: 53vh;
+    width: 100%;
     text-align: center;
     display: grid;
 }
 .services-section  article {
-        display: flex;
-        justify-content: space-around;
-        margin: 0 auto;
-        width: 64%;
-        gap: 8rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        width: 72%;
         place-self: center;
+        gap: 2rem;
+        padding: 3rem  0px ;
 }
 .icon-container{
     display: grid;
@@ -29,6 +29,7 @@
     flex-direction: column;
     align-items: center;
     gap: 1px;
+    padding-top: 2rem;
   
 }
 .service-container h3{
@@ -41,4 +42,11 @@
     font-size: 1rem;
     color: white;
     margin: 0.5rem auto;
+}
+
+@media (min-width:700px){
+    .services-section  article {
+        gap: 2rem;
+        padding: 7rem  0px ;
+    }
 }

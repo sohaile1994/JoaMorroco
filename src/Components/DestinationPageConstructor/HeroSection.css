@@ -46,7 +46,7 @@
 }
 
 .flex-space-between li {
-  margin: 0 10px; /* Optional: Adds space between list items */
+  padding: 0 10px; /* Optional: Adds space between list items */
 }
 
 .flex-space-between * {
