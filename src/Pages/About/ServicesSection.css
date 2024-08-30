@@ -8,7 +8,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         width: 72%;
-        place-self: center;
+        place-self: center;     
         gap: 2rem;
         padding: 3rem  0px ;
 }

@@ -30,6 +30,7 @@ h1, h2, h3, h4, h5, h6, p{
 p{
   opacity: 0.8;
   color: var(--secondary-text-color);
+  line-height: 1.5;
 
 }
 img{

@@ -4,7 +4,7 @@
     z-index: 9; /* Keep the navbar on top */
     top: 0;
     right: 0;
-    width: 100%; /* Ensure it spans across the screen */
+    width: 100dvw; /* Ensure it spans across the screen */
 }
 
 .hamburger {

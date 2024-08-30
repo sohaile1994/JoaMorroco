@@ -1,8 +1,7 @@
 .popular-adventures-section{
-    padding: 105px 15px 115px;
+    padding: 105px 0px 115px;
     background-color: #f8f8f8;
-    place-self: center;
-
+    width: 100%;
 }
 
 .popular-adventures-section .heading-container{
@@ -24,7 +23,7 @@
     
 }
 
- p{
+.popular-adventures-section .heading-container p{
     margin: 19px 0px 0px;
    letter-spacing: 1px;
    line-height: 1.5;
