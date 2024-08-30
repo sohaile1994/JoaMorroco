@@ -7,7 +7,7 @@ const Footer = () => {
 			<div className="footer-container">
 				<div className="footer-about-container">
 					<article>
-						<h2>JOAMOROCCO</h2>
+						<h2>JOA</h2>
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipi. Suspend isse
 							ultrices hendrerit nunc vitae vel a sodales. Ac lectus vel risus
