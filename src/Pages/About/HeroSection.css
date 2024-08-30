@@ -5,17 +5,15 @@
     background-attachment: fixed; /* Enables parallax effect */
    
     color: white;
-    height: 55vh;
+    height: 55vh;   
+}
 
-    h1 {
-        width: 100%;
-        text-align: left !important;
-        font-size: 7.3rem;
-        margin-bottom:-0.8rem;
-    }
-
-    p {
-        
-        font-size: 1.3rem;
-    }
+.hero-section header h1 {
+    width: 100%;
+    text-align: left !important;
+    font-size: 8rem ;
+    margin-bottom:-0.8rem;
+} 
+.hero-section p{
+    font-size: 1.3rem;
 }

@@ -6,7 +6,7 @@ const HeroSection = () => {
 		<section className="hero-section">
 			<header>
 				<h1>About Us</h1>
-				<p>Welcome to Beautiful World of Adventures</p>
+				<p>Modern & Beautiful WordPress Theme</p>
 			</header>
 		</section>
 	);

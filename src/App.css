@@ -11,7 +11,7 @@
   --secondary-background-color: #f4f4f4; 
 
   --max-width-content:1340px;
-  --width-content:100;
+  --width-content:80%;
 }
 
 
@@ -21,6 +21,7 @@ body{
   background-color: var(--primary-background-color);
  
 }
+
 h1, h2, h3, h4, h5, h6, p{
   font-size: 1rem;
   font-family: var(--font-family);
@@ -48,4 +49,7 @@ section{
   
 }
 
+.max-width{
+  max-width: 1000px !important;
+}
 

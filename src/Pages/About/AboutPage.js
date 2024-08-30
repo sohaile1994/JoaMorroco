@@ -4,7 +4,7 @@ import HeroSection from "./HeroSection";
 import ServicesSection from "./ServicesSection";
 import AboutAgencySection from "./AboutUsSection";
 import PopularAdventuresSection from "./PopularSection";
-
+import "./About.css";
 const AboutPage = () => {
 	return (
 		<div className="about-container">
