@@ -1,13 +1,13 @@
 /* SocialMediaIcons.css */
 
-.media-icons {
+.navbar .media-icons {
   position: absolute;
   width: 132px;
   height: 28px;
   bottom: 10%;
 }
 
-.media-icons.media-icons ul {
+.navbar .media-icons.media-icons ul {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -17,15 +17,15 @@
   gap: 0;
 }
 
-.media-icons ul li {
+.navbar .media-icons ul li {
   font-size: 1rem;
   margin: 0 10px; /* Add spacing between icons */
 }
 
-.media-icons ul li a {
+.navbar .media-icons ul li a {
   color: var(--primary-color) ; /* Ensure icons use the primary color */
 }
 
-.media-icons ul li a:hover {
+.navbar .media-icons ul li a:hover {
   color: black ; /* Example hover color, change as needed */
 }

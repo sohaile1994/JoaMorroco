@@ -15,22 +15,34 @@ const SocialMediaItem = ({ link, icon }) => {
 		</a>
 	);
 };
+const Twitter = () => {
+	return <SocialMediaItem link="https://www.twitter.com/" icon={faTwitter} />;
+};
+const Facebook = () => {
+	return <SocialMediaItem link="https://www.twitter.com/" icon={faFacebook} />;
+};
+const Instagram = () => {
+	return <SocialMediaItem link="https://www.twitter.com/" icon={faInstagram} />;
+};
+const Youtube = () => {
+	return <SocialMediaItem link="https://www.twitter.com/" icon={faYoutube} />;
+};
 
 const SocialMediaIcons = () => {
 	return (
 		<div className="media-icons">
 			<ul>
 				<li>
-					<SocialMediaItem link="https://www.twitter.com/" icon={faTwitter} />
+					<Twitter />
 				</li>
 				<li>
-					<SocialMediaItem link="https://www.twitter.com/" icon={faFacebook} />
+					<Facebook />
 				</li>
 				<li>
-					<SocialMediaItem link="https://www.twitter.com/" icon={faInstagram} />
+					<Instagram />
 				</li>
 				<li>
-					<SocialMediaItem link="https://www.twitter.com/" icon={faYoutube} />
+					<Youtube />
 				</li>
 			</ul>
 		</div>

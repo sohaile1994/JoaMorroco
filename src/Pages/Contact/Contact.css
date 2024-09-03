@@ -1,6 +1,5 @@
 .contact-page{
     height: 100vh;
-    overflow: hidden;
 }
 .hero-section {
     background-size: cover;
@@ -31,72 +30,100 @@
 
 /* Contact Section */
 .contact-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 40px;
-    height: 50vh;
-    max-width: 1000px;
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 100vh;
+    background-color: white;
+    padding: 20px;
     margin: 0 auto;
+
+    text-align: right;
 }
 
 .contact-info {
-    flex: 1;
     padding-right: 40px;
+    display: grid;
 }
 
 .contact-info h2 {
-    font-size: 24px;
+    font-size: 2rem;
     font-weight: bold;
     margin-bottom: 20px;
-    text-align: center;
 }
 
 .contact-info p {
-    font-size: 14px;
+    font-size: 1.2rem;
     margin: 5px 0;
     font-style: italic;
-    text-align: center;
 }
 
-.social-icons {
-    margin-top: 20px;
-    text-align: center;
-}
+/* SocialMediaIcons.css */
 
-.social-icons i {
-    font-size: 20px;
-    margin-right: 10px;
-    cursor: pointer;
-}
+.contact-info .media-icons {
+    width: 132px;
+    height: 28px;
+    justify-self: end;
+    
+  }
+  
+  .contact-info .media-icons.media-icons ul {
 
-/* Contact Form */
-.contact-form {
-    flex: 1;
-}
-
-.form-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    padding-top: 20px;
+    gap: 1.8rem;
+  }
+  
+  .contact-info .media-icons ul li {
+    font-size: 1rem;
+    
+  }
+  
+  .contact-info .media-icons ul li a {
+      color: black ; /* Example hover color, change as needed */
 }
 
-.form-row input {
-    width: 48%;
-}
+.contact-info .media-icons ul li a:hover {
+    color: var(--primary-color) ; /* Ensure icons use the primary color */
+  }
+  
 
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-}
+.contact-form-container{
+    padding-top: 20px;
 
+  }
+.contact-form{
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+.contact-form input{
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 0;
+    padding: 14px 19px;
+    font-size: 1.2rem;
+}
+.contact-form textarea{
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 14px 19px;
+
+    height: 120px;     /* Sets a specific height for the textarea */
+    font-size: 1.2rem;   /* Increases the font size for better legibility */
+}
+.form-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 button {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background: none;
+    color: var(--primary-color);
     width: 100%;
     padding: 10px;
-    background-color: orange;
-    color: white;
-    border: none;
     cursor: pointer;
     font-weight: bold;
     text-align: center;
@@ -104,4 +131,16 @@ button {
 
 button:hover {
     background-color: darkorange;
+}
+
+
+@media (min-width:700px){
+    .contact-container {
+        grid-template-columns: 1fr 1fr;
+        height: 50vh;
+        max-width: var(--max-width-content);
+        width: 85%;
+        padding: 80px;
+    }
+
 }
