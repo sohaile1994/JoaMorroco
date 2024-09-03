@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../../Home/Navbar/Navbar";
 import HeroSection from "./HeroSection";
 import ServicesSection from "./ServicesSection";
 import AboutAgencySection from "./AboutUsSection";

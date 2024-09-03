@@ -1,10 +1,10 @@
 // src/App.js
 import React from "react";
-import Logo from "./Home/Logo/Logo";
-import Navbar from "./Home/Navbar/Navbar"; // Assuming you have a Navbar component
-import Footer from "./Home/Footer/Footer";
+import Logo from "./Nav-Logo-Footer/Logo/Logo";
+import Navbar from "./Nav-Logo-Footer/Navbar/Navbar"; // Assuming you have a Navbar component
+import Footer from "./Nav-Logo-Footer/Footer/Footer";
 import { Outlet, useLocation } from "react-router-dom";
-import ShowCase from "./Home/ShowCase/ShowCase";
+import ShowCase from "./Pages/ShowCase/ShowCase";
 import "./App.css";
 
 function App() {

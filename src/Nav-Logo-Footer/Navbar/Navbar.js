@@ -35,6 +35,7 @@ class Navbar extends Component {
 					<div className="line" style={lineColor}></div>
 					<div className="line" style={lineColor}></div>
 				</div>
+				{isOpen && <div className="blur"></div>}{" "}
 				<div className={`nav-links ${isOpen ? "open" : ""}`}>
 					<ul>
 						<li>

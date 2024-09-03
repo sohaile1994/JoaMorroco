@@ -5,6 +5,7 @@
     top: 0;
     right: 0;
     width: 100dvw; /* Ensure it spans across the screen */
+    
 }
 
 .hamburger {
@@ -65,8 +66,18 @@
 .hamburger.open .line:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
 }
+.blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    pointer-events: none; /* Prevent interaction when hidden */
+}
 
 .nav-links {
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -89,7 +100,7 @@
 /* Show nav links when the menu is open */
 .nav-links.open {
     opacity: 1;
-    pointer-events: all; /* Allows clicks when visible */
+    pointer-events: all; 
 }
 
 .nav-links ul {
@@ -110,41 +121,29 @@
     margin: 10px 0;
     opacity: 0; /* Start hidden */
     transform: translateX(-100px); /* Start from the left */
-    animation: fadeInSlideIn 0.24s forwards; /* Apply animation */
 }
 
 .nav-links.open li {
-    opacity: 1;
+    opacity: 0;
     transform: translateX(0); /* Reset transform */
-    animation: fadeInSlideIn 0.24s forwards; /* Apply animation */
+    animation: fadeInSlideIn 0.2s forwards; /* Apply animation */
 }
 
-.nav-links li:nth-child(1) {
-    animation-delay: 0.08s;
+/* Adding a small delay for each list item to create a staggered effect */
+.nav-links.open li:nth-child(1) {
+    animation-delay: 0.08s; /* First link appears after 0.08s */
 }
 
-.nav-links li:nth-child(2) {
-    animation-delay: 0.16s;
+.nav-links.open li:nth-child(2) {
+    animation-delay: 0.12s; /* Second link appears after 0.16s */
 }
 
-.nav-links li:nth-child(3) {
-    animation-delay: 0.24s;
+.nav-links.open li:nth-child(3) {
+    animation-delay: 0.16s; /* Third link appears after 0.24s */
 }
 
-.nav-links li:nth-child(4) {
-    animation-delay: 0.32s;
-}
-
-.nav-links a {
-    user-select: none;
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: var(--primary-color);
+.nav-links.open li:nth-child(4) {
+    animation-delay: 0.24s; /* Adjust as needed */
 }
 
 @keyframes fadeInSlideIn {
@@ -157,3 +156,15 @@
         transform: translateX(0);
     }
 }
+.nav-links a {
+    user-select: none;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
