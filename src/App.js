@@ -6,6 +6,7 @@ import Footer from "./Nav-Logo-Footer/Footer/Footer";
 import { Outlet, useLocation } from "react-router-dom";
 import ShowCase from "./Pages/ShowCase/ShowCase";
 import "./App.css";
+import PopularAdventuresSection from "./Nav-Logo-Footer/PopularSection";
 
 function App() {
 	const isHome = useLocation().pathname === "/";
@@ -18,6 +19,7 @@ function App() {
 			</div>
 
 			<Outlet />
+			<PopularAdventuresSection />
 			{isHome ? <ShowCase /> : <Footer />}
 		</div>
 	);

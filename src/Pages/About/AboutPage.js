@@ -2,7 +2,6 @@ import React from "react";
 import HeroSection from "./HeroSection";
 import ServicesSection from "./ServicesSection";
 import AboutAgencySection from "./AboutUsSection";
-import PopularAdventuresSection from "./PopularSection";
 import "./About.css";
 const AboutPage = () => {
 	return (
@@ -10,7 +9,7 @@ const AboutPage = () => {
 			<HeroSection />
 			<ServicesSection />
 			<AboutAgencySection />
-			<PopularAdventuresSection />
+
 			<script
 				src="https://kit.fontawesome.com/3e495ab38b.js"
 				crossorigin="anonymous"

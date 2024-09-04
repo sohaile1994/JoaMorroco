@@ -13,6 +13,14 @@ const PopularAdventuresSection = () => {
 		},
 		{
 			img: "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0b/cf/e5/cb.jpg",
+			title: "Thai Island To Visit",
+			price: "$2370",
+			rating: 5,
+			days: 8,
+			remainingSeats: 7,
+		},
+		{
+			img: "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0b/cf/e5/cb.jpg",
 			title: "India Is For Everyone",
 			price: "$1350",
 			rating: 5,

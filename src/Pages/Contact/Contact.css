@@ -1,6 +1,4 @@
-.contact-page{
-    height: 100vh;
-}
+
 .hero-section {
     background-size: cover;
     background-position: center;
@@ -31,18 +29,19 @@
 /* Contact Section */
 .contact-container {
     display: grid;
-    grid-template-columns: 1fr;
-    height: 100vh;
+    grid-template-columns: repeat(1,1fr);
     background-color: white;
-    padding: 20px;
+    padding: 4rem 20px;
+    height: 90dvh;
     margin: 0 auto;
-
+    gap: 2rem;
     text-align: right;
 }
 
 .contact-info {
     padding-right: 40px;
     display: grid;
+
 }
 
 .contact-info h2 {
@@ -100,17 +99,19 @@
     height: 100%;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
+    width: 100%;
 }
 .contact-form input{
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 0;
     padding: 14px 19px;
     font-size: 1.2rem;
+    width: 100%;
 }
 .contact-form textarea{
     border: 1px solid rgba(0, 0, 0, 0.3);
     padding: 14px 19px;
-
+    width: 100%;
     height: 120px;     /* Sets a specific height for the textarea */
     font-size: 1.2rem;   /* Increases the font size for better legibility */
 }
@@ -137,8 +138,8 @@ button:hover {
 @media (min-width:700px){
     .contact-container {
         grid-template-columns: 1fr 1fr;
-        height: 50vh;
         max-width: var(--max-width-content);
+        height: auto;
         width: 85%;
         padding: 80px;
     }
