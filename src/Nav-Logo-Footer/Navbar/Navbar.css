@@ -28,8 +28,8 @@
     padding: 0;
     margin: 0;
     width: 76%;
-    height: 2px !important;
-    border: none !important;
+    height: 1px !important;
+    border: 1px solid white;
     background-color: white;
     transition: all 0.3s ease;
     z-index: 12;
@@ -40,7 +40,6 @@
 }
 .hamburger:not(.open).line:nth-child(3) {
     width: 44%;
-    height: 1.5px !important;
 }
 
 .hamburger.open .line{
