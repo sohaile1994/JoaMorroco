@@ -2,7 +2,7 @@ import React from "react";
 
 const FormInputs = () => {
 	return (
-		<div className="contact-form-container">
+		<section className="contact-form-container">
 			<form className="contact-form">
 				<div className="form-row">
 					<input type="text" name="name" placeholder="Name" />
@@ -12,7 +12,7 @@ const FormInputs = () => {
 				<textarea name="message" placeholder="Message"></textarea>
 				<button type="submit">SEND</button>
 			</form>
-		</div>
+		</section>
 	);
 };
 

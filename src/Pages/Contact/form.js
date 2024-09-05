@@ -4,10 +4,10 @@ import FormInputs from "./FormInputs";
 
 const Form = () => {
 	return (
-		<div className="contact-container">
+		<section className="contact-container">
 			<FormHeading />
 			<FormInputs />
-		</div>
+		</section>
 	);
 };
 

@@ -5,7 +5,7 @@ import AboutAgencySection from "./AboutUsSection";
 import "./About.css";
 const AboutPage = () => {
 	return (
-		<div className="about-container">
+		<section className="about-container">
 			<HeroSection />
 			<ServicesSection />
 			<AboutAgencySection />
@@ -14,7 +14,7 @@ const AboutPage = () => {
 				src="https://kit.fontawesome.com/3e495ab38b.js"
 				crossorigin="anonymous"
 			></script>
-		</div>
+		</section>
 	);
 };
 

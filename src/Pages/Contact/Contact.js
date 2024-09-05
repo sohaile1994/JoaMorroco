@@ -5,10 +5,10 @@ import Hero from "./Hero";
 
 const ContactPage = () => {
 	return (
-		<div className="contact-page">
+		<section className="contact-page">
 			<Hero />
 			<Form />
-		</div>
+		</section>
 	);
 };
 

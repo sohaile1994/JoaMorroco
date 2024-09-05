@@ -39,7 +39,7 @@ const PopularAdventuresSection = () => {
 
 	return (
 		<section className="popular-adventures-section">
-			<div className="heading-container max-width">
+			<section className="heading-container max-width">
 				<h5>Modern & Beautiful</h5>
 				<h3>Most Popular Adventures We Have</h3>
 				<p>
@@ -47,7 +47,7 @@ const PopularAdventuresSection = () => {
 					tempor mauris, nec imperdiet mi rutrum eget. Donec quis ligula in
 					tellus dictum consequat.
 				</p>
-			</div>
+			</section>
 			<section className="popular-adventures-showcase">
 				{adventures.map((adventure, index) => (
 					<div className="showcase-item" key={index}>

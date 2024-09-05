@@ -9,7 +9,7 @@ import {
 
 const FormHeading = () => {
 	return (
-		<div className="contact-info">
+		<section className="contact-info">
 			<h2>Feel Free to Contact us For Help or Additional Info</h2>
 			<p>
 				<strong>name:</strong> Joamorocco, Morocco
@@ -22,7 +22,7 @@ const FormHeading = () => {
 				<strong>phone:</strong> +1 614.380.9363
 			</p>
 			<SocialMediaIcons />
-		</div>
+		</section>
 	);
 };
 export default FormHeading;

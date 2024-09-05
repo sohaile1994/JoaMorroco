@@ -5,7 +5,6 @@
     top: 0;
     right: 0;
     width: 100dvw; /* Ensure it spans across the screen */
-    
 }
 
 .hamburger {
@@ -20,7 +19,7 @@
     position: fixed;
     top: 2rem;
     right: 2rem;
-    transition: transform 0.3s;
+    transition: background-color 0.3s ease transform 0.3s;
 }
 
 /* Style for lines */

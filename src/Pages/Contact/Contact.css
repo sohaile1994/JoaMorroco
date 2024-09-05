@@ -1,4 +1,6 @@
-
+.contact-page{
+    background-color: white;
+}
 .hero-section {
     background-size: cover;
     background-position: center;
@@ -9,6 +11,7 @@
     align-items: center;
     text-align: center;
     padding: 20px;
+    background-color: black;
 }
 
 .hero-section h1 {
@@ -30,7 +33,7 @@
 .contact-container {
     display: grid;
     grid-template-columns: repeat(1,1fr);
-    background-color: white;
+   
     padding: 4rem 20px;
     height: 90dvh;
     margin: 0 auto;

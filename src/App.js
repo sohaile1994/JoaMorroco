@@ -19,8 +19,15 @@ function App() {
 			</div>
 
 			<Outlet />
-			<PopularAdventuresSection />
-			{isHome ? <ShowCase /> : <Footer />}
+
+			{isHome ? (
+				<ShowCase />
+			) : (
+				<>
+					<PopularAdventuresSection />
+					<Footer />
+				</>
+			)}
 		</div>
 	);
 }
