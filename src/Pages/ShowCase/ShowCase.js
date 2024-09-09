@@ -21,6 +21,7 @@ const ShowCaseItem = ({ info }) => {
 				backgroundRepeat: "no-repeat",
 			}}
 		>
+			<div className="mask"></div>
 			<h2>{title}</h2>
 			<h4>{subTitle}</h4>
 
