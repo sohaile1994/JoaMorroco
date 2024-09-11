@@ -1,8 +1,9 @@
+import { ForestImage } from "../../Manager";
+
 const ForestShowCaseItem = {
 	title: "Forest March",
 	subTitle: "Exotic",
-	image:
-		"https://thumbs.dreamstime.com/b/akchour-green-forest-morocco-floresta-densa-e-verde-de-perto-chefchaouen-no-marroco-inverno-190874481.jpg",
+	image: ForestImage,
 	link: "forestPage",
 };
 

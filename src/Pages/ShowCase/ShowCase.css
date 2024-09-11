@@ -5,6 +5,7 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   height: 100dvh;
   width: 100dvw;
+  background-color: black;
 }
 .show-case-item-container{
   position: relative;
@@ -22,7 +23,7 @@
   animation-delay: 0.15s;
 }
 .show-case-item-container:nth-child(2) .mask{
-  animation-delay: 0.30s;
+  animation-delay: 0.3s;
 }
 .show-case-item-container:nth-child(3) .mask{
   animation-delay: 0.45s;

@@ -1,7 +1,9 @@
+import { DesertImage } from "../../Manager";
+
 const DesertShowCaseItem = {
 	title: "Sahara Desert",
 	subTitle: "Beautiful",
-	image: "/assets/desert-show-case.jpg",
+	image: DesertImage,
 	link: "desertPage",
 };
 export default DesertShowCaseItem;

@@ -8,8 +8,10 @@ class Navbar extends Component {
 	hamburgerRef = React.createRef();
 
 	componentDidMount() {
+		window.onload = () => {
+			this.updateHamburgerColor();
+		};
 		window.addEventListener("scroll", this.updateHamburgerColor);
-		this.updateHamburgerColor();
 	}
 
 	componentWillUnmount() {
@@ -22,19 +24,33 @@ class Navbar extends Component {
 			this.hamburgerRef.current.getBoundingClientRect();
 		let newHamburgerColor = "white";
 
-		elements.forEach((element) => {
+		for (let i = elements.length - 1; i >= 0; i--) {
+			let element = elements[i];
 			const rect = element.getBoundingClientRect();
+
 			if (
 				rect.top <= bottom &&
 				rect.bottom >= top &&
 				rect.left <= right &&
 				rect.right >= left
 			) {
-				const bgColor = window.getComputedStyle(element).backgroundColor;
-				newHamburgerColor =
-					this.getLuminance(bgColor) > 0.5 ? "black" : "white";
+				let bgColor = window.getComputedStyle(element).backgroundColor;
+
+				// Keep checking if the background color is transparent
+				while (bgColor === "rgba(0, 0, 0, 0)" || bgColor === "transparent") {
+					element = element.parentElement;
+					if (!element) break; // Stop if no parent exists
+					bgColor = window.getComputedStyle(element).backgroundColor;
+				}
+
+				// Once a non-transparent background is found, calculate luminance
+				if (bgColor !== "rgba(0, 0, 0, 0)" && bgColor !== "transparent") {
+					newHamburgerColor =
+						this.getLuminance(bgColor) > 0.5 ? "black" : "white";
+					break;
+				}
 			}
-		});
+		}
 
 		this.setState({ hamburgerColor: newHamburgerColor });
 	};
@@ -48,7 +64,10 @@ class Navbar extends Component {
 		return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 	};
 
-	toggleMenu = () => this.setState({ isOpen: !this.state.isOpen });
+	toggleMenu = () => {
+		this.updateHamburgerColor();
+		this.setState({ isOpen: !this.state.isOpen });
+	};
 	closeMenu = () => this.setState({ isOpen: false });
 
 	render() {
@@ -65,7 +84,10 @@ class Navbar extends Component {
 						<div
 							key={i}
 							className="line"
-							style={{ backgroundColor: hamburgerColor }}
+							style={{
+								backgroundColor: hamburgerColor,
+								borderColor: hamburgerColor,
+							}}
 						></div>
 					))}
 				</div>

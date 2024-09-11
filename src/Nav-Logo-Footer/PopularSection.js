@@ -1,35 +1,41 @@
 import React from "react";
 import "./PopularSection.css";
+import {
+	DesertImage,
+	BeachImage,
+	ForestImage,
+	MountainImage,
+} from "../Manager";
 
 const PopularAdventuresSection = () => {
 	const adventures = [
 		{
-			img: "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0b/cf/e5/cb.jpg",
-			title: "Discover Costa Rica",
+			img: DesertImage,
+			title: "Desert, Sahara",
 			price: "$2830",
 			rating: 5,
 			days: 16,
 			remainingSeats: 12,
 		},
 		{
-			img: "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0b/cf/e5/cb.jpg",
-			title: "Thai Island To Visit",
+			img: BeachImage,
+			title: "Beach, Marina",
 			price: "$2370",
 			rating: 5,
 			days: 8,
 			remainingSeats: 7,
 		},
 		{
-			img: "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0b/cf/e5/cb.jpg",
-			title: "India Is For Everyone",
+			img: ForestImage,
+			title: "Forest, Agadir",
 			price: "$1350",
 			rating: 5,
 			days: 16,
 			remainingSeats: 12,
 		},
 		{
-			img: "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0b/cf/e5/cb.jpg",
-			title: "Thai Island To Visit",
+			img: MountainImage,
+			title: "Mountain, Ifran",
 			price: "$1870",
 			rating: 5,
 			days: 16,

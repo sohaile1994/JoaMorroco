@@ -18,13 +18,16 @@
     cursor: pointer;
     z-index: 11; /* Ensure the hamburger menu is on top of the nav-links */
     position: fixed;
-    top: 2rem;
-    right: 2rem;
+    top: 0.5rem;
+    right: 0.5rem;
     transition: background-color 0.3s ease transform 0.3s;
 }
 
 /* Style for lines */
 .line {
+    
+    position: relative;
+    
     padding: 0;
     margin: 0;
     width: 76%;
@@ -38,12 +41,15 @@
 .line:nth-child(2) {
     width: 60%;
 }
+
 .hamburger:not(.open).line:nth-child(3) {
     width: 44%;
 }
 
 .hamburger.open .line{
-    background: black !important;
+    background-color: black !important;
+    border-color:black;
+
 }
 /* Default hover animation when the hamburger is not open */
 .hamburger:not(.open):hover .line:nth-child(1) {
@@ -171,6 +177,12 @@
 }
 
 .nav-links a:hover {
-    color: var(--primary-color);
+    color: var(--primary-color,#ff681a);
 }
 
+@media (min-width: 500px){
+    .hamburger {
+    top: 2rem;
+    right: 2rem;
+    }
+}

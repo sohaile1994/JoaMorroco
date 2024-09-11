@@ -1,9 +1,10 @@
 .hero-destination-page {
-  height: 76vh;
+  height: 88vh;
   width: 100%;
   position: relative;
   background-size: cover; /* Ensures the background image covers the entire area */
   background-position: center; /* Centers the background image */
+  background-color: black;
 }
 
 .flex-center {

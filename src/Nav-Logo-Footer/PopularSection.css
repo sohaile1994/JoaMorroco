@@ -43,6 +43,7 @@
     height: 100dvh;
 
     padding: 1rem;
+    transition: all 0.3s ease;
 }
 .showcase-item {
     display: none;
@@ -107,5 +108,8 @@
         }
         .popular-adventures-section .heading-container{
             padding: 0px 195px;
+        }
+        .showcase-item:hover{
+            scale: 1.05;
         }
     }

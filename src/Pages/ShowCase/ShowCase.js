@@ -34,12 +34,12 @@ const ShowCaseItem = ({ info }) => {
 
 function ShowCase() {
 	return (
-		<div className="show-case">
+		<section className="show-case">
 			<ShowCaseItem info={DesertShowCaseItem} />
 			<ShowCaseItem info={BeachShowCaseItem} />
 			<ShowCaseItem info={ForestShowCaseItem} />
 			<ShowCaseItem info={MountainShowCaseItem} />
-		</div>
+		</section>
 	);
 }
 
