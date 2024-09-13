@@ -35,15 +35,17 @@
     display: grid;
     margin: 0 auto;
     grid-template-columns: repeat(1fr);
+    gap: 1rem;
 }
 
 .showcase-item{
     display: grid;
-    grid-template-rows: 3fr 1.6fr 0.3fr;
+    grid-template-rows: 3fr 1.2fr 0.3fr;
     height: 100dvh;
+    padding: 0.4rem;
+    transition: scale 0.1s ease;
+    text-decoration: none;
 
-    padding: 1rem;
-    transition: all 0.3s ease;
 }
 .showcase-item {
     display: none;
@@ -63,7 +65,6 @@
         background: white;
         display: flex;
         flex-direction: column;
-        justify-content: space-between; /* Ensures content is evenly distributed */
         height: 100%; 
         overflow: hidden;
     }
@@ -73,6 +74,7 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 0.8rem;
+
     }
   
     .showcase-item .middle-section span{
@@ -111,5 +113,9 @@
         }
         .showcase-item:hover{
             scale: 1.05;
+            box-shadow: 0px 0px 4px ;
+        }
+        .showcase-item:active{
+            scale: 1.02;
         }
     }

@@ -1,7 +1,12 @@
 import { BeachImage } from "../../Manager";
 
 const BeachShowCaseItem = {
-	title: "Surf on the Beach",
+	city: "Marina",
+	title: "Beach",
+	price: "$2370",
+	rating: 5,
+	days: 8,
+	remainingSeats: 7,
 	subTitle: "Stunning",
 	image: BeachImage,
 	link: "beachPage",

@@ -1,46 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./PopularSection.css";
-import {
-	DesertImage,
-	BeachImage,
-	ForestImage,
-	MountainImage,
-} from "../Manager";
+
+import DesertShowCaseItem from "../Pages/ShowCase/Desert";
+import BeachShowCaseItem from "../Pages/ShowCase/Beach";
+import ForestShowCaseItem from "../Pages/ShowCase/Forest";
+import MountainShowCaseItem from "../Pages/ShowCase/Mountain";
 
 const PopularAdventuresSection = () => {
 	const adventures = [
-		{
-			img: DesertImage,
-			title: "Desert, Sahara",
-			price: "$2830",
-			rating: 5,
-			days: 16,
-			remainingSeats: 12,
-		},
-		{
-			img: BeachImage,
-			title: "Beach, Marina",
-			price: "$2370",
-			rating: 5,
-			days: 8,
-			remainingSeats: 7,
-		},
-		{
-			img: ForestImage,
-			title: "Forest, Agadir",
-			price: "$1350",
-			rating: 5,
-			days: 16,
-			remainingSeats: 12,
-		},
-		{
-			img: MountainImage,
-			title: "Mountain, Ifran",
-			price: "$1870",
-			rating: 5,
-			days: 16,
-			remainingSeats: 12,
-		},
+		DesertShowCaseItem,
+		BeachShowCaseItem,
+		ForestShowCaseItem,
+		MountainShowCaseItem,
 	];
 
 	return (
@@ -56,11 +28,11 @@ const PopularAdventuresSection = () => {
 			</section>
 			<section className="popular-adventures-showcase">
 				{adventures.map((adventure, index) => (
-					<div className="showcase-item" key={index}>
+					<Link to={"/" + adventure.link} className="showcase-item" key={index}>
 						<div className="top-section">
 							<div
 								style={{
-									backgroundImage: `url(${adventure.img})`,
+									backgroundImage: `url(${adventure.image})`,
 									backgroundSize: "cover", // Cover the entire figure
 									backgroundRepeat: "no-repeat",
 									width: "100%",
@@ -71,7 +43,8 @@ const PopularAdventuresSection = () => {
 
 						<div className="middle-section">
 							<h3>
-								{adventure.title} <span>{adventure.price}</span>
+								{adventure.title + ", " + adventure.city}{" "}
+								<span>{adventure.price}</span>
 							</h3>
 
 							<figcaption>Rating: {adventure.rating}</figcaption>
@@ -88,7 +61,7 @@ const PopularAdventuresSection = () => {
 								<span>{adventure.remainingSeats} Seats</span>
 							</p>
 						</div>
-					</div>
+					</Link>
 				))}
 			</section>
 		</section>
