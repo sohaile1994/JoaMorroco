@@ -2,9 +2,9 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faMountain,
-	faTag,
-	faCalendar,
-	faPalette,
+	faMapMarkedAlt,
+	faCalendarCheck,
+	faUtensils,
 } from "@fortawesome/free-solid-svg-icons";
 import "./ServicesSection.css";
 
@@ -12,24 +12,23 @@ const ServicesSection = () => {
 	const services = [
 		{
 			icon: faMountain,
-			title: "Adventure Time",
-			description: "Experience thrilling adventures with our guided tours.",
+			title: "Guided Adventures",
+			description: "Every tour is led by a local expert who knows the land, the history, and the people.",
 		},
 		{
-			icon: faTag,
-			title: "Branding Projects",
-			description: "Enhance your brand with creative and impactful solutions.",
+			icon: faMapMarkedAlt,
+			title: "Tailored Itineraries",
+			description: "No two groups are identical. We shape each journey around what matters to you.",
 		},
 		{
-			icon: faCalendar,
-			title: "Promotion & Event",
-			description:
-				"Organize successful events and promotions with expert help.",
+			icon: faCalendarCheck,
+			title: "Seamless Planning",
+			description: "Accommodation, transport, permits, and timing — all handled before you arrive.",
 		},
 		{
-			icon: faPalette,
-			title: "Color it All",
-			description: "Add a splash of color and creativity to your projects.",
+			icon: faUtensils,
+			title: "Authentic Cuisine",
+			description: "From rooftop riads to desert campfires, every meal is a part of the experience.",
 		},
 	];
 

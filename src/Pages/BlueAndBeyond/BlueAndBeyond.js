@@ -1,23 +1,16 @@
 import React from "react";
-
 import DestinationPage from "../../Components/DestinationPageConstructor/DestinationPageConstructor.js";
-
 import information from "./information.js";
 import tourPlan from "./tourPlan.js";
 import gallery from "./gallery.js";
 import reviews from "./reviews.js";
+import Images from "../../images.js";
 
-function MountainPage() {
-	const averageReviews =
-		reviews.reduce((sum, review) => {
-			return sum + review;
-		}, 0) / reviews.length;
-
+function BlueAndBeyondPage() {
 	return (
 		<DestinationPage
-			image={
-				"https://thumbs.dreamstime.com/z/ifrane-morocco-ifrane-morocco-snowfall-white-mountain-sky-cold-tree-fog-landscape-beautiful-164071116.jpg"
-			}
+			theme="blue"
+			image={Images.BlueAndBeyondHero}
 			information={information}
 			tourPlan={tourPlan}
 			gallery={gallery}
@@ -25,4 +18,4 @@ function MountainPage() {
 		/>
 	);
 }
-export default MountainPage;
+export default BlueAndBeyondPage;

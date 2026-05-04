@@ -1,34 +1,37 @@
-
-.content-section{
-  width: 90%;
- margin: 0 auto;
-  background-color: black;
-}
-.content-destination-page{
+.content-section {
     width: 100%;
-    background-color: var(--primary-background-color);
-  }
-.content-container{
-  margin: 4rem auto;
+    background-color: transparent;
 }
+
+.content-destination-page {
+    width: 92%;
+    max-width: var(--max-width-content);
+    margin: 0 auto;
+    background-color: var(--primary-background-color);
+}
+
+.content-container {
+    padding: 3rem 0 5rem;
+}
+
 .content {
-    width: 100% ;
-  }
-  
-  @media (min-width: 780px) {
+    width: 100%;
+}
+
+@media (min-width: 780px) {
+    .content-destination-page {
+        width: var(--width-content);
+    }
 
     .content-container {
-      display: flex;
-      justify-content: space-around; /* Space between content and book form */
-      align-items: flex-start; /* Align items to the top */
-      width: var(--width-content);
-      max-width: var(--max-width-content); /* Changed to vw for viewport width */
-    
-      background-color: var(--primary-background-color);
+        display: flex;
+        gap: 4rem;
+        align-items: flex-start;
+        padding: 4rem 0 6rem;
     }
 
-    .content{
-      width: 75%;
+    .content {
+        flex: 1;
+        min-width: 0;
     }
-
-  }
+}

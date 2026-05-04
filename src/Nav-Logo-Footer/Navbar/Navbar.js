@@ -8,10 +8,8 @@ class Navbar extends Component {
 	hamburgerRef = React.createRef();
 
 	componentDidMount() {
-		window.onload = () => {
-			this.updateHamburgerColor();
-		};
 		window.addEventListener("scroll", this.updateHamburgerColor);
+		this.updateHamburgerColor();
 	}
 
 	componentWillUnmount() {
@@ -19,6 +17,7 @@ class Navbar extends Component {
 	}
 
 	updateHamburgerColor = () => {
+		if (!this.hamburgerRef.current) return;
 		const elements = document.querySelectorAll("body *");
 		const { bottom, top, right, left } =
 			this.hamburgerRef.current.getBoundingClientRect();
@@ -27,7 +26,6 @@ class Navbar extends Component {
 		for (let i = elements.length - 1; i >= 0; i--) {
 			let element = elements[i];
 			const rect = element.getBoundingClientRect();
-
 			if (
 				rect.top <= bottom &&
 				rect.bottom >= top &&
@@ -35,15 +33,11 @@ class Navbar extends Component {
 				rect.right >= left
 			) {
 				let bgColor = window.getComputedStyle(element).backgroundColor;
-
-				// Keep checking if the background color is transparent
 				while (bgColor === "rgba(0, 0, 0, 0)" || bgColor === "transparent") {
 					element = element.parentElement;
-					if (!element) break; // Stop if no parent exists
+					if (!element) break;
 					bgColor = window.getComputedStyle(element).backgroundColor;
 				}
-
-				// Once a non-transparent background is found, calculate luminance
 				if (bgColor !== "rgba(0, 0, 0, 0)" && bgColor !== "transparent") {
 					newHamburgerColor =
 						this.getLuminance(bgColor) > 0.5 ? "black" : "white";
@@ -51,7 +45,6 @@ class Navbar extends Component {
 				}
 			}
 		}
-
 		this.setState({ hamburgerColor: newHamburgerColor });
 	};
 
@@ -68,13 +61,20 @@ class Navbar extends Component {
 		this.updateHamburgerColor();
 		this.setState({ isOpen: !this.state.isOpen });
 	};
+
 	closeMenu = () => this.setState({ isOpen: false });
 
 	render() {
 		const { isOpen, hamburgerColor } = this.state;
+		const navItems = [
+			{ label: "Tours", path: "/" },
+			{ label: "About", path: "/about" },
+			{ label: "Contact", path: "/contact" },
+		];
 
 		return (
 			<nav className="navbar">
+				{/* Mobile hamburger */}
 				<div
 					className={`hamburger ${isOpen ? "open" : ""}`}
 					onClick={this.toggleMenu}
@@ -88,24 +88,26 @@ class Navbar extends Component {
 								backgroundColor: hamburgerColor,
 								borderColor: hamburgerColor,
 							}}
-						></div>
+						/>
 					))}
 				</div>
-				{isOpen && <div className="blur"></div>}
+
+				{isOpen && <div className="blur" onClick={this.closeMenu} />}
+
+				{/* Nav panel — overlay on mobile, inline on desktop */}
 				<div className={`nav-links ${isOpen ? "open" : ""}`}>
 					<ul>
-						{["Tours", "About", "Contact"].map((item, i) => (
+						{navItems.map((item, i) => (
 							<li key={i}>
-								<Link
-									to={item === "Tours" ? "/" : `/${item.toLowerCase()}`}
-									onClick={this.closeMenu}
-								>
-									{item}
+								<Link to={item.path} onClick={this.closeMenu}>
+									{item.label}
 								</Link>
 							</li>
 						))}
 					</ul>
-					<SocialMediaIcons />
+					<div className="nav-social">
+						<SocialMediaIcons />
+					</div>
 				</div>
 			</nav>
 		);

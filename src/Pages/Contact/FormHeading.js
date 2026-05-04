@@ -10,16 +10,15 @@ import {
 const FormHeading = () => {
 	return (
 		<section className="contact-info">
-			<h2>Feel Free to Contact us For Help or Additional Info</h2>
+			<h2>Get in Touch</h2>
 			<p>
-				<strong>name:</strong> Joamorocco, Morocco
+				<strong>Location:</strong> Marrakech, Morocco
 			</p>
 			<p>
-				<strong>mail:</strong> joamorroco@gmail.com
+				<strong>Email:</strong> joamorocco@gmail.com
 			</p>
-
 			<p>
-				<strong>phone:</strong> +1 614.380.9363
+				<strong>Phone:</strong> +212 600 000 000
 			</p>
 			<SocialMediaIcons />
 		</section>

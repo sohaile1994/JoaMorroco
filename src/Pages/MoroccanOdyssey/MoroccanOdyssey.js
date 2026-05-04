@@ -1,18 +1,16 @@
 import React from "react";
-
 import DestinationPage from "../../Components/DestinationPageConstructor/DestinationPageConstructor.js";
-
 import information from "./information.js";
 import tourPlan from "./tourPlan.js";
 import gallery from "./gallery.js";
 import reviews from "./reviews.js";
+import Images from "../../images.js";
 
-function BeachPage() {
+function MoroccanOdysseyPage() {
 	return (
 		<DestinationPage
-			image={
-				"https://womenbesttravel.com/wp-content/uploads/2020/08/Best-Morocco-beaches-1-768x768.jpg"
-			}
+			theme="moroccan"
+			image={Images.MoroccanOdysseyHero}
 			information={information}
 			tourPlan={tourPlan}
 			gallery={gallery}
@@ -20,4 +18,4 @@ function BeachPage() {
 		/>
 	);
 }
-export default BeachPage;
+export default MoroccanOdysseyPage;

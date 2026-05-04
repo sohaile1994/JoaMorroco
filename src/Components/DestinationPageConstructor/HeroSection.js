@@ -14,6 +14,10 @@ const ReviewRating = ({ stars }) => {
 };
 
 const HeroSection = ({ image, reviews, title, price, duration }) => {
+	const averageStars = reviews.length
+		? Math.round(reviews.reduce((sum, r) => sum + r.stars, 0) / reviews.length)
+		: 0;
+
 	return (
 		<section
 			className="hero-destination-page background-image"
@@ -29,7 +33,7 @@ const HeroSection = ({ image, reviews, title, price, duration }) => {
 							{price + "/" + duration + (duration > 1 ? " days" : " day")}
 						</h4>
 					</li>
-					<ReviewRating stars={reviews.stars} />
+					<ReviewRating stars={averageStars} />
 				</ul>
 			</div>
 		</section>

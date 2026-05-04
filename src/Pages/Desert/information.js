@@ -1,22 +1,18 @@
 const information = {
-	title: "Desert",
-	price: "$750",
-	duration: 10,
-	destination: "Sahara",
-	description:
-		"Loremficitur euisms mattis bibendum cursus elementum. Efficitur montes mollis porttitor sila. Facilisi parturient erat consectetur at morbi proin euismod. Dictumst maecenas lacus ridiculus sociosqu tempor taciti convallis. Conubia quam pretium vehicula cubilia ridiculus sapien metus. Himenaeos in diam; cras justo natoque natoque malesuada luctus adipiscing.",
-	departure: "Please arrive by 9:15 AM for a prompt departure at 9:30 AM.",
-	departureTime: "Approximately 8:30 PM.",
-	dressCode: [
-		"Casual",
-		"Comfortable",
-		"athletic clothing",
-		"hiking shoes",
-		"hat",
-		"warm jacket",
+	title: "Desert Dreams",
+	price: "$2,830",
+	duration: 16,
+	destination: "Sahara Desert & Southern Morocco",
+	description: [
+		"Sixteen days through the most dramatic landscapes Morocco has to offer — from the ancient kasbahs of the Draa Valley to the sweeping silence of the Erg Chegaga dunes.",
+		"You'll cross the High Atlas via the Tizi n'Tichka pass, wander the UNESCO-listed ksar of Ait Benhaddou, and spend nights in a remote desert camp far from any other tour group.",
+		"The journey home winds through the Todra Gorge, the rose-growing villages of the Dades Valley, and the argan forests of the Souss plain — Morocco's golden south at its fullest.",
 	],
-	included: ["All Museum Tickets", "Meals", "Transportation/Car"],
-	notIncluded: ["Accommodation", "Personal Guide", "Typical Souvenir"],
+	departure: "Marrakech — pickup from your riad or hotel at 8:00 AM on day one.",
+	departureTime: "Marrakech — 8:00 AM pickup from your riad or hotel",
+	dressCode: ["Lightweight layers", "Comfortable walking shoes", "Hat and sunglasses", "Warm jacket for desert nights"],
+	included: ["Private transportation", "All accommodation", "Daily breakfast and dinner", "Guided excursions", "Camel trek to camp"],
+	notIncluded: ["International flights", "Travel insurance", "Personal expenses"],
 };
 
 export default information;

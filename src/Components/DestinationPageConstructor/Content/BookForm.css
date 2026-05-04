@@ -1,55 +1,113 @@
-
 .book-form {
-  display: block;
-  margin: 0 auto;
-    width: 80vw;
-    align-items: flex-end;
-
-  }
-  
-  .book-form h2{
-    padding:2rem;
-    text-align: center;
-   }
-
-  .book-form form {
-    display: flex;
     width: 100%;
+    margin-top: 3rem;
+}
+
+.book-form-inner {
+    background: var(--primary-color);
+    padding: 2rem 1.75rem 2.5rem;
+}
+
+.book-form-header {
+    margin-bottom: 1.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 1.25rem;
+}
+
+.book-form h2 {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin: 0 0 0.3rem;
+    padding: 0;
+    font-family: var(--font-family);
+}
+
+.book-form-sub {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.76rem;
+    margin: 0;
+    padding: 0;
+    opacity: 1;
+    line-height: 1.4;
+}
+
+.form-field {
+    display: flex;
     flex-direction: column;
-    gap: 10px;
-  }
-  
-  .book-form input {
-    padding: 0.5rem;
-    border: 0.1rem solid #ccc;
-    border-radius: 0.25rem;
-  }
-  
-  .book-form button { 
-    padding: 0.6rem 1rem;
-    background-color: green;
-    color: var(--primary-color);
-    border: none;
-    border-radius: 0.25rem;
+    margin-bottom: 1.1rem;
+}
+
+.form-field label {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+}
+
+.book-form input {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 0;
+    color: #fff;
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    width: 100%;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.book-form input::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.book-form input:focus {
+    outline: none;
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.book-form input[type="date"] {
+    color-scheme: dark;
+}
+
+.book-form input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1) opacity(0.7);
     cursor: pointer;
-  }
-  
- 
-  @media (min-width: 780px) {
+}
 
-    .book-form{
-     width: 20% !important;
-     margin: 0 auto;
-     padding: 1rem;
+.book-form button {
+    width: 100%;
+    margin-top: 0.75rem;
+    padding: 1rem;
+    background: #fff;
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+    font-family: inherit;
+}
 
+.book-form button:hover {
+    background: rgba(255, 255, 255, 0.88);
+}
+
+@media (min-width: 780px) {
+    .book-form {
+        width: 290px;
+        min-width: 270px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 5rem;
+        margin-top: 0;
+        align-self: flex-start;
     }
-    
-    .book-form button {
-      width: 100%;
-      cursor: pointer;
-    }
-    .book-form button:hover {
-      background-color: darkgreen;
-    }
-    
-  }
+}

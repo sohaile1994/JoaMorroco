@@ -4,8 +4,19 @@ import MenuContent from "./Menu";
 import ContentSection from "./Content/ContentSection";
 
 import "./DestinationPageConstructor.css";
-
 import { MenuTypes } from "./Menu";
+
+const FloatingBookBtn = () => {
+	const scrollToForm = () => {
+		const el = document.getElementById("book-form");
+		if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+	};
+	return (
+		<button className="floating-book-btn" onClick={scrollToForm} aria-label="Book this tour">
+			Book Now
+		</button>
+	);
+};
 
 class DestinationPage extends Component {
 	constructor(props) {
@@ -20,12 +31,14 @@ class DestinationPage extends Component {
 	};
 
 	render() {
-		const { image, reviews, information, tourPlan, gallery, navbarColor } =
+		const { image, reviews, information, tourPlan, gallery, theme } =
 			this.props;
 		const { selectedContent } = this.state;
 
 		return (
-			<div className="destination-page-container">
+			<div
+				className={`destination-page-container${theme ? ` theme-${theme}` : ""}`}
+			>
 				<HeroSection
 					image={image}
 					reviews={reviews}
@@ -35,16 +48,16 @@ class DestinationPage extends Component {
 				/>
 				<MenuContent
 					onMenuClick={this.handleMenuClick}
-					selectedContent={selectedContent} // Pass current selectedContent to MenuContent
+					selectedContent={selectedContent}
 				/>
-
 				<ContentSection
-					selectedContent={selectedContent} // Pass current selectedContent to ContentSection
+					selectedContent={selectedContent}
 					information={information}
 					tourPlan={tourPlan}
 					gallery={gallery}
 					reviews={reviews}
 				/>
+				<FloatingBookBtn />
 			</div>
 		);
 	}

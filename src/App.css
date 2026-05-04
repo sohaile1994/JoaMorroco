@@ -1,59 +1,95 @@
-
 :root {
-  --primary-color: #ff681a; 
-  --primary-text-color: #303030; 
-  --font-family: sans-serif; 
-  --white-color: #fff; 
-  --secondary-color: #595959; 
-  --secondary-text-color: #595959; 
- 
-  --primary-background-color: #ffffff; 
-  --secondary-background-color: #f4f4f4; 
-
-  --max-width-content:1340px;
-  --width-content:80%;
+  --primary-color: #ff681a;
+  --primary-text-color: #303030;
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --heading-font: 'Playfair Display', Georgia, serif;
+  --white-color: #fff;
+  --secondary-color: #595959;
+  --secondary-text-color: #595959;
+  --primary-background-color: #ffffff;
+  --secondary-background-color: #f4f4f4;
+  --max-width-content: 1340px;
+  --width-content: 80%;
 }
-*{
+
+* {
   box-sizing: border-box;
 }
 
-body{
+body {
   font-family: var(--font-family);
   color: var(--primary-text-color);
   background-color: var(--primary-background-color);
- 
 }
 
-h1, h2, h3, h4, h5, h6, p{
-  font-size: 1rem;
+h1, h2, h3, h4, h5, h6, p {
   font-family: var(--font-family);
   color: var(--primary-text-color);
+  font-size: 1rem;
 }
-p{
+
+h1, h2, h3 {
+  font-family: var(--heading-font);
+}
+
+p {
   opacity: 0.8;
   color: var(--secondary-text-color);
-  line-height: 1.5;
-
+  line-height: 1.6;
 }
-img{
+
+img {
   width: 100%;
-  
 }
 
-section{
+section {
   display: block;
-  background-color: none;
-  
 }
 
-.background-image{
+.background-image {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  
 }
 
-.max-width{
+.max-width {
   max-width: 1000px !important;
 }
 
+/* ── Fixed header shell — lets Logo and Navbar position inside it ── */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+.header > * {
+  pointer-events: all;
+}
+
+/* ── Keyframes ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Scroll-triggered animation base ── */
+.anim {
+  opacity: 0;
+  transition:
+    opacity 0.65s var(--anim-delay, 0ms) cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s var(--anim-delay, 0ms) cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.anim.fade-up    { transform: translateY(32px); }
+.anim.fade-right { transform: translateX(-32px); }
+.anim.fade-left  { transform: translateX(32px); }
+.anim.scale-up   { transform: scale(0.94); }
+.anim.anim-in    { opacity: 1; transform: none; }

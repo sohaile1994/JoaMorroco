@@ -1,30 +1,59 @@
-import React from "react";
-
+import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import BeachShowCaseItem from "./Beach";
+import MoroccanOdysseyShowCaseItem from "./MoroccanOdyssey";
+import BlueAndBeyondShowCaseItem from "./BlueAndBeyond";
 import DesertShowCaseItem from "./Desert";
-import ForestShowCaseItem from "./Forest";
-import MountainShowCaseItem from "./Mountain";
 
 import "./ShowCase.css";
 
 const ShowCaseItem = ({ info }) => {
-	const { title, subTitle, image, link } = info;
+	const { title, subTitle, showCaseImage, heroImage, link } = info;
+	const videoRef = useRef(null);
+
+	useEffect(() => {
+		const video = videoRef.current;
+		if (!video) return;
+
+		const load = () => {
+			video.src = showCaseImage;
+			video.load();
+			video.play().catch(() => {});
+		};
+
+		if ("requestIdleCallback" in window) {
+			const id = requestIdleCallback(load, { timeout: 1500 });
+			return () => cancelIdleCallback(id);
+		} else {
+			const t = setTimeout(load, 500);
+			return () => clearTimeout(t);
+		}
+	}, [showCaseImage]);
+
+	const handlePlay = () => {
+		if (videoRef.current) videoRef.current.classList.add("playing");
+	};
+
 	return (
 		<div
-			className="show-case-item-container"
+			className="show-case-item"
 			style={{
-				backgroundImage: `url(${image})`,
+				backgroundImage: `url(${heroImage})`,
 				backgroundSize: "cover",
-				backgroundPosition: "left",
-				backgroundRepeat: "no-repeat",
+				backgroundPosition: "center",
 			}}
 		>
-			<div className="mask"></div>
+			<video
+				ref={videoRef}
+				className="show-case-video"
+				muted
+				loop
+				playsInline
+				poster={heroImage}
+				onPlay={handlePlay}
+			/>
 			<h2>{title}</h2>
 			<h4>{subTitle}</h4>
-
 			<Link to={"/" + link} className="book-btn">
 				<p>BOOK NOW</p>
 			</Link>
@@ -35,10 +64,9 @@ const ShowCaseItem = ({ info }) => {
 function ShowCase() {
 	return (
 		<section className="show-case">
+			<ShowCaseItem info={BlueAndBeyondShowCaseItem} />
+			<ShowCaseItem info={MoroccanOdysseyShowCaseItem} />
 			<ShowCaseItem info={DesertShowCaseItem} />
-			<ShowCaseItem info={BeachShowCaseItem} />
-			<ShowCaseItem info={ForestShowCaseItem} />
-			<ShowCaseItem info={MountainShowCaseItem} />
 		</section>
 	);
 }

@@ -9,10 +9,10 @@ import App from "./App";
 import ShowCase from "./Pages/ShowCase/ShowCase";
 import AboutPage from "./Pages/About/AboutPage";
 import ContactPage from "./Pages/Contact/Contact";
-import BeachPage from "./Pages/Beach/BeachPage";
-import ForestPage from "./Pages/Forest/ForestPage";
+
+import MoroccanOdysseyPage from "./Pages/MoroccanOdyssey/MoroccanOdyssey";
+import BlueAndBeyondPage from "./Pages/BlueAndBeyond/BlueAndBeyond";
 import DesertPage from "./Pages/Desert/DesertPage";
-import MountainPage from "./Pages/Mountain/MountainPage";
 
 const router = createBrowserRouter([
 	{
@@ -32,20 +32,16 @@ const router = createBrowserRouter([
 				element: <ContactPage />,
 			},
 			{
-				path: "beachPage",
-				element: <BeachPage />,
+				path: "moroccan-odyssey",
+				element: <MoroccanOdysseyPage />,
 			},
 			{
-				path: "forestPage",
-				element: <ForestPage />,
+				path: "blue-and-beyond",
+				element: <BlueAndBeyondPage />,
 			},
 			{
-				path: "desertPage",
+				path: "desert",
 				element: <DesertPage />,
-			},
-			{
-				path: "mountainPage",
-				element: <MountainPage />,
 			},
 		],
 	},

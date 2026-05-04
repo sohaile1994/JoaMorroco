@@ -1,13 +1,14 @@
+/* ── Base ── */
 .navbar {
     position: fixed;
-    padding: 10px 20px;
-    z-index: 9; /* Keep the navbar on top */
     top: 0;
     right: 0;
-    width: 100dvw; /* Ensure it spans across the screen */
-    transition: background-color 0.3s ease; /* Smooth transition for color */
+    width: 100%;
+    z-index: 9;
+    padding: 10px 20px;
 }
 
+/* ── Hamburger (mobile only) ── */
 .hamburger {
     display: flex;
     flex-direction: column;
@@ -16,173 +17,191 @@
     width: 2rem;
     height: 2rem;
     cursor: pointer;
-    z-index: 11; /* Ensure the hamburger menu is on top of the nav-links */
+    z-index: 11;
     position: fixed;
-    top: 0.5rem;
-    right: 0.5rem;
-    transition: background-color 0.3s ease transform 0.3s;
+    top: 0.75rem;
+    right: 0.75rem;
 }
 
-/* Style for lines */
 .line {
-    
-    position: relative;
-    
-    padding: 0;
-    margin: 0;
     width: 76%;
-    height: 1px !important;
+    height: 1px;
     border: 1px solid white;
     background-color: white;
     transition: all 0.3s ease;
     z-index: 12;
 }
+.line:nth-child(2) { width: 60%; }
+.line:nth-child(3) { width: 44%; }
 
-.line:nth-child(2) {
-    width: 60%;
-}
-
-.hamburger:not(.open).line:nth-child(3) {
-    width: 44%;
-}
-
-.hamburger.open .line{
+.hamburger.open .line {
     background-color: black !important;
-    border-color:black;
-
+    border-color: black;
 }
-/* Default hover animation when the hamburger is not open */
 .hamburger:not(.open):hover .line:nth-child(1) {
     transform: rotate(90deg) translate(10px, 0px);
 }
-
-.hamburger:not(.open):hover .line:nth-child(2) {
-    opacity: 0; /* Hide the middle line */
-}
-
+.hamburger:not(.open):hover .line:nth-child(2) { opacity: 0; }
 .hamburger:not(.open):hover .line:nth-child(3) {
     transform: translate(0px, -13px);
-    width: 76% ;
-
+    width: 76%;
 }
 
-/* Styles when the hamburger is open */
-.hamburger.open .line:nth-child(1) {
-    transform: rotate(45deg) translate(10px, 10px);
-}
+.hamburger.open .line:nth-child(1) { transform: rotate(45deg) translate(10px, 10px); }
+.hamburger.open .line:nth-child(2) { opacity: 0; }
+.hamburger.open .line:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-.hamburger.open .line:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.open .line:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-}
+/* ── Blur overlay (mobile) ── */
 .blur {
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 6;
+}
+
+/* ── Nav links — fullscreen overlay on mobile ── */
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    backdrop-filter: blur(10px);
-    pointer-events: none; /* Prevent interaction when hidden */
-}
-
-.nav-links {
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100dvw;
     height: 100dvh;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
     text-align: center;
     padding: 20px 0;
     z-index: 7;
     opacity: 0;
-    pointer-events: none; /* Prevents clicks when hidden */
+    pointer-events: none;
     transition: opacity 0.3s ease;
 }
-
-/* Show nav links when the menu is open */
 .nav-links.open {
     opacity: 1;
-    pointer-events: all; 
+    pointer-events: all;
 }
 
 .nav-links ul {
     display: flex;
-    gap: 20%;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    font-size: 3rem;
-    width: 100%; /* Make sure the list spans the width */
+    gap: 2rem;
+    align-items: center;
+    font-size: 2.5rem;
+    width: 100%;
     padding: 0;
     margin: 0;
+    list-style: none;
 }
 
 .nav-links li {
-    list-style: none;
     width: 100%;
-    margin: 10px 0;
-    opacity: 0; /* Start hidden */
-    transform: translateX(-100px); /* Start from the left */
-}
-
-.nav-links.open li {
     opacity: 0;
-    transform: translateX(0); /* Reset transform */
-    animation: fadeInSlideIn 0.2s forwards; /* Apply animation */
+    transform: translateX(-60px);
+}
+.nav-links.open li {
+    animation: slideInLeft 0.25s forwards;
+}
+.nav-links.open li:nth-child(1) { animation-delay: 0.08s; }
+.nav-links.open li:nth-child(2) { animation-delay: 0.14s; }
+.nav-links.open li:nth-child(3) { animation-delay: 0.20s; }
+
+@keyframes slideInLeft {
+    to { opacity: 1; transform: translateX(0); }
 }
 
-/* Adding a small delay for each list item to create a staggered effect */
-.nav-links.open li:nth-child(1) {
-    animation-delay: 0.08s; /* First link appears after 0.08s */
-}
-
-.nav-links.open li:nth-child(2) {
-    animation-delay: 0.12s; /* Second link appears after 0.16s */
-}
-
-.nav-links.open li:nth-child(3) {
-    animation-delay: 0.16s; /* Third link appears after 0.24s */
-}
-
-.nav-links.open li:nth-child(4) {
-    animation-delay: 0.24s; /* Adjust as needed */
-}
-
-@keyframes fadeInSlideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-100px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
 .nav-links a {
-    user-select: none;
     text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    color: #222;
+    font-weight: 600;
+    font-family: 'Playfair Display', Georgia, serif;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--primary-color); }
+
+.nav-social { margin-top: 2rem; }
+
+@media (min-width: 500px) {
+    .hamburger { top: 2rem; right: 2rem; }
 }
 
-.nav-links a:hover {
-    color: var(--primary-color,#ff681a);
-}
-
-@media (min-width: 500px){
-    .hamburger {
-    top: 2rem;
-    right: 2rem;
+/* ══════════════════════════════════════════
+   Desktop / Tablet horizontal nav (≥ 780px)
+══════════════════════════════════════════ */
+@media (min-width: 780px) {
+    /* Navbar becomes a full-width bar with dark blur */
+    .navbar {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 1.25rem 3rem;
+        background: rgba(15, 10, 5, 0.72);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
     }
+
+    /* Hide hamburger + blur */
+    .hamburger { display: none; }
+    .blur { display: none; }
+
+    /* Reset fullscreen overlay to inline */
+    .nav-links {
+        position: static !important;
+        transform: none !important;
+        opacity: 1 !important;
+        pointer-events: all !important;
+        width: auto !important;
+        height: auto !important;
+        background: transparent !important;
+        flex-direction: row !important;
+        padding: 0 !important;
+        gap: 2.5rem;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .nav-links ul {
+        flex-direction: row !important;
+        font-size: 0.78rem !important;
+        gap: 2.5rem !important;
+        width: auto !important;
+        list-style: none;
+    }
+
+    .nav-links li {
+        opacity: 1 !important;
+        transform: none !important;
+        width: auto !important;
+        animation: none !important;
+    }
+
+    .nav-links a {
+        color: rgba(255, 255, 255, 0.88);
+        font-family: var(--font-family) !important;
+        font-size: 0.78rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        position: relative;
+        padding-bottom: 3px;
+    }
+
+    /* Underline hover effect */
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--primary-color);
+        transition: width 0.25s ease;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* Hide social icons in horizontal nav */
+    .nav-social { display: none; }
 }

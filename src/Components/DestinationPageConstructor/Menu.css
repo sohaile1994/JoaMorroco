@@ -1,84 +1,87 @@
-/* Base styles for the menu */
-.menu-container{
-  width:100vw;
-  overflow: hidden;
-  background-color: var(--secondary-background-color);
+.menu-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--secondary-background-color);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
+
 .menu {
-  height: 44dvh;
-  width: 100%; 
-  display: flex;
-  flex-direction: column;
-  margin:20px auto;
-  padding:  16px 0;
-   border: none;
-
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.menu li{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  text-align: center; /* Center the text inside the li */
-  border: 1px solid #ddd;
-  
-}
-
-.menu li:first-child {
-  border-top: none; /* Remove border from the last item */
-}
-.menu li:last-child {
-  border-bottom: none; /* Remove border from the last item */
-}
-
-
-
-/* Additional styling for icons */
-
-.menu li.active {
-  background-color: var(--primary-background-color);
-  color: var(--primary-color);
-  scale: 1.05;
-  border: none;
-
-}
-
-
-/* Media query for larger screens */
-@media (min-width: 780px) {
-  .menu-container{
-width: 100%;
-
-  }
-  .menu {
-    width: var(--width-content); /* Use CSS variables for width */
-    max-width: var(--max-width-content); /* Use CSS variables for max-width */
-    height: 64px; /* Fixed height for larger screens */
-    flex-direction: row;
+.menu li {
+    display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
-    padding: 0;
-  }
-
-  .menu li{
-    border: none;
-    border-left: 1px solid #ddd;
-  }
-  .menu li.active{
-    scale: 1.01;
-  }
-  .menu li:first-child {
-    border-left: none; /* Remove border from the last item */
-  }
-  .menu li:last-child {
-    border-right: none; /* Remove border from the last item */
-  }
-  .menu li:hover {
+    min-height: 56px;
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.07);
     cursor: pointer;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--secondary-text-color);
+    transition: color 0.2s ease, background 0.2s ease;
+    user-select: none;
+}
+
+.menu li:first-child { border-top: none; }
+
+.menu li:hover {
     color: var(--primary-color);
-  }
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.menu li.active {
+    color: var(--primary-color);
+    background: var(--primary-background-color);
+    font-weight: 700;
+    border-left: 3px solid var(--primary-color);
+}
+
+/* ── Desktop horizontal tab bar (≥ 780px) ── */
+@media (min-width: 780px) {
+    .menu-container {
+        width: 100%;
+    }
+
+    .menu {
+        flex-direction: row;
+        height: 56px;
+        width: var(--width-content);
+        max-width: var(--max-width-content);
+        margin: 0 auto;
+    }
+
+    .menu li {
+        flex: 1;
+        border-top: none;
+        border-left: 1px solid rgba(0, 0, 0, 0.07);
+        border-bottom: 3px solid transparent;
+        min-height: 56px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        position: relative;
+        transition: color 0.2s ease, border-bottom-color 0.2s ease;
+    }
+
+    .menu li:first-child { border-left: none; }
+
+    .menu li.active {
+        border-left: 1px solid rgba(0, 0, 0, 0.07);
+        border-left-color: rgba(0, 0, 0, 0.07);
+        border-bottom: 3px solid var(--primary-color);
+        background: var(--primary-background-color);
+        font-weight: 700;
+    }
+
+    .menu li:first-child.active { border-left: none; }
+
+    .menu li:hover { background: rgba(0, 0, 0, 0.02); }
 }

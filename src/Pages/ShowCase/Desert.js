@@ -1,14 +1,15 @@
-import { DesertImage } from "../../Manager";
-
+import { DesertImage } from "../../images";
+import Images from "../../images";
 const DesertShowCaseItem = {
-	image: DesertImage,
-	title: "Desert",
+	title: "Desert Dreams",
 	city: "Sahara",
 	subTitle: "Beautiful",
-	price: "$2830",
+	price: "$2,830",
 	rating: 5,
 	days: 16,
 	remainingSeats: 12,
-	link: "desertPage",
+	showCaseImage: DesertImage,
+	heroImage: Images.DesertHero,
+	link: "desert",
 };
 export default DesertShowCaseItem;

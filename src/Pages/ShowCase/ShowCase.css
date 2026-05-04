@@ -1,95 +1,143 @@
-.show-case{
-  position: fixed;
-  top: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  height: 100dvh;
-  width: 100dvw;
-  background-color: black;
-}
-.show-case-item-container{
-  position: relative;
-}
-.show-case .mask{
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  position: absolute;
-  z-index: 8;
-  animation: mask 0.6s ease-out forwards;
-  right: 0;
-}
-.show-case-item-container:nth-child(1) .mask{
-  animation-delay: 0.15s;
-}
-.show-case-item-container:nth-child(2) .mask{
-  animation-delay: 0.3s;
-}
-.show-case-item-container:nth-child(3) .mask{
-  animation-delay: 0.45s;
-}
-.show-case-item-container:nth-child(4) .mask{
-  animation-delay: 0.60s;
-}
-@keyframes mask{
-  to{
-    width: 0%;
-  }
+.show-case {
+    position: fixed;
+    top: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    min-height: 100dvh;
+    width: 100dvw;
+    background-color: #0d0905;
+    overflow: hidden;
 }
 
-.show-case h2, .show-case h4{
-  position: relative;
-  margin: 0 auto;
-  padding: 4px 0;
-  text-align: center;
-  width: 100%;
-  color: var(--white-color);
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
-  z-index: 3;
-}
-.show-case h2{
-  top: 40%;
-  font-size: 2.7rem;
+.show-case-item {
+    position: relative;
+    overflow: hidden;
+    cursor: default;
 }
 
-.show-case h4{
-    top: 40%;
-    font-size: 1.5rem;
-    font-style: italic;
+/* Video sits on top of the background-image fallback.
+   Fades in once playing to prevent the hard cut from poster to live video. */
+.show-case-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.9s ease;
 }
 
-.show-case .book-btn p{
-  font-size: 0.91rem;
-  opacity: 1;
-  color: #151515;
-  width: 100%;
-  text-align: center;
+.show-case-video.playing {
+    opacity: 1;
 }
 
-.show-case .book-btn{
-    position: relative; 
-    top: 42%;
+/* ── Gradient overlay — always-legible text ── */
+.show-case-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.05) 0%,
+        rgba(0, 0, 0, 0.3)  35%,
+        rgba(0, 0, 0, 0.65) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
 
-    width: clamp(150px, 50%, 200px); 
-    height: clamp(40px, 10vh, 50px);
+/* Subtle vertical separator between panels */
+.show-case-item + .show-case-item::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 1px;
+    height: 80%;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 2;
+}
 
-    display: flex;
+/* ── Headings ── */
+.show-case h2,
+.show-case h4 {
+    position: relative;
     margin: 0 auto;
-    justify-content: center; 
-    align-items: center; 
+    padding: 4px 1rem;
+    text-align: center;
+    width: 100%;
+    color: var(--white-color);
+    z-index: 3;
+}
 
-    font-size: clamp(0.9em, 5dvw, 1.05em); 
-    font-weight: bold;
+.show-case h2 {
+    top: 40%;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-family: var(--heading-font);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+.show-case h4 {
+    top: 40%;
+    font-size: clamp(1rem, 1.5vw, 1.35rem);
+    font-style: italic;
+    font-weight: 300;
+    opacity: 0.85;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Book Now button ── */
+.show-case .book-btn {
+    position: relative;
+    top: 43%;
+    width: clamp(140px, 45%, 190px);
+    height: clamp(40px, 8vh, 50px);
+    display: flex;
+    margin: 0.75rem auto 0;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
-    color: var(--primary-color);
-
-    background-color: var(--primary-background-color);
-    border-radius: 0% 0%;
-
-    transition: color 0.3s, background-color 0.3s;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #fff;
+    background: transparent;
+    border: 1.5px solid rgba(255, 255, 255, 0.7);
+    transition: background 0.3s ease, border-color 0.3s ease;
     z-index: 6;
 }
-.show-case .book-btn:hover{
-  background-color: var(--secondary-background-color);
-  color: var(--secondary-color);
+
+.show-case .book-btn p {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    opacity: 1;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.show-case .book-btn:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* ── Text entry animations (CSS, plays on load) ── */
+.show-case h2 {
+    animation: fadeUp 1s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.show-case h4 {
+    animation: fadeUp 1s 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.show-case .book-btn {
+    animation: fadeUp 1s 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
 }

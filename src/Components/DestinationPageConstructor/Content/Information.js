@@ -1,9 +1,15 @@
+import useInView from "../../../hooks/useInView";
 import GalleryContent from "./Gallery.js";
 import "./Information.css";
 
-const InformationItem = ({ title, description }) => {
+const InformationItem = ({ title, description, index }) => {
+	const [ref, inView] = useInView();
 	return (
-		<li className="info-item">
+		<li
+			ref={ref}
+			className={`info-item anim fade-right ${inView ? "anim-in" : ""}`}
+			style={{ "--anim-delay": `${(index ?? 0) * 80}ms` }}
+		>
 			<h6>{title}</h6>
 			<p>{description}</p>
 		</li>
@@ -11,6 +17,7 @@ const InformationItem = ({ title, description }) => {
 };
 
 const InformationContent = ({ info, gallery }) => {
+	const [descRef, descInView] = useInView();
 	const {
 		title,
 		price,
@@ -20,29 +27,34 @@ const InformationContent = ({ info, gallery }) => {
 		departureTime,
 		dressCode,
 		included,
-		notIncluded,
 	} = info;
 
 	return (
 		<div className="information-destination-page">
-			<div className="description">
+			<div
+				ref={descRef}
+				className={`description anim fade-up ${descInView ? "anim-in" : ""}`}
+			>
 				<h2>{title}</h2>
 				<h4>{price} / per person</h4>
-				<p>{description}</p>
+				{(Array.isArray(description) ? description : [description]).map(
+					(paragraph, index) => (
+						<p key={index}>{paragraph}</p>
+					)
+				)}
 			</div>
 			<ul>
-				<InformationItem title="Destination" description={destination} />
-				<InformationItem title="Departure Time" description={departureTime} />
-				<InformationItem title="Dress Code" description={dressCode} />
+				<InformationItem index={0} title="Destination" description={destination} />
+				<InformationItem index={1} title="Departure Time" description={departureTime} />
 				<InformationItem
-					className="included info-item"
-					title="Included"
-					description={included}
+					index={2}
+					title="Dress Code"
+					description={dressCode.join(", ")}
 				/>
 				<InformationItem
-					className="not-included info-item"
-					title="Not Included"
-					description={notIncluded}
+					index={3}
+					title="Included"
+					description={included.join(", ")}
 				/>
 			</ul>
 			<GalleryContent info={gallery} />

@@ -7,29 +7,27 @@ const Footer = () => {
 			<div className="footer-container">
 				<div className="footer-about-container">
 					<article>
-						<h2>JOA</h2>
+						<h2>JOA Morocco</h2>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipi. Suspend isse
-							ultrices hendrerit nunc vitae vel a sodales. Ac lectus vel risus
-							suscipit venenatis.
+							Small-group tours across Morocco led by local guides.
+							We take you to the places that matter — and give you the
+							time to feel them.
 						</p>
 					</article>
 					<ul>
 						<li>
-							<a href="">580 Riverview Dr, Columbus, OH</a>
+							<a href="mailto:joamorocco@gmail.com">joamorocco@gmail.com</a>
 						</li>
 						<li>
-							<a href="">
-								USA<span>(+1) 614-380-9363 </span>
-							</a>
+							<a href="tel:+212600000000">+212 600 000 000</a>
 						</li>
 						<li>
-							<a href="">joamorocco@gmail.com</a>
+							<a href="#">Marrakech, Morocco</a>
 						</li>
 					</ul>
 				</div>
 				<div className="bottom-declaration">
-					© 2017 Qode Interactive, All Rights Reserved
+					© {new Date().getFullYear()} JOA Morocco. All rights reserved.
 				</div>
 			</div>
 		</footer>

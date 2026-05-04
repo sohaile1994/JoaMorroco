@@ -5,8 +5,8 @@ const HeroSection = () => {
 	return (
 		<section className="hero-section">
 			<header>
-				<h1>About Us</h1>
-				<p>Modern & Beautiful WordPress Theme</p>
+				<h1>About JOA Morocco</h1>
+				<p>Handcrafted journeys across the Kingdom</p>
 			</header>
 		</section>
 	);

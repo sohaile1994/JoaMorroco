@@ -7,7 +7,7 @@ const Hero = () => {
 			style={{ backgroundImage: `url(/assets/contact-background.jpg)` }}
 		>
 			<h1>Contact Us</h1>
-			<p>Modern & Beautiful WordPress Theme</p>
+			<p>We'd love to help you plan your Morocco journey</p>
 		</section>
 	);
 };

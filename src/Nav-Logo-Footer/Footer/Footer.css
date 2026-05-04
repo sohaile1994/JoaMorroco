@@ -1,63 +1,83 @@
-footer{
-    background-color: #151515;
+footer {
+    background-color: #0f0b07;
     width: 100%;
 }
-.footer-about-container{
-    padding: 70px 50px;
-    width: 100%;
-}
-.footer-about-container.footer-about-container *{
-    color: white;
-    opacity: 1;
-    width: 100%;
 
+.footer-container {
+    max-width: var(--max-width-content);
+    margin: 0 auto;
+}
+
+.footer-about-container {
+    padding: 5rem 2rem;
+}
+
+.footer-about-container * {
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.footer-about-container h2 {
+    font-size: 2.5rem;
+    font-family: var(--heading-font);
+    color: #fff;
+    margin: 0 0 1rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+}
+
+.footer-about-container article p {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    max-width: 360px;
+    opacity: 1;
     padding: 0;
 }
-.footer-about-container h2{
-    font-size: 3rem;
-}
-.footer-about-container.footer-about-container p{
-    opacity: 0.8;
-    width: 100%;
-}
 
-.footer-about-container article{
-    width: 100%;
-}
-
-.footer-about-container ul{
-    margin-top: 2.4rem;
+.footer-about-container ul {
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.6rem;
+    padding: 0;
 }
-.footer-about-container a{
+
+.footer-about-container a {
     font-style: italic;
-    font-weight: 600;
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.55);
     text-decoration: none;
+    transition: color 0.2s;
 }
 
-.bottom-declaration{
+.footer-about-container a:hover {
+    color: var(--primary-color);
+}
+
+.bottom-declaration {
     display: block;
-    color: white;
-    background-color: black;
-    padding: 19px 0px;
-   text-align: center;
+    color: rgba(255, 255, 255, 0.35);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 1.25rem 2rem;
+    text-align: center;
+    font-size: 0.78rem;
+    letter-spacing: 0.5px;
 }
 
-@media (min-width:500px){
-    
-    .footer-about-container{
-        width: 30%;
-        padding: 140px 120px;
+@media (min-width: 780px) {
+    .footer-about-container {
+        padding: 6rem 5rem;
+        display: flex;
+        gap: 6rem;
+        align-items: flex-start;
     }
-    .footer-about-container ul{
-        padding: 30px 0px 0px;
+
+    .footer-about-container article {
+        flex: 1;
     }
-    .footer-about-container article{
-        width: 25%;
+
+    .footer-about-container ul {
+        margin-top: 0;
+        min-width: 200px;
     }
-.bottom-declaration{
-    padding: 19px 120px;
-}
 }

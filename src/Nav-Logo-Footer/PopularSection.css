@@ -1,121 +1,341 @@
-.popular-adventures-section{
-    padding: 5rem 0px 115px;
-    background-color: #f8f8f8;
-    width: 100;
+.popular-adventures-section {
+    padding: 6rem 0 8rem;
+    background-color: var(--secondary-background-color);
+    width: 100%;
     max-width: 100vw;
 }
 
-.popular-adventures-section .heading-container{
-    padding: 0px 20px;
-    margin: 0 auto;
-    margin-bottom: 48px;
+/* ── Section heading ── */
+.popular-adventures-section .heading-container {
+    padding: 0 1.5rem;
+    margin: 0 auto 3rem;
     text-align: center;
 }
-.popular-adventures-section .heading-container h3{
-    font-size: 2.5rem;
-    margin: 0;
-}
-.popular-adventures-section .heading-container h5{
-    margin: 0px 0px 5px;
-    font-size: 1.3rem;
+.popular-adventures-section .heading-container h5 {
+    margin: 0 0 0.4rem;
+    font-size: 1rem;
     font-style: italic;
-    font-weight: 200;
-    color:var(--primary-color);
-    
+    font-weight: 400;
+    color: var(--primary-color);
+    letter-spacing: 1px;
 }
-
-.popular-adventures-section .heading-container p{
-    margin: 19px 0px 0px;
-   letter-spacing: 1px;
-   line-height: 1.5;
+.popular-adventures-section .heading-container h3 {
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    margin: 0 0 1rem;
+    line-height: 1.2;
 }
-
-.popular-adventures-showcase{
-    padding: 0px 15px;
-    display: grid;
+.popular-adventures-section .heading-container p {
+    max-width: 520px;
     margin: 0 auto;
-    grid-template-columns: repeat(1fr);
-    gap: 1rem;
+    line-height: 1.7;
 }
 
-.showcase-item{
-    display: grid;
-    grid-template-rows: 3fr 1.2fr 0.3fr;
-    height: 100dvh;
-    padding: 0.4rem;
-    transition: scale 0.1s ease;
+/* ══════════════════════════════
+   Mobile carousel (< 700px)
+══════════════════════════════ */
+.pop-carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0 1.5rem;
+}
+
+/* ── Arrow controls row ── */
+.carousel-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+/* ── Diamond-shaped Moroccan arrows ── */
+.carousel-arrow {
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0;
+    flex-shrink: 0;
+}
+.carousel-arrow::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1.5px solid var(--primary-color);
+    transform: rotate(45deg);
+    transition: background 0.2s ease;
+}
+.carousel-arrow span {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+    transition: color 0.2s ease;
+    user-select: none;
+}
+.carousel-arrow:hover::before {
+    background: var(--primary-color);
+}
+.carousel-arrow:hover span {
+    color: white;
+}
+
+/* ── Dots ── */
+.carousel-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: #ccc;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+.dot.active {
+    background: var(--primary-color);
+    transform: scale(1.4);
+}
+
+/* ── Card ── */
+.carousel-card {
+    display: block;
     text-decoration: none;
-
+    color: inherit;
+    width: 100%;
+    max-width: 420px;
+    background: white;
+    box-shadow: 0 6px 32px rgba(0, 0, 0, 0.1);
+    animation: carouselFade 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+    overflow: hidden;
+    cursor: pointer;
 }
-.showcase-item {
+
+@keyframes carouselFade {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+}
+
+.carousel-image {
+    height: 260px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.carousel-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.35) 100%);
+}
+.carousel-badge {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background: var(--primary-color);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+}
+
+.carousel-body {
+    padding: 1.25rem 1.5rem 1rem;
+}
+.carousel-body h3 {
+    font-size: 1.5rem;
+    margin: 0 0 0.35rem;
+    line-height: 1.2;
+}
+.carousel-location {
+    color: #888;
+    font-size: 0.84rem;
+    margin: 0 0 0.9rem;
+    padding: 0;
+    opacity: 1;
+    line-height: 1;
+}
+.carousel-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.carousel-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-family: var(--heading-font);
+}
+.carousel-seats {
+    font-size: 0.78rem;
+    color: #999;
+}
+
+.carousel-book-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    transition: background 0.2s ease;
+}
+.carousel-book-btn:hover {
+    background: color-mix(in srgb, var(--primary-color) 75%, black);
+}
+
+/* Hide desktop grid on mobile */
+.popular-adventures-showcase {
     display: none;
 }
 
-.showcase-item:first-child {
-    display: grid;
-}
+/* ══════════════════════════════
+   Desktop grid (≥ 700px)
+══════════════════════════════ */
+@media (min-width: 700px) {
+    /* Hide carousel on desktop */
+    .pop-carousel { display: none; }
 
-    .showcase-item .top-section{
+    .popular-adventures-section .heading-container {
+        padding: 0 2rem;
+        max-width: 640px;
+    }
+
+    .popular-adventures-showcase {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        padding: 0 2rem;
+        max-width: var(--max-width-content);
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .showcase-item {
+        display: grid;
+        grid-template-rows: 3fr 1.4fr 0.4fr;
+        height: 80vh;
+        max-height: 680px;
+        text-decoration: none;
+        overflow: hidden;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .showcase-item:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+    .showcase-item:active { transform: translateY(-2px); }
+
+    .showcase-item .top-section {
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        overflow: hidden;
     }
-    .showcase-item .middle-section{
-        padding: 8px 16px;
+    .showcase-item .middle-section {
+        padding: 1.1rem 1.25rem 0.75rem;
         background: white;
         display: flex;
         flex-direction: column;
-        height: 100%; 
         overflow: hidden;
     }
-
-    .showcase-item .middle-section h3{
-        font-size: 1.3rem;
+    .showcase-item .middle-section h3 {
+        font-size: 1.15rem;
         display: flex;
         justify-content: space-between;
-        margin-bottom: 0.8rem;
+        align-items: baseline;
+        margin: 0 0 0.6rem;
+        gap: 0.5rem;
+        font-family: var(--heading-font);
+    }
+    .showcase-item .middle-section span {
+        color: var(--primary-color);
+        font-family: var(--font-family);
+        font-size: 0.95rem;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+    .showcase-item .middle-section figcaption {
+        color: #888;
+        font-size: 0.82rem;
+        margin: 0 0 0.5rem;
+        opacity: 1;
+    }
+    .showcase-item .middle-section p {
+        font-size: 0.88rem;
+        line-height: 1.5;
+        color: #666;
+        opacity: 1;
+    }
+    .showcase-item .bottom-section {
+        background: var(--primary-color);
+        display: flex;
+        align-items: center;
+    }
+    .showcase-item .bottom-section p {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 1.25rem;
+        color: white;
+        opacity: 1;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin: 0;
+    }
+    .showcase-item .bottom-section span {
+        color: rgba(255,255,255,0.75);
+        font-weight: 400;
+    }
+}
 
-    }
-  
-    .showcase-item .middle-section span{
-       color: var(--primary-color);
-    }
- .showcase-item .middle-section figcaption{
-       margin: 0;
-       opacity: 0.7;
-    }
+/* ── Scroll-triggered entrance animations ── */
+.popular-adventures-section .heading-container {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.popular-adventures-section.pop-visible .heading-container {
+    opacity: 1;
+    transform: none;
+}
 
-    .showcase-item .bottom-section{
-       width: 100%;
-        background-color: var(--primary-color);
-        
+/* Desktop card stagger */
+@media (min-width: 700px) {
+    .popular-adventures-showcase .showcase-item {
+        opacity: 0;
+        transform: translateY(32px);
+        transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.25s ease;
     }
-    .showcase-item .bottom-section p{
-        width: 50%;
-      display: flex;
-      justify-content: space-around;
-      color: white;
-      opacity: 1;
+    .popular-adventures-section.pop-visible .popular-adventures-showcase .showcase-item:nth-child(1) {
+        opacity: 1; transform: none; transition-delay: 0.12s;
     }
-    
-    @media (min-width: 700px){
-        .popular-adventures-showcase{
-            max-width: var(--max-width-content);
-            width: 100%;
-            grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-            
-        }
-        .showcase-item{
-            display: grid;
-        }
-        .popular-adventures-section .heading-container{
-            padding: 0px 195px;
-        }
-        .showcase-item:hover{
-            scale: 1.05;
-            box-shadow: 0px 0px 4px ;
-        }
-        .showcase-item:active{
-            scale: 1.02;
-        }
+    .popular-adventures-section.pop-visible .popular-adventures-showcase .showcase-item:nth-child(2) {
+        opacity: 1; transform: none; transition-delay: 0.24s;
     }
+    .popular-adventures-section.pop-visible .popular-adventures-showcase .showcase-item:nth-child(3) {
+        opacity: 1; transform: none; transition-delay: 0.36s;
+    }
+    /* But hover should still work after animation */
+    .popular-adventures-section.pop-visible .showcase-item:hover {
+        transform: translateY(-6px);
+    }
+}

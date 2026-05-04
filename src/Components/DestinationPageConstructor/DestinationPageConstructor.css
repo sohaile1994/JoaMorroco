@@ -1,10 +1,65 @@
+/* ──────────────────────────────────────────
+   Per-page theme colour overrides
+   Components use var(--primary-color) so
+   overriding it here cascades everywhere.
+────────────────────────────────────────── */
 
+/* Desert Dreams — warm sandy gold */
+.theme-desert {
+    --primary-color: #c8923c;
+    --secondary-background-color: #faf5e4;
+    --primary-text-color: #3a2310;
+}
 
-  @media (min-width: 780px) {
+/* Blue and Beyond — Chefchaouen cobalt */
+.theme-blue {
+    --primary-color: #1e7fa8;
+    --secondary-background-color: #eaf4fb;
+}
 
-  .hero-menu-divider{
-    height: 2dvh;
-    background-color: var(--secondary-background-color);
+/* Moroccan Odyssey — terracotta (default, no override needed) */
+.theme-moroccan {
+    --primary-color: #ff681a;
+}
 
-  }
+@media (min-width: 780px) {
+    .hero-menu-divider {
+        height: 2dvh;
+        background-color: var(--secondary-background-color);
+    }
+}
+
+/* ── Floating Book Now button (mobile only) ── */
+.floating-book-btn {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 50;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.85rem 1.4rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: var(--font-family);
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.floating-book-btn:hover {
+    background: color-mix(in srgb, var(--primary-color) 80%, black);
+    transform: translateY(-2px);
+}
+
+.floating-book-btn:active {
+    transform: translateY(0);
+}
+
+@media (min-width: 780px) {
+    .floating-book-btn {
+        display: none;
+    }
 }
