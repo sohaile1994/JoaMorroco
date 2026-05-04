@@ -1,5 +1,16 @@
 .gallery-destination-page {
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
+}
+
+/* Section entrance animation */
+.gallery-destination-page.anim {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.gallery-destination-page.anim.anim-in {
+    opacity: 1;
+    transform: none;
 }
 
 .gallery-title {
@@ -8,43 +19,73 @@
 
 .gallery-title h1 {
     font-size: clamp(1.6rem, 3vw, 2.2rem);
-    margin: 0 0 0;
+    margin: 0;
     color: var(--primary-text-color);
 }
 
-.gallery-content {
-    column-count: 1;
-    column-gap: 1rem;
+/* ── Carousel viewport ── */
+.gallery-carousel-viewport {
+    overflow: hidden;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: pan-y;
+    padding: 8px 0 20px;
+    /* Fade edges for depth */
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 3%,
+        black 97%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 3%,
+        black 97%,
+        transparent 100%
+    );
+}
+.gallery-carousel-viewport:active {
+    cursor: grabbing;
 }
 
+/* ── Scrolling track ── */
+.gallery-carousel-track {
+    display: flex;
+    gap: 10px;
+    will-change: transform;
+    align-items: flex-start;
+}
+
+/* ── Each masonry column ── */
+.gallery-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-shrink: 0;
+    width: clamp(155px, 21vw, 255px);
+}
+
+/* ── Individual image tile ── */
 .gallery-item {
-    break-inside: avoid;
-    margin-bottom: 1rem;
     overflow: hidden;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.1);
     background: var(--secondary-background-color);
+    flex-shrink: 0;
 }
 
 .gallery-item img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
-    transition: transform 0.4s ease;
+    transition: transform 0.45s ease;
+    pointer-events: none;
+    -webkit-user-drag: none;
 }
 
 .gallery-item:hover img {
-    transform: scale(1.03);
-}
-
-/* Stagger delay override */
-.gallery-item.anim {
-    transition:
-        opacity 0.6s var(--anim-delay, 0ms) cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.6s var(--anim-delay, 0ms) cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-@media (min-width: 780px) {
-    .gallery-content {
-        column-count: 3;
-    }
+    transform: scale(1.06);
 }
