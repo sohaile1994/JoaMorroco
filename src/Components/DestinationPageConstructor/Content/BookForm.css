@@ -77,13 +77,46 @@
     background: rgba(255, 255, 255, 0.22);
 }
 
-.book-form input[type="date"] {
+.book-form input[type="date"],
+.book-form input[type="month"] {
     color-scheme: dark;
 }
 
-.book-form input[type="date"]::-webkit-calendar-picker-indicator {
+.book-form input[type="date"]::-webkit-calendar-picker-indicator,
+.book-form input[type="month"]::-webkit-calendar-picker-indicator {
     filter: invert(1) opacity(0.7);
     cursor: pointer;
+}
+
+/* Availability badge next to label */
+.avail-loading {
+    font-weight: 400;
+    letter-spacing: 0;
+    opacity: 0.6;
+}
+
+.avail-badge {
+    display: inline-block;
+    margin-left: 0.4rem;
+    padding: 0.1rem 0.45rem;
+    border-radius: 20px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+
+.avail-ok   { background: rgba(100, 220, 130, 0.25); color: #90efb0; }
+.avail-low  { background: rgba(255, 190, 80,  0.25); color: #ffd580; }
+.avail-full { background: rgba(255, 100, 100, 0.25); color: #ffaaaa; }
+
+/* "Fully booked" inline message */
+.form-limit-msg {
+    color: #ffaaaa;
+    font-size: 0.78rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.4;
 }
 
 .book-form button {
@@ -122,14 +155,47 @@
     padding: 2rem 0;
 }
 
+.bf-checkmark {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: rgba(100, 220, 130, 0.25);
+    color: #90efb0;
+    font-size: 1.5rem;
+    line-height: 3rem;
+    margin: 0 auto 1rem;
+}
+
 .book-form-success h2 {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
 }
 
 .book-form-success p {
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.82rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+}
+
+.bf-ticket-label {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+}
+
+.bf-ticket {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.75rem 1rem;
     margin-bottom: 1.5rem;
+    font-family: monospace;
 }
 
 .book-form-success button {
