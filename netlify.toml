@@ -5,8 +5,8 @@
 
 [dev]
   command    = "vite"
-  targetPort = 5173
-  port       = 8888
+  targetPort = 3001
+  port       = 5173
 
 [build.environment]
   NODE_VERSION = "18"

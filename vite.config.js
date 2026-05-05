@@ -13,4 +13,9 @@ export default defineConfig({
       loader: { ".js": "jsx" },
     },
   },
+  server: {
+    port: 3001,
+    strictPort: true,
+    hmr: { clientPort: 5173 },
+  },
 });
