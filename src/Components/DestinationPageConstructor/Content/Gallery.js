@@ -2,7 +2,6 @@ import { useRef, useEffect } from "react";
 import useInView from "../../../hooks/useInView";
 import "./Gallery.css";
 
-// Heights (px) for each image slot — alternating tall/short creates masonry look
 const HEIGHTS = [260, 130, 130, 280, 190, 130, 130, 270, 280, 180, 170, 260];
 
 const GalleryContent = ({ info }) => {
@@ -12,26 +11,21 @@ const GalleryContent = ({ info }) => {
 
 	const drag = useRef({
 		active: false,
-		startX: 0,
-		startTranslate: 0,
 		translate: 0,
 		velocity: 0,
-		lastX: 0,
 		lastTs: 0,
 		halfWidth: 0,
 		rafId: null,
 	});
 
-	// Pair images into masonry columns of 2
 	const cols = [];
 	for (let i = 0; i < info.length; i += 2) {
 		const col = [{ ...info[i], h: HEIGHTS[i] ?? 220 }];
 		if (info[i + 1]) col.push({ ...info[i + 1], h: HEIGHTS[i + 1] ?? 160 });
 		cols.push(col);
 	}
-	const allCols = [...cols, ...cols]; // duplicate for infinite loop
+	const allCols = [...cols, ...cols];
 
-	// Keep latest function versions reachable from stable useEffect closures
 	const api = useRef({});
 
 	const normalize = (x) => {
@@ -75,7 +69,6 @@ const GalleryContent = ({ info }) => {
 
 	api.current = { applyTranslate, stopMomentum, startMomentum };
 
-	// Measure track width; re-run when info changes (different tour page)
 	useEffect(() => {
 		const measure = () => {
 			if (trackRef.current) {
@@ -88,36 +81,48 @@ const GalleryContent = ({ info }) => {
 		return () => { clearTimeout(id); ro.disconnect(); };
 	}, [info]);
 
-	// Global mouse listeners — drag continues even if cursor leaves the carousel
 	useEffect(() => {
+		// mousemove uses e.movementX — the relative delta since the last event.
+		// With pointer lock active this delta is unbounded (cursor escapes screen edges).
+		// Without pointer lock (touch fallback / browsers blocking lock) it still works
+		// as a relative accumulator and is better than clientX - startX for fast drags.
 		const onMouseMove = (e) => {
 			if (!drag.current.active) return;
 			const now = performance.now();
-			const dt = now - drag.current.lastTs;
-			if (dt > 0) drag.current.velocity = ((e.clientX - drag.current.lastX) / dt) * 16;
-			drag.current.lastX = e.clientX;
+			const dt = Math.max(now - drag.current.lastTs, 1);
+			const dx = e.movementX;
+			drag.current.velocity = (dx / dt) * 16;
 			drag.current.lastTs = now;
-			api.current.applyTranslate(
-				drag.current.startTranslate + (e.clientX - drag.current.startX)
-			);
+			api.current.applyTranslate(drag.current.translate + dx);
 		};
 
-		const onMouseUp = () => {
+		const endDrag = () => {
 			if (!drag.current.active) return;
 			drag.current.active = false;
-			if (viewportRef.current) viewportRef.current.style.cursor = "";
+			if (document.pointerLockElement) document.exitPointerLock();
 			api.current.startMomentum();
 		};
 
+		// If the user presses Escape, the browser exits pointer lock automatically.
+		// Treat that as a drag release so momentum still kicks in.
+		const onPointerLockChange = () => {
+			if (!document.pointerLockElement && drag.current.active) {
+				drag.current.active = false;
+				api.current.startMomentum();
+			}
+		};
+
 		document.addEventListener("mousemove", onMouseMove);
-		document.addEventListener("mouseup", onMouseUp);
+		document.addEventListener("mouseup", endDrag);
+		document.addEventListener("pointerlockchange", onPointerLockChange);
 		return () => {
 			document.removeEventListener("mousemove", onMouseMove);
-			document.removeEventListener("mouseup", onMouseUp);
+			document.removeEventListener("mouseup", endDrag);
+			document.removeEventListener("pointerlockchange", onPointerLockChange);
 		};
 	}, []);
 
-	// Touch events — imperative so we can use passive:false for preventDefault
+	// Touch — imperative so passive:false works
 	useEffect(() => {
 		const vp = viewportRef.current;
 		if (!vp) return;
@@ -125,11 +130,10 @@ const GalleryContent = ({ info }) => {
 		const onTouchStart = (e) => {
 			api.current.stopMomentum();
 			drag.current.active = true;
-			drag.current.startX = e.touches[0].clientX;
-			drag.current.startTranslate = drag.current.translate;
 			drag.current.velocity = 0;
-			drag.current.lastX = e.touches[0].clientX;
 			drag.current.lastTs = performance.now();
+			// store last touch x so movementX equivalent can be computed
+			drag.current._lastTouchX = e.touches[0].clientX;
 			if (trackRef.current) trackRef.current.style.transition = "none";
 		};
 
@@ -138,11 +142,12 @@ const GalleryContent = ({ info }) => {
 			e.preventDefault();
 			const cx = e.touches[0].clientX;
 			const now = performance.now();
-			const dt = now - drag.current.lastTs;
-			if (dt > 0) drag.current.velocity = ((cx - drag.current.lastX) / dt) * 16;
-			drag.current.lastX = cx;
+			const dt = Math.max(now - drag.current.lastTs, 1);
+			const dx = cx - drag.current._lastTouchX;
+			drag.current.velocity = (dx / dt) * 16;
+			drag.current._lastTouchX = cx;
 			drag.current.lastTs = now;
-			api.current.applyTranslate(drag.current.startTranslate + (cx - drag.current.startX));
+			api.current.applyTranslate(drag.current.translate + dx);
 		};
 
 		const onTouchEnd = () => {
@@ -164,14 +169,14 @@ const GalleryContent = ({ info }) => {
 	const onMouseDown = (e) => {
 		stopMomentum();
 		drag.current.active = true;
-		drag.current.startX = e.clientX;
-		drag.current.startTranslate = drag.current.translate;
 		drag.current.velocity = 0;
-		drag.current.lastX = e.clientX;
 		drag.current.lastTs = performance.now();
 		if (trackRef.current) trackRef.current.style.transition = "none";
-		if (viewportRef.current) viewportRef.current.style.cursor = "grabbing";
 		e.preventDefault();
+
+		// Lock the pointer so cursor movement is unbounded by screen edges.
+		// The cursor hides while locked and reappears on mouse release.
+		viewportRef.current?.requestPointerLock?.();
 	};
 
 	return (
