@@ -10,7 +10,7 @@ import "./ContentSection.css";
 
 class ContentSection extends Component {
 	render() {
-		const { selectedContent, information, tourPlan, gallery, reviews } =
+		const { selectedContent, information, tourPlan, gallery, reviews, tour } =
 			this.props;
 
 		let content;
@@ -23,7 +23,7 @@ class ContentSection extends Component {
 				content = <GalleryContent info={gallery} />;
 				break;
 			case MenuTypes.REVIEWS:
-				content = <ReviewsContent info={reviews} />;
+				content = <ReviewsContent info={reviews} tour={tour} />;
 				break;
 			default:
 				content = <InformationContent info={information} gallery={gallery} />;
@@ -34,7 +34,7 @@ class ContentSection extends Component {
 				<div className="content-destination-page">
 					<div className="content-container">
 						<div className="content">{content}</div>
-						<BookFormSection />
+						<BookFormSection tour={tour} />
 					</div>
 				</div>
 			</section>

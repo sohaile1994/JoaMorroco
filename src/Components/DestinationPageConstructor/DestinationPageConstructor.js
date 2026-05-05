@@ -31,7 +31,7 @@ class DestinationPage extends Component {
 	};
 
 	render() {
-		const { image, reviews, information, tourPlan, gallery, theme } =
+		const { image, reviews, information, tourPlan, gallery, theme, tour } =
 			this.props;
 		const { selectedContent } = this.state;
 
@@ -56,6 +56,7 @@ class DestinationPage extends Component {
 					tourPlan={tourPlan}
 					gallery={gallery}
 					reviews={reviews}
+					tour={tour}
 				/>
 				<FloatingBookBtn />
 			</div>

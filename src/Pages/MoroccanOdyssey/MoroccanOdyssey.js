@@ -9,6 +9,7 @@ import Images from "../../images.js";
 function MoroccanOdysseyPage() {
 	return (
 		<DestinationPage
+			tour="moroccan-odyssey"
 			theme="moroccan"
 			image={Images.MoroccanOdysseyHero}
 			information={information}

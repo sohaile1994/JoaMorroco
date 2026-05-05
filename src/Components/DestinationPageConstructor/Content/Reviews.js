@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useInView from "../../../hooks/useInView";
 import "./Reviews.css";
-
-const TICKET_KEY = "Zenith";
 
 const StarDisplay = ({ stars }) => (
 	<div className="review-rating">
@@ -51,42 +49,65 @@ const ReviewItem = ({ review }) => {
 	);
 };
 
-const ReviewsContent = ({ info }) => {
-	const [userReviews, setUserReviews] = useState([]);
-	const [form, setForm] = useState({
-		ticket: "",
-		name: "",
-		stars: 5,
-		review: "",
-	});
+const EMPTY_FORM = { ticket: "", name: "", stars: 5, review: "" };
+
+const ReviewsContent = ({ info, tour }) => {
+	const [dbReviews, setDbReviews] = useState([]);
+	const [form, setForm] = useState(EMPTY_FORM);
 	const [error, setError] = useState("");
-	const [submitted, setSubmitted] = useState(false);
+	const [submitStatus, setSubmitStatus] = useState("idle");
+
+	useEffect(() => {
+		if (!tour) return;
+		fetch(`/api/get-reviews?tour=${tour}`)
+			.then((r) => r.json())
+			.then((rows) => setDbReviews(rows))
+			.catch(() => {});
+	}, [tour]);
 
 	const handleChange = (e) => {
 		setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 		setError("");
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (form.ticket !== TICKET_KEY) {
-			setError("Invalid ticket number. Please check your ticket and try again.");
-			return;
-		}
 		if (!form.name.trim() || !form.review.trim()) {
 			setError("Please fill in all fields.");
 			return;
 		}
-		setUserReviews((prev) => [
-			{ name: form.name.trim(), stars: form.stars, review: form.review.trim() },
-			...prev,
-		]);
-		setForm({ ticket: "", name: "", stars: 5, review: "" });
-		setSubmitted(true);
-		setTimeout(() => setSubmitted(false), 4000);
+		setSubmitStatus("loading");
+		setError("");
+		try {
+			const res = await fetch("/api/submit-review", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({
+					tour,
+					ticket: form.ticket,
+					name: form.name.trim(),
+					stars: form.stars,
+					review: form.review.trim(),
+				}),
+			});
+			if (!res.ok) {
+				const text = await res.text();
+				throw new Error(text || "Failed to post review");
+			}
+			const updated = await fetch(`/api/get-reviews?tour=${tour}`).then((r) =>
+				r.json()
+			);
+			setDbReviews(updated);
+			setForm(EMPTY_FORM);
+			setSubmitStatus("success");
+			setTimeout(() => setSubmitStatus("idle"), 4000);
+		} catch (err) {
+			setSubmitStatus("idle");
+			setError(err.message);
+		}
 	};
 
-	const allReviews = [...userReviews, ...info];
+	const allReviews = [...dbReviews, ...info];
 
 	return (
 		<div className="reviews-wrapper">
@@ -96,7 +117,7 @@ const ReviewsContent = ({ info }) => {
 					A valid ticket number is required to leave a review.
 				</p>
 
-				{submitted && (
+				{submitStatus === "success" && (
 					<div className="review-success">
 						Your review has been posted — thank you!
 					</div>
@@ -153,8 +174,12 @@ const ReviewsContent = ({ info }) => {
 
 					{error && <p className="review-error">{error}</p>}
 
-					<button type="submit" className="review-submit-btn">
-						Post Review
+					<button
+						type="submit"
+						className="review-submit-btn"
+						disabled={submitStatus === "loading"}
+					>
+						{submitStatus === "loading" ? "Posting…" : "Post Review"}
 					</button>
 				</form>
 			</div>

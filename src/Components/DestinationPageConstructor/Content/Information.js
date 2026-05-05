@@ -23,7 +23,6 @@ const InformationContent = ({ info, gallery }) => {
 		price,
 		description,
 		destination,
-		departure,
 		departureTime,
 		dressCode,
 		included,

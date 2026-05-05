@@ -9,6 +9,7 @@ import Images from "../../images.js";
 function BlueAndBeyondPage() {
 	return (
 		<DestinationPage
+			tour="blue-and-beyond"
 			theme="blue"
 			image={Images.BlueAndBeyondHero}
 			information={information}

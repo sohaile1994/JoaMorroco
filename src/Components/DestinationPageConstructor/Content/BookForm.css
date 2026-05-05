@@ -102,8 +102,40 @@
     font-family: inherit;
 }
 
-.book-form button:hover {
+.book-form button:hover:not(:disabled) {
     background: rgba(255, 255, 255, 0.88);
+}
+
+.book-form button:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.form-error {
+    color: #ffb3b3;
+    font-size: 0.8rem;
+    margin: 0.25rem 0 0.5rem;
+}
+
+.book-form-success {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.book-form-success h2 {
+    margin-bottom: 0.75rem;
+}
+
+.book-form-success p {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.book-form-success button {
+    width: auto;
+    padding: 0.75rem 2rem;
+    margin-top: 0;
 }
 
 @media (min-width: 780px) {
