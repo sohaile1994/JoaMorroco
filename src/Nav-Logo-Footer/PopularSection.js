@@ -116,7 +116,7 @@ const PopularAdventuresSection = () => {
 								<span>{adventure.price}</span>
 							</h3>
 							<figcaption>{"★".repeat(adventure.rating)} {adventure.rating} / 5</figcaption>
-							<p>An unforgettable journey through the heart of Morocco.</p>
+							<p>{adventure.description}</p>
 						</div>
 						<div className="bottom-section">
 							<p>

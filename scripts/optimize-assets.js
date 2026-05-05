@@ -9,42 +9,50 @@ ffmpeg.setFfmpegPath(ffmpegPath);
 const ASSETS = path.join(__dirname, "../public/assets");
 
 // ── Images ──────────────────────────────────────────────────────────────────
-// Each entry: [inputFile, maxWidth, quality]
-// Hero images: 1920px wide, 82q. Gallery/misc: 1400px, 78q.
+// [inputFile, maxWidth, quality]
+// Source can be jpg, jpeg, png, or an existing webp that needs re-optimizing.
+// Hero images (full-screen): 1600px max, 82q.
+// Background / card images:  1200px max, 78q.
+// Small UI images:           800px max,  75q.
 const images = [
-  ["moroccan-odysey-hero.jpg",  1920, 82],
-  ["blue-alley.jpg",            1920, 82],
-  ["desert-show-case.jpg",      1920, 82],
-  ["food.jpg",                  1400, 78],
-  ["camel.jpg",                 1400, 78],
-  ["camp.jpg",                  1400, 78],
-  ["contact-background.jpg",    1920, 80],
-  ["camel-group.jpg",           1400, 78],
-  ["dunes.jpg",                 1400, 78],
-  ["port-city.jpg",             1400, 78],
-  ["spices.jpg",                1400, 78],
-  ["sunRise.jpg",               1400, 78],
-  ["city.jpg",                  1400, 78],
+  // Hero showcase posters — visible while video loads, needs sharp quality
+  ["moroccan-odysey-hero.jpg",  1600, 82],
+  ["blue-alley.jpg",            1600, 82],
+  ["desert-show-case.jpg",      1600, 82],
+  // Section backgrounds
+  ["contact-background.jpg",    1200, 78],
+  ["sunRise.jpg",                800, 75],
+  // Card / misc images
+  ["food.jpg",                  1200, 78],
+  ["camel.jpg",                  900, 75],
+  ["camp.jpg",                  1200, 76],
+  ["camel-group.jpg",            900, 75],
+  ["dunes.jpg",                 1200, 78],
+  ["port-city.jpg",             1200, 76],
+  ["spices.jpg",                1200, 78],
+  ["city.jpg",                  1200, 76],
+  // scroll icon — small PNG → tiny WebP
+  ["scroll-icon.png",           120, 80],
 ];
 
 async function optimizeImages() {
   for (const [file, maxWidth, quality] of images) {
     const input = path.join(ASSETS, file);
-    const outName = file.replace(/\.(jpe?g|png)$/i, ".webp");
-    const output = path.join(ASSETS, outName);
-
     if (!fs.existsSync(input)) {
       console.log(`  skip (not found): ${file}`);
       continue;
     }
 
-    const before = (fs.statSync(input).size / 1024 / 1024).toFixed(2);
+    const outName = file.replace(/\.(jpe?g|png|webp)$/i, ".webp");
+    const output = path.join(ASSETS, outName);
+
+    const before = (fs.statSync(input).size / 1024).toFixed(0);
     await sharp(input)
       .resize({ width: maxWidth, withoutEnlargement: true })
       .webp({ quality })
       .toFile(output);
-    const after = (fs.statSync(output).size / 1024 / 1024).toFixed(2);
-    console.log(`  ${file.padEnd(35)} ${before} MB  →  ${outName}  ${after} MB`);
+    const after = (fs.statSync(output).size / 1024).toFixed(0);
+    console.log(`  ${file.padEnd(40)} ${before.padStart(6)} KB  →  ${outName}  ${after} KB`);
   }
 }
 
@@ -71,19 +79,19 @@ function encodeVideo(file) {
     ffmpeg(input)
       .videoCodec("libx264")
       .outputOptions([
-        "-vf scale=-2:720",       // 720p, keep aspect ratio
-        "-crf 28",                // quality (lower = better, 28 = good for bg video)
+        "-vf scale=-2:720",
+        "-crf 28",
         "-preset fast",
-        "-profile:v baseline",    // broadest device support
+        "-profile:v baseline",
         "-level 3.1",
-        "-movflags +faststart",   // put moov atom at front for faster streaming
-        "-an",                    // strip audio (these are muted background videos)
+        "-movflags +faststart",
+        "-an",
       ])
       .output(tmpOut)
       .on("end", () => {
         const after = (fs.statSync(tmpOut).size / 1024 / 1024).toFixed(1);
         fs.renameSync(tmpOut, input);
-        console.log(`  ${file.padEnd(48)} ${before} MB  →  ${after} MB`);
+        console.log(`  ${file.padEnd(50)} ${before} MB  →  ${after} MB`);
         resolve();
       })
       .on("error", (err) => {

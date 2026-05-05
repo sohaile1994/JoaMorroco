@@ -1,11 +1,5 @@
 import React from "react";
 import SocialMediaIcons from "../../Nav-Logo-Footer/SocialMediaIcons/SocialMediaIcons";
-import {
-	faYoutube,
-	faFacebook,
-	faTwitter,
-	faInstagram,
-} from "@fortawesome/free-brands-svg-icons";
 
 const FormHeading = () => {
 	return (
@@ -24,4 +18,5 @@ const FormHeading = () => {
 		</section>
 	);
 };
+
 export default FormHeading;

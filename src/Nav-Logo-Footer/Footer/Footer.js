@@ -22,7 +22,7 @@ const Footer = () => {
 							<a href="tel:+212600000000">+212 600 000 000</a>
 						</li>
 						<li>
-							<a href="#">Marrakech, Morocco</a>
+							<span>Marrakech, Morocco</span>
 						</li>
 					</ul>
 				</div>

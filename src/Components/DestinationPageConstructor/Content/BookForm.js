@@ -31,9 +31,15 @@ const BookFormSection = () => {
 							required
 						/>
 					</div>
-					<div className="form-field">
-						<label htmlFor="bf-date">Tour Date</label>
-						<input id="bf-date" type="date" required />
+					<div className="form-row">
+						<div className="form-field">
+							<label htmlFor="bf-date">Tour Date</label>
+							<input id="bf-date" type="date" required />
+						</div>
+						<div className="form-field">
+							<label htmlFor="bf-guests">Guests</label>
+							<input id="bf-guests" type="number" min="1" max="20" placeholder="1" required />
+						</div>
 					</div>
 					<button type="submit">Book Now</button>
 				</form>

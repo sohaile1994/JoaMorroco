@@ -21,13 +21,8 @@ const ShowCaseItem = ({ info }) => {
 			video.play().catch(() => {});
 		};
 
-		if ("requestIdleCallback" in window) {
-			const id = requestIdleCallback(load, { timeout: 1500 });
-			return () => cancelIdleCallback(id);
-		} else {
-			const t = setTimeout(load, 500);
-			return () => clearTimeout(t);
-		}
+		const t = setTimeout(load, 1000);
+		return () => clearTimeout(t);
 	}, [showCaseImage]);
 
 	const handlePlay = () => {

@@ -3,11 +3,14 @@ import "./HeroSection.css";
 
 const HeroSection = () => {
 	return (
-		<section className="hero-section">
-			<header>
+		<section
+			className="about-hero"
+			style={{ backgroundImage: "url(/assets/sunRise.webp)" }}
+		>
+			<div className="about-hero-text">
 				<h1>About JOA Morocco</h1>
 				<p>Handcrafted journeys across the Kingdom</p>
-			</header>
+			</div>
 		</section>
 	);
 };

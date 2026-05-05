@@ -4,7 +4,7 @@ const Hero = () => {
 	return (
 		<section
 			className="hero-section contact-hero"
-			style={{ backgroundImage: `url(/assets/contact-background.jpg)` }}
+			style={{ backgroundImage: `url(/assets/contact-background.webp)` }}
 		>
 			<h1>Contact Us</h1>
 			<p>We'd love to help you plan your Morocco journey</p>
