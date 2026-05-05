@@ -31,7 +31,7 @@ const GalleryContent = ({ info }) => {
 	}
 	const allCols = [...cols, ...cols]; // duplicate for infinite loop
 
-	// Keep latest functions accessible from useEffect closures without stale refs
+	// Keep latest function versions reachable from stable useEffect closures
 	const api = useRef({});
 
 	const normalize = (x) => {
@@ -73,7 +73,6 @@ const GalleryContent = ({ info }) => {
 		drag.current.rafId = requestAnimationFrame(tick);
 	};
 
-	// Always point at latest function versions
 	api.current = { applyTranslate, stopMomentum, startMomentum };
 
 	// Measure track width; re-run when info changes (different tour page)
@@ -89,7 +88,36 @@ const GalleryContent = ({ info }) => {
 		return () => { clearTimeout(id); ro.disconnect(); };
 	}, [info]);
 
-	// Touch events must be added imperatively (passive:false needed for preventDefault)
+	// Global mouse listeners — drag continues even if cursor leaves the carousel
+	useEffect(() => {
+		const onMouseMove = (e) => {
+			if (!drag.current.active) return;
+			const now = performance.now();
+			const dt = now - drag.current.lastTs;
+			if (dt > 0) drag.current.velocity = ((e.clientX - drag.current.lastX) / dt) * 16;
+			drag.current.lastX = e.clientX;
+			drag.current.lastTs = now;
+			api.current.applyTranslate(
+				drag.current.startTranslate + (e.clientX - drag.current.startX)
+			);
+		};
+
+		const onMouseUp = () => {
+			if (!drag.current.active) return;
+			drag.current.active = false;
+			if (viewportRef.current) viewportRef.current.style.cursor = "";
+			api.current.startMomentum();
+		};
+
+		document.addEventListener("mousemove", onMouseMove);
+		document.addEventListener("mouseup", onMouseUp);
+		return () => {
+			document.removeEventListener("mousemove", onMouseMove);
+			document.removeEventListener("mouseup", onMouseUp);
+		};
+	}, []);
+
+	// Touch events — imperative so we can use passive:false for preventDefault
 	useEffect(() => {
 		const vp = viewportRef.current;
 		if (!vp) return;
@@ -142,23 +170,8 @@ const GalleryContent = ({ info }) => {
 		drag.current.lastX = e.clientX;
 		drag.current.lastTs = performance.now();
 		if (trackRef.current) trackRef.current.style.transition = "none";
+		if (viewportRef.current) viewportRef.current.style.cursor = "grabbing";
 		e.preventDefault();
-	};
-
-	const onMouseMove = (e) => {
-		if (!drag.current.active) return;
-		const now = performance.now();
-		const dt = now - drag.current.lastTs;
-		if (dt > 0) drag.current.velocity = ((e.clientX - drag.current.lastX) / dt) * 16;
-		drag.current.lastX = e.clientX;
-		drag.current.lastTs = now;
-		applyTranslate(drag.current.startTranslate + (e.clientX - drag.current.startX));
-	};
-
-	const onMouseUp = () => {
-		if (!drag.current.active) return;
-		drag.current.active = false;
-		startMomentum();
 	};
 
 	return (
@@ -174,9 +187,6 @@ const GalleryContent = ({ info }) => {
 				ref={viewportRef}
 				className="gallery-carousel-viewport"
 				onMouseDown={onMouseDown}
-				onMouseMove={onMouseMove}
-				onMouseUp={onMouseUp}
-				onMouseLeave={onMouseUp}
 			>
 				<div ref={trackRef} className="gallery-carousel-track">
 					{allCols.map((col, ci) => (
