@@ -3,6 +3,11 @@
   publish   = "dist"
   functions = "netlify/functions"
 
+[dev]
+  command    = "vite"
+  targetPort = 5173
+  port       = 8888
+
 [build.environment]
   NODE_VERSION = "18"
 
