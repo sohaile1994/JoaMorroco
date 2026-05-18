@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import "./BookForm.css";
 
-const EMPTY = { name: "", email: "", phone: "", month: "", guests: "1" };
-
 const today = new Date();
 const MIN_MONTH = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}`;
+
+const EMPTY = { name: "", email: "", phone: "", month: MIN_MONTH, guests: "1" };
 
 const BookFormSection = ({ tour }) => {
 	const [form, setForm] = useState(EMPTY);
@@ -192,17 +192,17 @@ const BookFormSection = ({ tour }) => {
 						</div>
 						<div className="form-field">
 							<label htmlFor="bf-guests">Guests</label>
-							<input
+							<select
 								id="bf-guests"
 								name="guests"
-								type="number"
-								min="1"
-								max={maxGuests || 12}
-								placeholder="1"
 								value={form.guests}
 								onChange={handleChange}
 								required
-							/>
+							>
+								{Array.from({ length: maxGuests || 12 }, (_, i) => i + 1).map((n) => (
+									<option key={n} value={n}>{n}</option>
+								))}
+							</select>
 						</div>
 					</div>
 					{isFull && (

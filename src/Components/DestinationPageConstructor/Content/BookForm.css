@@ -82,6 +82,32 @@
     color-scheme: dark;
 }
 
+.book-form select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 0;
+    color: #fff;
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    width: 100%;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.book-form select:focus {
+    outline: none;
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.book-form select option {
+    background: #2a2a2a;
+    color: #fff;
+}
+
 .book-form input[type="date"]::-webkit-calendar-picker-indicator,
 .book-form input[type="month"]::-webkit-calendar-picker-indicator {
     filter: invert(1) opacity(0.7);

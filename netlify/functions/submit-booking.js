@@ -1,5 +1,25 @@
+const crypto = require("crypto");
+
 const VALID_TOURS = ["desert", "blue_and_beyond", "moroccan_odyssey"];
 const MAX_SEATS = 12;
+const ALGORITHM = "aes-256-gcm";
+
+function getEncryptionKey() {
+  const hex = process.env.ENCRYPTION_KEY || "";
+  if (hex.length !== 64) {
+    throw new Error("ENCRYPTION_KEY must be a 64-character hex string (32 bytes)");
+  }
+  return Buffer.from(hex, "hex");
+}
+
+function encrypt(text) {
+  const key = getEncryptionKey();
+  const iv = crypto.randomBytes(12);
+  const cipher = crypto.createCipheriv(ALGORITHM, key, iv);
+  const encrypted = Buffer.concat([cipher.update(text, "utf8"), cipher.final()]);
+  const authTag = cipher.getAuthTag();
+  return `${iv.toString("hex")}:${authTag.toString("hex")}:${encrypted.toString("hex")}`;
+}
 
 function generateTicket() {
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -10,9 +30,21 @@ function generateTicket() {
   return `JOA-${rand(4)}-${rand(4)}`;
 }
 
+async function ensureTicketColumn(db, tableName) {
+  try {
+    await db.execute(`ALTER TABLE ${tableName} ADD COLUMN ticket TEXT`);
+  } catch {
+    // Column already exists — safe to ignore
+  }
+}
+
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
+  }
+
+  if (!process.env.ENCRYPTION_KEY || process.env.ENCRYPTION_KEY.length !== 64) {
+    return { statusCode: 500, body: "Server misconfiguration: ENCRYPTION_KEY not set" };
   }
 
   let body;
@@ -52,6 +84,8 @@ exports.handler = async (event) => {
     authToken: process.env.TURSO_TOKEN,
   });
 
+  await ensureTicketColumn(db, `${tourKey}_bookings`);
+
   const avail = await db.execute({
     sql: `SELECT COALESCE(SUM(guests), 0) AS booked FROM ${tourKey}_bookings WHERE tour_date = ?`,
     args: [month],
@@ -72,7 +106,14 @@ exports.handler = async (event) => {
   await db.execute({
     sql: `INSERT INTO ${tourKey}_bookings (name, email, phone, tour_date, guests, ticket)
           VALUES (?, ?, ?, ?, ?, ?)`,
-    args: [name.trim(), email.trim(), phone.trim(), month, guestNum, ticket],
+    args: [
+      encrypt(name.trim()),
+      encrypt(email.trim()),
+      encrypt(phone.trim()),
+      month,
+      guestNum,
+      ticket,
+    ],
   });
 
   return {
