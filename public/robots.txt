@@ -3,4 +3,4 @@ Allow: /
 Disallow: /account
 Disallow: /api/
 
-Sitemap: https://joamorroco.netlify.app/sitemap.xml
+Sitemap: https://joamorocco.netlify.app/sitemap.xml
