@@ -13,7 +13,7 @@ export const handler = async (event) => {
   const to = isValidYMD(q.to) ? q.to : addDays(from, 550);
   const clampedTo = to > addDays(from, 550) ? addDays(from, 550) : to;
 
-  const db = getDb();
+  const db = await getDb();
   // Any non-cancelled booking whose range ends on/after the window start is
   // relevant (an earlier-starting long tour can still block days inside it).
   const res = await db.execute({

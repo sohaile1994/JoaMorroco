@@ -7,7 +7,7 @@ export const handler = async (event) => {
   const session = getSessionUser(event);
   if (!session) return error(401, "Please log in to view your trips.");
 
-  const db = getDb();
+  const db = await getDb();
   const res = await db.execute({
     sql: `SELECT b.*, (r.id IS NOT NULL) AS has_review
             FROM bookings b

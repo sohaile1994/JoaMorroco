@@ -20,7 +20,7 @@ export const handler = async (event) => {
   if (!EMAIL_RE.test(email)) return error(400, "Please enter a valid email address.");
   if (password.length < 8) return error(400, "Password must be at least 8 characters.");
 
-  const db = getDb();
+  const db = await getDb();
 
   const existing = await db.execute({
     sql: `SELECT id FROM users WHERE email = ? LIMIT 1`,

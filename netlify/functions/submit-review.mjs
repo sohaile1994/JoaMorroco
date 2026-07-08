@@ -16,7 +16,7 @@ export const handler = async (event) => {
   if (!(stars >= 1 && stars <= 5)) return error(400, "Please choose a rating from 1 to 5 stars.");
   if (!review) return error(400, "Please write a short review.");
 
-  const db = getDb();
+  const db = await getDb();
   const row = await findOwnedBooking(db, event, body);
   if (!row) {
     return error(403, "We couldn't verify a booking for this review. Check your confirmation code and email.");

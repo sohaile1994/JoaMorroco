@@ -1,9 +1,13 @@
-// Turso/libSQL client factory. When TURSO_URL/TOKEN are unset or still hold the
-// placeholder text, we transparently fall back to a local SQLite file so the
-// whole app is runnable via `netlify dev` with zero cloud setup. The same
-// resolution is used by scripts/setup-db.mjs so both point at the same file.
+// Turso/libSQL client factory.
+//
+// Production (Turso configured): uses @libsql/client/web — a pure HTTP client
+// with no native bindings, so it runs on any Lambda regardless of the OS the
+// deploy was made from (native @libsql/<platform> binaries are per-OS and a
+// Windows deploy would ship the wrong one).
+//
+// Local dev (placeholders in .env): falls back to a local SQLite file via the
+// Node client, imported lazily so its native binding never loads in prod.
 import path from "node:path";
-import { createClient } from "@libsql/client";
 
 export function isTursoConfigured() {
   const url = process.env.TURSO_URL || "";
@@ -21,10 +25,14 @@ export function localDbUrl() {
 
 let cached = null;
 
-export function getDb() {
+export async function getDb() {
   if (cached) return cached;
-  cached = isTursoConfigured()
-    ? createClient({ url: process.env.TURSO_URL, authToken: process.env.TURSO_TOKEN })
-    : createClient({ url: localDbUrl() });
+  if (isTursoConfigured()) {
+    const { createClient } = await import("@libsql/client/web");
+    cached = createClient({ url: process.env.TURSO_URL, authToken: process.env.TURSO_TOKEN });
+  } else {
+    const { createClient } = await import("@libsql/client");
+    cached = createClient({ url: localDbUrl() });
+  }
   return cached;
 }

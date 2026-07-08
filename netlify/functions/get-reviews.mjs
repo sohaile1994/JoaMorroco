@@ -6,7 +6,7 @@ export const handler = async (event) => {
   const tour = event.queryStringParameters?.tour || "";
   if (!isValidTour(tour)) return error(400, "Invalid tour");
 
-  const db = getDb();
+  const db = await getDb();
   const res = await db.execute({
     sql: `SELECT name, stars, review, created_at
             FROM reviews WHERE tour_key = ?

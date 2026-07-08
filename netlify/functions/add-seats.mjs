@@ -16,7 +16,7 @@ export const handler = async (event) => {
   const addT = Math.max(0, Number(body.addToddlers) || 0);
   if (addA + addC + addT < 1) return error(400, "Add at least one guest.");
 
-  const db = getDb();
+  const db = await getDb();
   const row = await findOwnedBooking(db, event, body);
   if (!row) return error(404, "No booking found with that code and email.");
   if (row.status === "cancelled") return error(400, "This booking has been cancelled.");

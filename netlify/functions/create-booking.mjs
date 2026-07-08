@@ -51,7 +51,7 @@ export const handler = async (event) => {
   const pay = processPayment(body.payment || {});
   if (!pay.ok) return error(402, pay.error);
 
-  const db = getDb();
+  const db = await getDb();
   const session = getSessionUser(event);
   const reference = makeReference();
 

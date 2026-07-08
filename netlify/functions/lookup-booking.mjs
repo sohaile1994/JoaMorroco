@@ -12,7 +12,7 @@ export const handler = async (event) => {
     return error(400, "Enter your confirmation code and the email you booked with.");
   }
 
-  const db = getDb();
+  const db = await getDb();
   const row = await findOwnedBooking(db, event, body);
   // Generic message so we don't confirm which half was wrong.
   if (!row) return error(404, "No booking found with that code and email.");

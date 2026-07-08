@@ -14,7 +14,7 @@ export const handler = async (event) => {
   const password = String(body.password || "");
   if (!email || !password) return error(400, "Email and password are required.");
 
-  const db = getDb();
+  const db = await getDb();
   const res = await db.execute({
     sql: `SELECT id, email, password_hash, name FROM users WHERE email = ? LIMIT 1`,
     args: [email],
