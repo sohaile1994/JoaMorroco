@@ -55,11 +55,13 @@
 }
 
 /* ── Track ── */
+/* Columns stand on the ground: bottom-aligned, so shorter stacks rise from
+   the floor of the scene instead of hanging from the sky. */
 .gallery-carousel-track {
 	display: flex;
 	gap: 10px;
 	will-change: transform;
-	align-items: flex-start;
+	align-items: flex-end;
 }
 
 /* ── Masonry columns ── */
