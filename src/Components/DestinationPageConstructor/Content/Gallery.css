@@ -1,91 +1,89 @@
+/* Infinite masonry carousel inside the illustrated tent/kasbah stage. */
+
+/* No overflow clipping here — the tent/kasbah artwork is allowed to overhang
+   its stage. The html/body overflow-x guard still protects the viewport. */
 .gallery-destination-page {
-    padding-bottom: 2rem;
+	padding-bottom: 2.5rem;
 }
 
-/* Section entrance animation */
+/* Section entrance */
 .gallery-destination-page.anim {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+	opacity: 0;
+	transform: translateY(28px);
+	transition: opacity 0.7s ease, transform 0.7s ease;
 }
 .gallery-destination-page.anim.anim-in {
-    opacity: 1;
-    transform: none;
+	opacity: 1;
+	transform: none;
 }
 
 .gallery-title {
-    padding: 3rem 0 1.5rem;
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 1rem;
+	flex-wrap: wrap;
+	padding: 3rem 0 1.25rem;
 }
 
 .gallery-title h1 {
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    margin: 0;
-    color: var(--primary-text-color);
+	font-size: clamp(1.6rem, 3vw, 2.2rem);
+	margin: 0;
+	color: var(--primary-text-color);
 }
 
-/* ── Carousel viewport ── */
+.gallery-hint {
+	font-size: 0.75rem;
+	font-style: italic;
+	letter-spacing: 0.5px;
+	color: var(--secondary-text-color);
+}
+
+/* ── Viewport ── */
 .gallery-carousel-viewport {
-    overflow: hidden;
-    cursor: grab;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: pan-y;
-    padding: 8px 0 20px;
-    /* Fade edges for depth */
-    -webkit-mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        black 3%,
-        black 97%,
-        transparent 100%
-    );
-    mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        black 3%,
-        black 97%,
-        transparent 100%
-    );
+	overflow: hidden;
+	cursor: grab;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: pan-y;
+	/* Fade the loop's edges into the scene */
+	-webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+	mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
 }
 .gallery-carousel-viewport:active {
-    cursor: grabbing;
+	cursor: grabbing;
 }
 
-/* ── Scrolling track ── */
+/* ── Track ── */
 .gallery-carousel-track {
-    display: flex;
-    gap: 10px;
-    will-change: transform;
-    align-items: flex-start;
+	display: flex;
+	gap: 10px;
+	will-change: transform;
+	align-items: flex-start;
 }
 
-/* ── Each masonry column ── */
+/* ── Masonry columns ── */
 .gallery-col {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    flex-shrink: 0;
-    width: clamp(155px, 21vw, 255px);
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	flex-shrink: 0;
+	width: clamp(150px, 21vw, 250px);
 }
 
-/* ── Individual image tile ── */
 .gallery-item {
-    overflow: hidden;
-    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.1);
-    background: var(--secondary-background-color);
-    flex-shrink: 0;
+	overflow: hidden;
+	border-radius: 8px;
+	box-shadow: 0 4px 18px rgba(10, 6, 2, 0.28);
+	background: rgba(0, 0, 0, 0.18);
+	flex-shrink: 0;
 }
 
 .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.45s ease;
-    pointer-events: none;
-    -webkit-user-drag: none;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.06);
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	pointer-events: none;
+	-webkit-user-drag: none;
 }

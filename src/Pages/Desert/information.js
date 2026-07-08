@@ -1,18 +1,29 @@
 const information = {
-	title: "Desert Dreams",
-	price: "$2,830",
-	duration: 16,
-	destination: "Sahara Desert & Southern Morocco",
+	title: "Sahara Dreams",
+	price: "From $1,000",
+	duration: 8,
+	destination: "Casablanca → Casablanca — from imperial cities to the golden dunes",
 	description: [
-		"Sixteen days through the most dramatic landscapes Morocco has to offer — from the ancient kasbahs of the Draa Valley to the sweeping silence of the Erg Chegaga dunes.",
-		"You'll cross the High Atlas via the Tizi n'Tichka pass, wander the UNESCO-listed ksar of Ait Benhaddou, and spend nights in a remote desert camp far from any other tour group.",
-		"The journey home winds through the Todra Gorge, the rose-growing villages of the Dades Valley, and the argan forests of the Souss plain — Morocco's golden south at its fullest.",
+		"Eight days and seven nights from the Atlantic coast to the heart of the Sahara — beginning at the Hassan II Mosque in Casablanca and winding through the ancient medina of Fes, the cedar forests of the Middle Atlas, and the golden dunes of Erg Chebbi.",
+		"You'll trek by camel into the desert at sunset, spend two nights in a luxury Sahara camp, ride horseback across the dunes at dawn, then finish with two full days in Marrakech — palaces, souks, a cooking class, and a traditional hammam.",
+		"This is a completely private journey — your dates, your vehicle, your group alone. No shared coaches, no strangers, no compromises.",
 	],
-	departure: "Marrakech — pickup from your riad or hotel at 8:00 AM on day one.",
-	departureTime: "Marrakech — 8:00 AM pickup from your riad or hotel",
-	dressCode: ["Lightweight layers", "Comfortable walking shoes", "Hat and sunglasses", "Warm jacket for desert nights"],
-	included: ["Private transportation", "All accommodation", "Daily breakfast and dinner", "Guided excursions", "Camel trek to camp"],
-	notIncluded: ["International flights", "Travel insurance", "Personal expenses"],
+	departure: "Casablanca — airport pickup on arrival, and drop-off on day eight.",
+	departureTime: "Casablanca — airport pickup on arrival (day one)",
+	dressCode: [
+		"Lightweight layers",
+		"Comfortable walking shoes",
+		"Hat and sunglasses",
+		"Warm jacket for desert nights",
+	],
+	included: [
+		"Private Mercedes-Benz Vito transport (A/C, professional driver)",
+		"Handpicked hotels with daily breakfast",
+		"Two nights in a luxury Sahara desert camp",
+		"Camel trek & professional guides throughout",
+		"All listed excursions and entrance visits",
+	],
+	notIncluded: ["International flights", "Travel insurance", "Lunches & dinners unless noted", "Personal expenses"],
 };
 
 export default information;

@@ -1,0 +1,46 @@
+/* Travel motif kit — every motif is decorative and must never affect layout
+   flow or create horizontal overflow. Parents position them; motifs obey. */
+
+.motif-dunes {
+	display: block;
+	width: 100%;
+	height: clamp(48px, 8vw, 110px);
+	pointer-events: none;
+}
+.motif-dunes--flip {
+	transform: scaleY(-1);
+}
+
+.motif-stamp {
+	display: block;
+	width: 100%;
+	height: auto;
+	pointer-events: none;
+}
+.motif-stamp-spin {
+	transform-origin: 60px 60px;
+	animation: stampSpin 40s linear infinite;
+}
+@keyframes stampSpin {
+	to { transform: rotate(360deg); }
+}
+
+.motif-compass {
+	display: block;
+	width: 100%;
+	height: auto;
+	pointer-events: none;
+}
+
+.motif-arch {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.motif-plane {
+	display: block;
+	width: 100%;
+	height: auto;
+	pointer-events: none;
+}

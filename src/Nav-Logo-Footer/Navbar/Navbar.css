@@ -112,14 +112,25 @@
     to { opacity: 1; transform: translateX(0); }
 }
 
-.nav-links a {
+.nav-links a,
+.nav-links .nav-linkbtn {
     text-decoration: none;
     color: #222;
     font-weight: 600;
     font-family: 'Playfair Display', Georgia, serif;
     transition: color 0.2s;
 }
-.nav-links a:hover { color: var(--primary-color); }
+.nav-links a:hover,
+.nav-links .nav-linkbtn:hover { color: var(--primary-color); }
+
+/* Logout button styled to match nav links */
+.nav-linkbtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+    padding: 0;
+}
 
 .nav-social { margin-top: 2rem; }
 
@@ -177,7 +188,8 @@
         animation: none !important;
     }
 
-    .nav-links a {
+    .nav-links a,
+    .nav-links .nav-linkbtn {
         color: rgba(255, 255, 255, 0.88);
         font-family: var(--font-family) !important;
         font-size: 0.78rem;
@@ -199,7 +211,8 @@
         background: var(--primary-color);
         transition: width 0.25s ease;
     }
-    .nav-links a:hover { color: #fff; }
+    .nav-links a:hover,
+    .nav-links .nav-linkbtn:hover { color: #fff; }
     .nav-links a:hover::after { width: 100%; }
 
     /* Hide social icons in horizontal nav */

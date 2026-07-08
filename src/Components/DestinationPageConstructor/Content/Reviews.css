@@ -3,6 +3,72 @@
     flex-direction: column;
 }
 
+/* ── Reviews summary (average + distribution) ── */
+.reviews-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 2.5rem;
+    align-items: center;
+    padding: 1.5rem 0 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+.reviews-avg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+.reviews-avg strong {
+    font-family: var(--heading-font);
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--primary-text-color);
+}
+.reviews-avg span { font-size: 0.8rem; color: #999; }
+.reviews-bars {
+    flex: 1;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+.reviews-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.78rem;
+    color: #888;
+}
+.rb-label { width: 22px; flex-shrink: 0; }
+.rb-track {
+    flex: 1;
+    height: 7px;
+    background: #ececec;
+    border-radius: 99px;
+    overflow: hidden;
+}
+.rb-fill {
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: 99px;
+    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.rb-count { width: 22px; text-align: right; flex-shrink: 0; }
+
+.verified-badge {
+    display: inline-block;
+    margin-left: 0.6rem;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: #1f9d55;
+    background: #e4f5ec;
+    padding: 0.12rem 0.5rem;
+    border-radius: 5px;
+    vertical-align: middle;
+}
+
 /* ── Add-review card ── */
 .add-review-card {
     background: var(--secondary-background-color);

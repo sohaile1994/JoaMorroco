@@ -1,152 +1,113 @@
 # JOA Morocco
 
-A tour booking website for JOA Morocco — a small-group travel agency offering curated journeys across Morocco. The site allows visitors to explore three multi-day tours, read day-by-day itineraries and guest reviews, and submit bookings directly through the site.
+A booking website for JOA Morocco — a private-tour travel agency. Visitors explore two multi-day private tours, read day-by-day itineraries and verified reviews, and book through a six-step wizard with a real availability calendar, tiered pricing, accounts, and downloadable PDF confirmations.
 
 ---
 
 ## Tours
 
-### Desert Dreams
-**16 days · $2,830 · Sahara Desert & Southern Morocco**
+### The Kingdom of Morocco Tour
+**11 days / 10 nights · from $1,200 pp · Casablanca → Tangier**
 
-Marrakech to the Erg Chegaga dunes via the High Atlas, Ait Benhaddou, the Draa Valley, Todra Gorge, and the Dades Valley. The longest and most comprehensive route on offer.
+The full Kingdom, coast to Sahara to the blue north: Hassan II Mosque, Marrakech, the High Atlas and Ait Ben Haddou, two nights in a luxury Sahara camp, Fes, Chefchaouen, and Tangier.
 
-### Blue and Beyond
-**12 days · $1,900 · Chefchaouen & Northern Morocco**
+### Sahara Dreams
+**8 days / 7 nights · from $1,000 pp · Casablanca → Casablanca**
 
-Tangier to Chefchaouen through the Atlantic coast towns of Asilah, the UNESCO medina of Tetouan, and the Rif Mountain gorges. Focused on the north.
+From imperial cities to the golden dunes: Casablanca, Fes, the Middle Atlas, two nights at Erg Chebbi, and two full days in Marrakech.
 
-### Moroccan Odyssey
-**12 days · $1,900 · Casablanca to Tangier — the full Kingdom**
-
-A cross-country journey from Casablanca to Tangier that takes in Hassan II Mosque, the imperial cities of Marrakech and Fes, the Sahara desert camp, and Chefchaouen.
+Every tour is **completely private** — reserved exclusively for one group at a time — with Mercedes-Benz Vito transport, handpicked hotels, and an optional 5★ luxury upgrade.
 
 ---
 
-## Pages
+## How booking works
 
-| Route | Description |
-|---|---|
-| `/` | Home / showcase — hero cards for each tour |
-| `/about` | About the agency, services offered, and team background |
-| `/contact` | Contact form powered by EmailJS |
-| `/desert` | Desert Dreams tour detail page |
-| `/blue-and-beyond` | Blue and Beyond tour detail page |
-| `/moroccan-odyssey` | Moroccan Odyssey tour detail page |
+A six-step wizard (`/book`): **Tour → Start date → Guests → Requests → Payment → Confirmation.**
 
-Each tour detail page includes:
-- Hero section with tour name and departure info
-- Full description and what's included / not included
-- Day-by-day itinerary
-- Photo gallery
-- Guest reviews
-- Booking form
+- **One shared availability calendar.** Because tours are private (one vehicle, one group), any confirmed booking blocks its full date span for *both* tours. The calendar also disables start dates whose tour would *run into* an existing booking, and enforces a **14-day minimum advance**. Blocked days show a reason on hover.
+- **Tiered per-person pricing** (per tour): 2 guests / 3–5 / 6+. Kingdom is $1,700 / $1,500 / $1,200; Sahara Dreams is $1,500 / $1,200 / $1,000. Children (3–11) pay 50%; toddlers (0–2) are free. The tier is set by the paying-guest count and the total updates live.
+- **Accounts & guest checkout.** Log in to see your trips, add seats, download the PDF, and leave a review — or check out as a guest and look the booking up later with your confirmation code + email (`/find-booking`).
+- **Simulated payments, Stripe-ready.** Card fields are validated (Luhn/expiry) and a transaction is recorded, but no money moves. PayPal/Zelle show manual instructions. Search the code for `STRIPE-INTEGRATION-POINT` to see exactly where to drop in Stripe.
+
+Confirmations produce a `JOA-XXXX-XXXX` reference, a downloadable PDF itinerary, and (if EmailJS is configured) a confirmation email.
 
 ---
 
-## Booking System
-
-Bookings are submitted through a form on each tour page. The form collects:
-
-- Full name
-- Email address
-- Phone number
-- Tour month (month picker, current month minimum)
-- Number of guests (1–12)
-
-Each tour is capped at **12 seats per month**. Availability is checked in real time as the user picks a month, and the guest selector adjusts to the remaining seats. If a month is full, the form blocks submission and displays a message.
-
-On successful booking, the user receives a **ticket number** (format: `JOA-XXXX-XXXX`). This ticket is required to leave a review.
-
-### Backend
-
-Bookings are handled by a Netlify serverless function at `netlify/functions/submit-booking.js`. The function:
-
-1. Validates the tour, date, and guest count
-2. Queries the Turso database to check current seat usage for that month
-3. Rejects the request if the seat limit would be exceeded
-4. Encrypts the name, email, and phone fields using AES-256-GCM before writing to the database
-5. Generates a unique ticket number and returns it to the client
-
-There is a corresponding availability check function at `/api/check-availability` that the booking form polls when the user changes the selected month.
-
----
-
-## Tech Stack
+## Tech stack
 
 | Layer | Technology |
 |---|---|
-| Frontend | React 18, React Router v6 |
-| Build tool | Vite |
-| Hosting / Functions | Netlify |
-| Database | Turso (libSQL) |
-| Icons | Font Awesome |
-| Contact form | EmailJS |
+| Frontend | React 18, React Router v6, plain CSS |
+| Build | Vite 6 |
+| Hosting / Functions | Netlify (serverless functions, ESM) |
+| Database | Turso (libSQL) via `@libsql/client` |
+| PDF | jsPDF (lazy-loaded) |
+| Email | EmailJS (client-side) |
+
+Shared logic (pricing, dates, tour metadata) lives in `shared/*.mjs` and is imported by **both** the browser (via the `@shared` alias) and the serverless functions, so the client preview and the server's authoritative recompute can never drift.
 
 ---
 
-## Local Development
-
-The project uses Netlify Dev to run both the Vite dev server and the serverless functions together on a single port.
+## Local development
 
 ```bash
 npm install
-npm run dev
+npm run db:setup   # creates the schema
+npm run dev        # netlify dev — Vite + functions together
 ```
 
-The site is available at `http://localhost:8888`. The Netlify functions are proxied automatically so `/api/*` routes work locally without any extra configuration.
+**No Turso account needed to start.** With the placeholder values in `.env`, the app automatically falls back to a local SQLite file at `.data/local.db` (and dev-only crypto keys), so the entire booking engine runs offline. Fill in real values when you're ready to go live.
 
-To run the Vite server alone (no functions):
-
-```bash
-npm run dev:vite
-```
+`npm run dev:vite` runs the frontend alone (no `/api` functions).
 
 ---
 
-## Environment Variables
+## Environment variables
 
-Create a `.env` file in the project root with the following keys:
+Copy `.env.example` to `.env` and fill in:
 
 ```
-TURSO_URL=libsql://your-db-name.turso.io
-TURSO_TOKEN=your_token_here
-ENCRYPTION_KEY=your_64_char_hex_key_here
+TURSO_URL=libsql://YOUR-DATABASE-NAME.turso.io
+TURSO_TOKEN=YOUR_TURSO_AUTH_TOKEN
+ENCRYPTION_KEY=<64 hex chars>     # AES-256 key for guest PII at rest
+SESSION_SECRET=<64 hex chars>     # signs login sessions + hashes emails for lookup
+
+# EmailJS (optional — confirmation + contact emails)
+VITE_EMAILJS_SERVICE_ID=...
+VITE_EMAILJS_PUBLIC_KEY=...
+VITE_EMAILJS_TEMPLATE_BOOKING=...
+VITE_EMAILJS_TEMPLATE_CONTACT=...
 ```
 
-`ENCRYPTION_KEY` must be a 64-character hex string representing 32 bytes (AES-256). Generate one with:
+Generate a key: `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
 
-```bash
-node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
-```
+> ⚠️ **Security note:** an earlier commit checked a **live Turso token** into `.env`. It has been replaced with a placeholder here, but it still exists in git history — **rotate that token in the Turso dashboard** (Databases → your DB → Tokens) so the old one stops working.
 
 ---
 
-## Database
+## Database schema
 
-Three tables in Turso, one per tour:
+Four tables (see `scripts/setup-db.mjs`), created idempotently by `npm run db:setup`:
 
-- `desert_bookings`
-- `blue_and_beyond_bookings`
-- `moroccan_odyssey_bookings`
+- **`users`** — email (unique, lowercased), scrypt password hash, name.
+- **`bookings`** — reference, tour, start/end dates (`YYYY-MM-DD`), guest counts, total (cents), price breakdown (JSON snapshot), status, `user_id` (nullable for guests), AES-256-GCM-encrypted contact fields + an HMAC of the email for guest lookup.
+- **`transactions`** — one per payment (initial or add-seats), amount, method, status, provider (`simulated` → later `stripe`), card last4 only.
+- **`reviews`** — one per booking, tied to real ownership (replaces the old shared-secret gate).
 
-Each table stores: `name`, `email`, `phone` (all AES-256-GCM encrypted), `tour_date` (YYYY-MM), `guests`, and `ticket`.
+The overlap check and insert happen in a **single atomic SQL statement** (`INSERT … SELECT … WHERE NOT EXISTS`), so concurrent bookings can't double-book the same dates.
 
 ---
 
-## Build & Deploy
+## Build & deploy
 
 ```bash
-npm run build
+npm run build      # outputs to dist/
 ```
 
-Outputs a production bundle to `dist/`. Deploy by pushing to the connected Netlify site — the build command and publish directory are picked up from `netlify.toml` or the Netlify dashboard settings.
+Deploy by pushing to the connected Netlify site; `netlify.toml` supplies the build command, publish dir, function bundler settings, and the `/api/*` → functions rewrite. Set the environment variables in the Netlify dashboard, and run the schema once against your Turso database (`TURSO_URL`/`TURSO_TOKEN` set locally, then `npm run db:setup`).
 
 ---
 
 ## Contact
 
-**JOA Morocco**  
-joamorocco@gmail.com  
-+212 600 000 000  
-Marrakech, Morocco
+**JOA Morocco** · hello@joamorocco.com · Marrakech, Morocco

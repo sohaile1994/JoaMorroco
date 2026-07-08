@@ -8,6 +8,8 @@
   --secondary-text-color: #595959;
   --primary-background-color: #ffffff;
   --secondary-background-color: #f4f4f4;
+  --surface-card: #ffffff;
+  --line-soft: #ececec;
   --max-width-content: 1340px;
   --width-content: 80%;
 }
@@ -20,6 +22,12 @@ body {
   font-family: var(--font-family);
   color: var(--primary-text-color);
   background-color: var(--primary-background-color);
+}
+
+/* Hard guarantee: decorative overhangs can never create sideways scroll.
+   `clip` (not `hidden`) avoids turning the body into a scroll container. */
+html, body {
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -89,3 +97,33 @@ section {
 .anim.fade-left  { transform: translateX(32px); }
 .anim.scale-up   { transform: scale(0.94); }
 .anim.anim-in    { opacity: 1; transform: none; }
+
+/* ── Global interaction polish ── */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+button { font-family: inherit; }
+
+/* Keyboard focus ring in the brand color (mouse focus stays clean) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Respect users who prefer less motion — kill transitions/animations. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .anim { opacity: 1 !important; transform: none !important; }
+}

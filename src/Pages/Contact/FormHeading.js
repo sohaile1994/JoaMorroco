@@ -1,21 +1,34 @@
 import React from "react";
 import SocialMediaIcons from "../../Nav-Logo-Footer/SocialMediaIcons/SocialMediaIcons";
+import { CompassRose } from "../../Components/Motifs/Motifs";
 
 const FormHeading = () => {
 	return (
-		<section className="contact-info">
-			<h2>Get in Touch</h2>
-			<p>
-				<strong>Location:</strong> Marrakech, Morocco
-			</p>
-			<p>
-				<strong>Email:</strong> joamorocco@gmail.com
-			</p>
-			<p>
-				<strong>Phone:</strong> +212 600 000 000
-			</p>
+		<aside className="contact-info">
+			<div className="contact-info-compass" aria-hidden="true">
+				<CompassRose />
+			</div>
+			<h2>Find us</h2>
+			<ul className="contact-info-rows">
+				<li>
+					<span className="contact-info-label">Base</span>
+					<span>Marrakech, Morocco</span>
+				</li>
+				<li>
+					<span className="contact-info-label">Email</span>
+					<a href="mailto:joamorocco@gmail.com">joamorocco@gmail.com</a>
+				</li>
+				<li>
+					<span className="contact-info-label">Phone</span>
+					<a href="tel:+212600000000">+212 600 000 000</a>
+				</li>
+				<li>
+					<span className="contact-info-label">Replies</span>
+					<span>Within a day, Morocco time</span>
+				</li>
+			</ul>
 			<SocialMediaIcons />
-		</section>
+		</aside>
 	);
 };
 

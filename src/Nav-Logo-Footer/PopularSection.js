@@ -2,16 +2,10 @@ import React, { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./PopularSection.css";
 
-import DesertShowCaseItem from "../Pages/ShowCase/Desert";
-import MoroccanOdysseyShowCaseItem from "../Pages/ShowCase/MoroccanOdyssey";
-import BlueAndBeyondShowCaseItem from "../Pages/ShowCase/BlueAndBeyond";
+import { TOUR_LIST } from "../data/tours";
 
 const PopularAdventuresSection = () => {
-	const adventures = [
-		DesertShowCaseItem,
-		MoroccanOdysseyShowCaseItem,
-		BlueAndBeyondShowCaseItem,
-	];
+	const adventures = TOUR_LIST;
 
 	const [current, setCurrent] = useState(0);
 	const count = adventures.length;
@@ -40,11 +34,12 @@ const PopularAdventuresSection = () => {
 	return (
 		<section ref={sectionRef} className="popular-adventures-section">
 			<div className="heading-container max-width">
-				<h5>Modern & Beautiful</h5>
-				<h3>Most Popular Adventures We Have</h3>
+				<h5>Two Journeys, Entirely Private</h5>
+				<h3>Choose Your Morocco</h3>
 				<p>
 					From the golden dunes of the Sahara to the blue streets of
-					Chefchaouen — discover Morocco's most breathtaking tours.
+					Chefchaouen — two carefully crafted private tours, reserved
+					exclusively for you and your group.
 				</p>
 			</div>
 
@@ -69,7 +64,7 @@ const PopularAdventuresSection = () => {
 					</button>
 				</div>
 
-				<Link to={"/" + adv.link} className="carousel-card" key={current}>
+				<Link to={adv.route} className="carousel-card" key={current}>
 					<div
 						className="carousel-image"
 						style={{ backgroundImage: `url(${adv.heroImage})` }}
@@ -78,27 +73,21 @@ const PopularAdventuresSection = () => {
 						<div className="carousel-badge">{adv.days} Days</div>
 					</div>
 					<div className="carousel-body">
-						<h3>{adv.title}</h3>
+						<h3>{adv.name}</h3>
 						<p className="carousel-location">{adv.city}</p>
 						<div className="carousel-meta">
-							<span className="carousel-price">{adv.price}</span>
-							<span className="carousel-seats">
-								{adv.remainingSeats} seats left
-							</span>
+							<span className="carousel-price">from {adv.fromPrice}</span>
+							<span className="carousel-seats">Private tour</span>
 						</div>
 					</div>
-					<div className="carousel-book-btn">Book Now</div>
+					<div className="carousel-book-btn">Explore &amp; Book</div>
 				</Link>
 			</div>
 
 			{/* ── Desktop grid ── */}
 			<section className="popular-adventures-showcase">
 				{adventures.map((adventure, index) => (
-					<Link
-						to={"/" + adventure.link}
-						className="showcase-item"
-						key={index}
-					>
+					<Link to={adventure.route} className="showcase-item" key={index}>
 						<div className="top-section">
 							<div
 								style={{
@@ -112,16 +101,18 @@ const PopularAdventuresSection = () => {
 						</div>
 						<div className="middle-section">
 							<h3>
-								{adventure.title + ", " + adventure.city}
-								<span>{adventure.price}</span>
+								{adventure.name}
+								<span>from {adventure.fromPrice}</span>
 							</h3>
-							<figcaption>{"★".repeat(adventure.rating)} {adventure.rating} / 5</figcaption>
+							<figcaption>
+								{"★".repeat(adventure.rating)} {adventure.rating} / 5 · {adventure.city}
+							</figcaption>
 							<p>{adventure.description}</p>
 						</div>
 						<div className="bottom-section">
 							<p>
-								{adventure.days} Days
-								<span>{adventure.remainingSeats} Seats</span>
+								{adventure.days} Days / {adventure.nights} Nights
+								<span>Private &amp; Exclusive</span>
 							</p>
 						</div>
 					</Link>

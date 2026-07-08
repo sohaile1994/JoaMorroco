@@ -1,22 +1,37 @@
 .show-case {
     position: fixed;
     top: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    left: 0;
+    display: flex;
+    flex-direction: column;
     min-height: 100dvh;
     width: 100dvw;
     background-color: #0d0905;
     overflow: hidden;
 }
 
-.show-case-item {
-    position: relative;
-    overflow: hidden;
-    cursor: default;
+@media (min-width: 780px) {
+    .show-case--duo {
+        flex-direction: row;
+    }
 }
 
-/* Video sits on top of the background-image fallback.
-   Fades in once playing to prevent the hard cut from poster to live video. */
+.show-case-item {
+    position: relative;
+    flex: 1 1 0;
+    min-height: 0;
+    overflow: hidden;
+    cursor: default;
+    transition: flex-grow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* On desktop, hovering a panel lets it grow and gently push its sibling. */
+@media (min-width: 780px) {
+    .show-case--duo:hover .show-case-item { flex-grow: 0.85; }
+    .show-case--duo .show-case-item:hover { flex-grow: 1.35; }
+}
+
+/* Video sits on top of the background-image fallback, fading in when playing. */
 .show-case-video {
     position: absolute;
     top: 50%;
@@ -27,12 +42,10 @@
     z-index: 0;
     object-fit: cover;
     opacity: 0;
-    transition: opacity 0.9s ease;
+    transition: opacity 0.9s ease, transform 6s ease;
 }
-
-.show-case-video.playing {
-    opacity: 1;
-}
+.show-case-video.playing { opacity: 1; }
+.show-case-item:hover .show-case-video.playing { transform: translate(-50%, -50%) scale(1.06); }
 
 /* ── Gradient overlay — always-legible text ── */
 .show-case-item::after {
@@ -41,103 +54,110 @@
     inset: 0;
     background: linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 0.05) 0%,
-        rgba(0, 0, 0, 0.3)  35%,
-        rgba(0, 0, 0, 0.65) 100%
+        rgba(0, 0, 0, 0.15) 0%,
+        rgba(0, 0, 0, 0.35) 45%,
+        rgba(0, 0, 0, 0.72) 100%
     );
     z-index: 1;
     pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+.show-case-item:hover::after { opacity: 0.82; }
+
+/* Subtle separator between the two panels */
+@media (min-width: 780px) {
+    .show-case-item + .show-case-item::before {
+        content: '';
+        position: absolute;
+        top: 8%;
+        left: 0;
+        width: 1px;
+        height: 84%;
+        background: rgba(255, 255, 255, 0.14);
+        z-index: 2;
+    }
 }
 
-/* Subtle vertical separator between panels */
-.show-case-item + .show-case-item::before {
-    content: '';
+/* ── Centered content block ── */
+.show-case-content {
     position: absolute;
-    top: 10%;
-    left: 0;
-    width: 1px;
-    height: 80%;
-    background: rgba(255, 255, 255, 0.1);
-    z-index: 2;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    color: var(--white-color);
 }
 
-/* ── Headings ── */
-.show-case h2,
-.show-case h4 {
-    position: relative;
-    margin: 0 auto;
-    padding: 4px 1rem;
-    text-align: center;
-    width: 100%;
-    color: var(--white-color);
-    z-index: 3;
+.show-case-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.82);
+    animation: fadeUp 1s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .show-case h2 {
-    top: 40%;
-    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    margin: 0;
+    max-width: 14ch;
+    color: var(--white-color);
     font-family: var(--heading-font);
     font-weight: 400;
-    letter-spacing: 0.04em;
-    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.08;
+    letter-spacing: 0.01em;
+    text-shadow: 0 2px 22px rgba(0, 0, 0, 0.55);
+    animation: fadeUp 1s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .show-case h4 {
-    top: 40%;
-    font-size: clamp(1rem, 1.5vw, 1.35rem);
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
     font-style: italic;
     font-weight: 300;
-    opacity: 0.85;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
+    animation: fadeUp 1s 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* ── Book Now button ── */
+.show-case-price {
+    margin-top: 0.15rem;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    animation: fadeUp 1s 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── Explore & Book button ── */
 .show-case .book-btn {
-    position: relative;
-    top: 43%;
-    width: clamp(140px, 45%, 190px);
-    height: clamp(40px, 8vh, 50px);
-    display: flex;
-    margin: 0.75rem auto 0;
+    margin-top: 1.1rem;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
+    min-width: 190px;
+    height: 50px;
+    padding: 0 1.5rem;
     text-decoration: none;
-    font-weight: 700;
-    font-size: 0.75rem;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
     color: #fff;
     background: transparent;
-    border: 1.5px solid rgba(255, 255, 255, 0.7);
-    transition: background 0.3s ease, border-color 0.3s ease;
-    z-index: 6;
+    border: 1.5px solid rgba(255, 255, 255, 0.75);
+    border-radius: 2px;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.15s ease;
+    animation: fadeUp 1s 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-
-.show-case .book-btn p {
+.show-case .book-btn span {
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    opacity: 1;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    width: 100%;
 }
-
 .show-case .book-btn:hover {
     background: var(--primary-color);
     border-color: var(--primary-color);
 }
-
-/* ── Text entry animations (CSS, plays on load) ── */
-.show-case h2 {
-    animation: fadeUp 1s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-.show-case h4 {
-    animation: fadeUp 1s 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-.show-case .book-btn {
-    animation: fadeUp 1s 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
+.show-case .book-btn:active { transform: scale(0.97); }

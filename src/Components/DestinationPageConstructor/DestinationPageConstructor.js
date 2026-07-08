@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import HeroSection from "./HeroSection";
 import MenuContent from "./Menu";
 import ContentSection from "./Content/ContentSection";
@@ -6,17 +7,11 @@ import ContentSection from "./Content/ContentSection";
 import "./DestinationPageConstructor.css";
 import { MenuTypes } from "./Menu";
 
-const FloatingBookBtn = () => {
-	const scrollToForm = () => {
-		const el = document.getElementById("book-form");
-		if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-	};
-	return (
-		<button className="floating-book-btn" onClick={scrollToForm} aria-label="Book this tour">
-			Book Now
-		</button>
-	);
-};
+const FloatingBookBtn = ({ tour }) => (
+	<Link className="floating-book-btn" to={`/book?tour=${tour}`} aria-label="Book this tour">
+		Book Now
+	</Link>
+);
 
 class DestinationPage extends Component {
 	constructor(props) {
@@ -45,6 +40,7 @@ class DestinationPage extends Component {
 					title={information.title}
 					price={information.price}
 					duration={information.duration}
+					tour={tour}
 				/>
 				<MenuContent
 					onMenuClick={this.handleMenuClick}
@@ -58,7 +54,7 @@ class DestinationPage extends Component {
 					reviews={reviews}
 					tour={tour}
 				/>
-				<FloatingBookBtn />
+				<FloatingBookBtn tour={tour} />
 			</div>
 		);
 	}

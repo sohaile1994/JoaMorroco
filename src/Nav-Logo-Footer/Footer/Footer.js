@@ -9,9 +9,9 @@ const Footer = () => {
 					<article>
 						<h2>JOA Morocco</h2>
 						<p>
-							Small-group tours across Morocco led by local guides.
-							We take you to the places that matter — and give you the
-							time to feel them.
+							Completely private tours across Morocco, led by local
+							guides. We take you to the places that matter, and give
+							you the time to feel them.
 						</p>
 					</article>
 					<ul>

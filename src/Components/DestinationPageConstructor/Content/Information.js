@@ -16,7 +16,7 @@ const InformationItem = ({ title, description, index }) => {
 	);
 };
 
-const InformationContent = ({ info, gallery }) => {
+const InformationContent = ({ info, gallery, tour }) => {
 	const [descRef, descInView] = useInView();
 	const {
 		title,
@@ -56,7 +56,7 @@ const InformationContent = ({ info, gallery }) => {
 					description={included.join(", ")}
 				/>
 			</ul>
-			<GalleryContent info={gallery} />
+			<GalleryContent info={gallery} tour={tour} />
 		</div>
 	);
 };

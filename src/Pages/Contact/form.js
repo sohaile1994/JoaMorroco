@@ -4,9 +4,9 @@ import FormInputs from "./FormInputs";
 
 const Form = () => {
 	return (
-		<section className="contact-container">
-			<FormHeading />
+		<section className="contact-body">
 			<FormInputs />
+			<FormHeading />
 		</section>
 	);
 };

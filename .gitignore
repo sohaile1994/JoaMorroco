@@ -26,3 +26,9 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
+
+# Local dev database (Turso fallback)
+/.data
+
+# Visual verification screenshots (scripts/visual-check.mjs)
+/.shots

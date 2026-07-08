@@ -35,3 +35,89 @@
         min-width: 0;
     }
 }
+
+/* ── Booking CTA (replaces the old inline form) ── */
+.book-cta {
+    margin-top: 2.5rem;
+}
+.book-cta-inner {
+    background: var(--surface-card);
+    border: 1px solid var(--line-soft);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
+    padding: 1.75rem;
+}
+.book-cta-inner h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.35rem;
+}
+.book-cta-price {
+    margin: 0 0 1.1rem;
+    font-family: var(--heading-font);
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+.book-cta-price span {
+    font-family: var(--font-family);
+    font-size: 0.85rem;
+    color: #999;
+    font-weight: 400;
+}
+.book-cta-points {
+    list-style: none;
+    margin: 0 0 1.4rem;
+    padding: 0;
+}
+.book-cta-points li {
+    position: relative;
+    padding-left: 1.4rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.88rem;
+    color: var(--secondary-text-color);
+    line-height: 1.5;
+}
+.book-cta-points li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: 800;
+}
+.book-cta-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.95rem;
+    background: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.82rem;
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--primary-color) 32%, transparent);
+    transition: transform 0.12s ease, box-shadow 0.2s ease;
+}
+.book-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 26px color-mix(in srgb, var(--primary-color) 42%, transparent); }
+.book-cta-btn:active { transform: scale(0.98); }
+.book-cta-link {
+    display: block;
+    text-align: center;
+    margin-top: 0.9rem;
+    font-size: 0.82rem;
+    color: var(--secondary-text-color);
+    text-decoration: underline;
+}
+.book-cta-link:hover { color: var(--primary-color); }
+
+@media (min-width: 780px) {
+    .book-cta {
+        margin-top: 0;
+        width: 340px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 96px;
+    }
+}

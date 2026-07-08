@@ -3,13 +3,20 @@
   publish   = "dist"
   functions = "netlify/functions"
 
+# Port 8899 is deliberate: another local project (SimpleSchool) uses 5173,
+# so JOA gets its own port to avoid the two dev servers colliding.
 [dev]
   command    = "vite"
   targetPort = 3001
-  port       = 5173
+  port       = 8899
 
 [build.environment]
   NODE_VERSION = "18"
+
+# @libsql/client ships native bindings that must not be bundled by esbuild.
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["@libsql/client"]
 
 # Clean URLs: /api/submit-booking → /.netlify/functions/submit-booking
 [[redirects]]

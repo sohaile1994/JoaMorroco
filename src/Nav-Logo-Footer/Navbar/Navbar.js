@@ -1,117 +1,78 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import SocialMediaIcons from "../SocialMediaIcons/SocialMediaIcons";
+import { useAuth } from "../../context/AuthContext";
 import "./Navbar.css";
 
-class Navbar extends Component {
-	state = { isOpen: false, hamburgerColor: "white" };
-	hamburgerRef = React.createRef();
+// Rewritten from a class component that scanned every DOM node with
+// getComputedStyle on each scroll event (major jank). The hamburger color is now
+// driven purely by CSS state, and a passive rAF-throttled listener only toggles
+// a `scrolled` class.
+export default function Navbar() {
+	const [isOpen, setIsOpen] = useState(false);
+	const [scrolled, setScrolled] = useState(false);
+	const { user, logout } = useAuth();
+	const navigate = useNavigate();
 
-	componentDidMount() {
-		window.addEventListener("scroll", this.updateHamburgerColor);
-		this.updateHamburgerColor();
-	}
+	useEffect(() => {
+		let ticking = false;
+		const onScroll = () => {
+			if (ticking) return;
+			ticking = true;
+			requestAnimationFrame(() => {
+				setScrolled(window.scrollY > 60);
+				ticking = false;
+			});
+		};
+		window.addEventListener("scroll", onScroll, { passive: true });
+		onScroll();
+		return () => window.removeEventListener("scroll", onScroll);
+	}, []);
 
-	componentWillUnmount() {
-		window.removeEventListener("scroll", this.updateHamburgerColor);
-	}
+	const close = () => setIsOpen(false);
 
-	updateHamburgerColor = () => {
-		if (!this.hamburgerRef.current) return;
-		const elements = document.querySelectorAll("body *");
-		const { bottom, top, right, left } =
-			this.hamburgerRef.current.getBoundingClientRect();
-		let newHamburgerColor = "white";
-
-		for (let i = elements.length - 1; i >= 0; i--) {
-			let element = elements[i];
-			const rect = element.getBoundingClientRect();
-			if (
-				rect.top <= bottom &&
-				rect.bottom >= top &&
-				rect.left <= right &&
-				rect.right >= left
-			) {
-				let bgColor = window.getComputedStyle(element).backgroundColor;
-				while (bgColor === "rgba(0, 0, 0, 0)" || bgColor === "transparent") {
-					element = element.parentElement;
-					if (!element) break;
-					bgColor = window.getComputedStyle(element).backgroundColor;
-				}
-				if (bgColor !== "rgba(0, 0, 0, 0)" && bgColor !== "transparent") {
-					newHamburgerColor =
-						this.getLuminance(bgColor) > 0.5 ? "black" : "white";
-					break;
-				}
-			}
-		}
-		this.setState({ hamburgerColor: newHamburgerColor });
+	const doLogout = async () => {
+		close();
+		await logout();
+		navigate("/");
 	};
 
-	getLuminance = (color) => {
-		const [r, g, b] = color
-			.match(/\d+/g)
-			.map((v) =>
-				(v /= 255) <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4
-			);
-		return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-	};
+	return (
+		<nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
+			<div
+				className={`hamburger ${isOpen ? "open" : ""}`}
+				onClick={() => setIsOpen((o) => !o)}
+			>
+				{[0, 1, 2].map((i) => (
+					<div key={i} className="line" />
+				))}
+			</div>
 
-	toggleMenu = () => {
-		this.updateHamburgerColor();
-		this.setState({ isOpen: !this.state.isOpen });
-	};
+			{isOpen && <div className="blur" onClick={close} />}
 
-	closeMenu = () => this.setState({ isOpen: false });
-
-	render() {
-		const { isOpen, hamburgerColor } = this.state;
-		const navItems = [
-			{ label: "Tours", path: "/" },
-			{ label: "About", path: "/about" },
-			{ label: "Contact", path: "/contact" },
-		];
-
-		return (
-			<nav className="navbar">
-				{/* Mobile hamburger */}
-				<div
-					className={`hamburger ${isOpen ? "open" : ""}`}
-					onClick={this.toggleMenu}
-					ref={this.hamburgerRef}
-				>
-					{[...Array(3)].map((_, i) => (
-						<div
-							key={i}
-							className="line"
-							style={{
-								backgroundColor: hamburgerColor,
-								borderColor: hamburgerColor,
-							}}
-						/>
-					))}
-				</div>
-
-				{isOpen && <div className="blur" onClick={this.closeMenu} />}
-
-				{/* Nav panel — overlay on mobile, inline on desktop */}
-				<div className={`nav-links ${isOpen ? "open" : ""}`}>
-					<ul>
-						{navItems.map((item, i) => (
-							<li key={i}>
-								<Link to={item.path} onClick={this.closeMenu}>
-									{item.label}
-								</Link>
+			<div className={`nav-links ${isOpen ? "open" : ""}`}>
+				<ul>
+					<li><Link to="/" onClick={close}>Tours</Link></li>
+					<li><Link to="/about" onClick={close}>About</Link></li>
+					<li><Link to="/contact" onClick={close}>Contact</Link></li>
+					<li><Link to="/book" onClick={close}>Book</Link></li>
+					{user ? (
+						<>
+							<li><Link to="/account" onClick={close}>My Trips</Link></li>
+							<li>
+								<button type="button" className="nav-linkbtn" onClick={doLogout}>
+									Log out
+								</button>
 							</li>
-						))}
-					</ul>
-					<div className="nav-social">
-						<SocialMediaIcons />
-					</div>
+						</>
+					) : (
+						<li><Link to="/login" onClick={close}>Log in</Link></li>
+					)}
+				</ul>
+				<div className="nav-social">
+					<SocialMediaIcons />
 				</div>
-			</nav>
-		);
-	}
+			</div>
+		</nav>
+	);
 }
-
-export default Navbar;

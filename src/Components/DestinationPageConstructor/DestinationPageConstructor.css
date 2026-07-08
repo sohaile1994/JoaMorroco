@@ -4,20 +4,14 @@
    overriding it here cascades everywhere.
 ────────────────────────────────────────── */
 
-/* Desert Dreams — warm sandy gold */
+/* Sahara Dreams — warm sandy gold */
 .theme-desert {
     --primary-color: #c8923c;
     --secondary-background-color: #faf5e4;
     --primary-text-color: #3a2310;
 }
 
-/* Blue and Beyond — Chefchaouen cobalt */
-.theme-blue {
-    --primary-color: #1e7fa8;
-    --secondary-background-color: #eaf4fb;
-}
-
-/* Moroccan Odyssey — terracotta (default, no override needed) */
+/* Kingdom of Morocco — terracotta (default, no override needed) */
 .theme-moroccan {
     --primary-color: #ff681a;
 }
