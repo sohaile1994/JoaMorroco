@@ -51,18 +51,53 @@
     margin: 0 0 0.4rem;
     font-size: 1.35rem;
 }
-.book-cta-price {
-    margin: 0 0 1.1rem;
-    font-family: var(--heading-font);
-    font-size: 1.6rem;
-    color: var(--primary-color);
-    font-weight: 700;
+/* Per-person tier table */
+.price-tiers {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.25rem 0 0.9rem;
 }
-.book-cta-price span {
-    font-family: var(--font-family);
-    font-size: 0.85rem;
-    color: #999;
-    font-weight: 400;
+.price-tiers td {
+    padding: 0.55rem 0;
+    font-size: 0.9rem;
+    color: var(--secondary-text-color);
+    border-bottom: 1px dashed var(--line-soft);
+}
+.price-tiers tr:last-child td { border-bottom: none; }
+.price-tiers td:last-child { text-align: right; }
+.price-tiers strong {
+    font-family: var(--heading-font);
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+.price-tiers td span {
+    font-size: 0.72rem;
+    color: #aaa;
+}
+
+.kids-promo {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0 0 1.25rem;
+    padding: 0.6rem 0.75rem;
+    background: color-mix(in srgb, var(--primary-color) 8%, #fff);
+    border-radius: 9px;
+    font-size: 0.78rem;
+    color: var(--primary-text-color);
+    line-height: 1.45;
+}
+.kids-promo-badge {
+    flex-shrink: 0;
+    background: var(--primary-color);
+    color: #fff;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0.22rem 0.5rem;
+    border-radius: 5px;
 }
 .book-cta-points {
     list-style: none;

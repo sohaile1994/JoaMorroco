@@ -24,10 +24,11 @@ const TENT_CLIP = `M0,1 L0,0.24
 
 // Kasbah skyline: up the left tower, along the rampart, over the taller
 // central mansion, back along the rampart, up and over the right tower.
-// Sky/photos fill the notches between crenel merlons naturally.
-const KASBAH_CLIP = `M0.006,1 L0.006,0.06 L0.086,0.06 L0.086,0.149
-	L0.41,0.149 L0.41,0.057 L0.59,0.057 L0.59,0.149
-	L0.914,0.149 L0.914,0.06 L0.994,0.06 L0.994,1 Z`;
+// Clip tops sit at the SOLID wall line (below the crenel teeth), so the
+// notches between merlons stay empty — no sky peeking through them.
+const KASBAH_CLIP = `M0.006,1 L0.006,0.106 L0.086,0.106 L0.086,0.171
+	L0.41,0.171 L0.41,0.086 L0.59,0.086 L0.59,0.171
+	L0.914,0.171 L0.914,0.106 L0.994,0.106 L0.994,1 Z`;
 
 // ── Tent (Sahara Dreams) — twin-peak Berber haima ────────────────────────
 const TentFrame = () => (

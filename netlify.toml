@@ -18,8 +18,15 @@
   node_bundler = "esbuild"
   external_node_modules = ["@libsql/client"]
 
-# Clean URLs: /api/submit-booking → /.netlify/functions/submit-booking
+# Clean URLs: /api/create-booking → /.netlify/functions/create-booking
 [[redirects]]
   from   = "/api/*"
   to     = "/.netlify/functions/:splat"
+  status = 200
+
+# SPA fallback: client-side routes (/book, /account, …) must serve the app
+# on hard refresh / direct links. Must come AFTER the /api rule.
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
   status = 200

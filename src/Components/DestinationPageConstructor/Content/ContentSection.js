@@ -5,7 +5,7 @@ import TourPlanContent from "./TourPlan";
 import GalleryContent from "./Gallery";
 import ReviewsContent from "./Reviews";
 import { MenuTypes } from "../Menu";
-import { getTour } from "../../../data/tours";
+import { getTour, KIDS_PROMO } from "../../../data/tours";
 
 import "./ContentSection.css";
 
@@ -15,7 +15,25 @@ const BookCta = ({ tour }) => {
 		<aside className="book-cta" id="book-form">
 			<div className="book-cta-inner">
 				<h3>Book this tour</h3>
-				<p className="book-cta-price">from {t?.fromPrice || ""} <span>/ person</span></p>
+
+				{/* Full per-person pricing up front — no checkout surprises */}
+				<table className="price-tiers" aria-label="Price per person by group size">
+					<tbody>
+						{(t?.tiers || []).map((row) => (
+							<tr key={row.guests}>
+								<td>{row.guests}</td>
+								<td>
+									<strong>{row.pp}</strong> <span>/ person</span>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+				<p className="kids-promo">
+					<span className="kids-promo-badge">Family deal</span>
+					{KIDS_PROMO}
+				</p>
+
 				<ul className="book-cta-points">
 					<li>Completely private — your group only</li>
 					<li>{t?.days}-day guided journey</li>

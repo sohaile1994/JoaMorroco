@@ -5,7 +5,7 @@ import { TOUR_LIST } from "../../data/tours";
 import "./ShowCase.css";
 
 const ShowCaseItem = ({ tour }) => {
-	const { name, subTitle, video, heroImage, route, days, fromPrice } = tour;
+	const { name, subTitle, video, heroImage, route, days, priceRange } = tour;
 	const videoRef = useRef(null);
 
 	useEffect(() => {
@@ -46,7 +46,7 @@ const ShowCaseItem = ({ tour }) => {
 				<span className="show-case-eyebrow">{days} Days · Private</span>
 				<h2>{name}</h2>
 				<h4>{subTitle}</h4>
-				<span className="show-case-price">from {fromPrice} / person</span>
+				<span className="show-case-price">{priceRange} / person · kids 50% off</span>
 				<Link to={route} className="book-btn">
 					<span>EXPLORE &amp; BOOK</span>
 				</Link>

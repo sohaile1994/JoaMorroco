@@ -1,5 +1,5 @@
 import React from "react";
-import { TOUR_LIST } from "../../../data/tours";
+import { TOUR_LIST, KIDS_PROMO } from "../../../data/tours";
 
 export default function StepTour({ data, update, next }) {
 	const choose = (key) => update({ tour: key });
@@ -37,7 +37,15 @@ export default function StepTour({ data, update, next }) {
 										<li key={h}>{h}</li>
 									))}
 								</ul>
-								<div className="tour-choice-price">from {tour.fromPrice} / person</div>
+								<div className="tour-choice-tiers">
+									{tour.tiers.map((row) => (
+										<div className="tct-row" key={row.guests}>
+											<span>{row.guests}</span>
+											<strong>{row.pp} pp</strong>
+										</div>
+									))}
+								</div>
+								<p className="tour-choice-kids">{KIDS_PROMO}</p>
 							</div>
 						</button>
 					);

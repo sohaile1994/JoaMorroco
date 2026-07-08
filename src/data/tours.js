@@ -3,9 +3,23 @@
 // the PDF. Pricing/duration mirror the shared engine (@shared/pricing,
 // @shared/tourMeta); everything visual lives here.
 import Images, { KingdomVideo, DesertVideo } from "../images";
-import { TOUR_PRICING } from "@shared/pricing.mjs";
+import { TOUR_PRICING, centsToUSD } from "@shared/pricing.mjs";
 import { TOUR_META } from "@shared/tourMeta.mjs";
-import { centsToUSD } from "@shared/pricing.mjs";
+
+// Human-readable tier table for a tour — shown wherever a price appears so
+// nobody is surprised at checkout. Adults 12+ pay the tier rate; children
+// 3–11 pay half; toddlers 0–2 travel free.
+const tierRows = (cents) => [
+	{ guests: "2 guests", pp: centsToUSD(cents[0]) },
+	{ guests: "3–5 guests", pp: centsToUSD(cents[1]) },
+	{ guests: "6–7 guests", pp: centsToUSD(cents[2]) },
+];
+
+// "$1,000–$1,500" — honest range for cards/heroes (rate depends on group size)
+const priceRange = (cents) =>
+	`${centsToUSD(Math.min(...cents))}–${centsToUSD(Math.max(...cents))}`;
+
+export const KIDS_PROMO = "Children 3–11: 50% off · Toddlers 0–2: free";
 
 export const TOURS = {
   kingdom: {
@@ -19,6 +33,8 @@ export const TOURS = {
     rating: 5,
     priceTiersCents: TOUR_PRICING.kingdom,
     fromPrice: centsToUSD(Math.min(...TOUR_PRICING.kingdom)),
+    priceRange: priceRange(TOUR_PRICING.kingdom),
+    tiers: tierRows(TOUR_PRICING.kingdom),
     subTitle: "The Complete Kingdom",
     tagline: "11 days, coast to Sahara to the blue north",
     description:
@@ -43,6 +59,8 @@ export const TOURS = {
     rating: 5,
     priceTiersCents: TOUR_PRICING.desert,
     fromPrice: centsToUSD(Math.min(...TOUR_PRICING.desert)),
+    priceRange: priceRange(TOUR_PRICING.desert),
+    tiers: tierRows(TOUR_PRICING.desert),
     subTitle: "From Imperial Cities to the Golden Dunes",
     tagline: "8 days from Fes to the Sahara to Marrakech",
     description:

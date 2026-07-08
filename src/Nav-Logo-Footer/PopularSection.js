@@ -76,8 +76,8 @@ const PopularAdventuresSection = () => {
 						<h3>{adv.name}</h3>
 						<p className="carousel-location">{adv.city}</p>
 						<div className="carousel-meta">
-							<span className="carousel-price">from {adv.fromPrice}</span>
-							<span className="carousel-seats">Private tour</span>
+							<span className="carousel-price">{adv.priceRange} pp</span>
+							<span className="carousel-seats">Kids 50% off</span>
 						</div>
 					</div>
 					<div className="carousel-book-btn">Explore &amp; Book</div>
@@ -102,7 +102,7 @@ const PopularAdventuresSection = () => {
 						<div className="middle-section">
 							<h3>
 								{adventure.name}
-								<span>from {adventure.fromPrice}</span>
+								<span>{adventure.priceRange} pp</span>
 							</h3>
 							<figcaption>
 								{"★".repeat(adventure.rating)} {adventure.rating} / 5 · {adventure.city}

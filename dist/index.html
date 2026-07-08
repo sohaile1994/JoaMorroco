@@ -2,21 +2,119 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#ff681a" />
+
+    <title>JOA Morocco — Private Guided Tours of Morocco</title>
     <meta
       name="description"
-      content="JOA Morocco — small-group guided tours across Morocco. Desert dunes, blue medinas, imperial cities, and Atlantic coasts."
+      content="Completely private tours of Morocco: the 11-day Kingdom of Morocco Tour (Casablanca to Tangier) and the 8-day Sahara Dreams. One group at a time — Sahara desert camps, imperial cities, Chefchaouen, and the Atlantic coast. From $1,000 per person, children 50% off."
     />
-    <link rel="apple-touch-icon" href="/logo192.png" />
+    <link rel="canonical" href="https://joamorroco.netlify.app/" />
+
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
-    <link rel="preload" as="image" href="/assets/blue-alley.webp" />
+
+    <!-- Open Graph / social sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="JOA Morocco" />
+    <meta property="og:title" content="JOA Morocco — Private Guided Tours of Morocco" />
+    <meta
+      property="og:description"
+      content="Two completely private journeys: 11 days across the Kingdom, or 8 days from imperial cities to the Sahara dunes. Your dates, your vehicle, your group alone."
+    />
+    <meta property="og:url" content="https://joamorroco.netlify.app/" />
+    <meta property="og:image" content="https://joamorroco.netlify.app/assets/desert-show-case.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="JOA Morocco — Private Guided Tours of Morocco" />
+    <meta
+      name="twitter:description"
+      content="Completely private Morocco tours: Sahara camps, imperial cities, Chefchaouen. One group at a time."
+    />
+    <meta name="twitter:image" content="https://joamorroco.netlify.app/assets/desert-show-case.jpg" />
+
+    <!-- Performance -->
     <link rel="preload" as="image" href="/assets/moroccan-odysey-hero.webp" />
     <link rel="preload" as="image" href="/assets/desert-show-case.webp" />
-    <title>JOA Morocco — Guided Tours</title>
-    <script type="module" crossorigin src="/assets/index-BM8_ej8o.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DzbfKSq7.css">
+
+    <!-- Structured data: agency + both tours -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "TravelAgency",
+          "@id": "https://joamorroco.netlify.app/#agency",
+          "name": "JOA Morocco",
+          "description": "Completely private guided tours across Morocco — one group at a time.",
+          "url": "https://joamorroco.netlify.app/",
+          "logo": "https://joamorroco.netlify.app/assets/logo.png",
+          "email": "joamorocco@gmail.com",
+          "address": { "@type": "PostalAddress", "addressLocality": "Marrakech", "addressCountry": "MA" },
+          "areaServed": "Morocco"
+        },
+        {
+          "@type": "TouristTrip",
+          "name": "The Kingdom of Morocco Tour",
+          "description": "11 days / 10 nights from Casablanca to Tangier: Marrakech, Ait Ben Haddou, two nights in a luxury Sahara camp, Fes, Chefchaouen, and the Atlantic coast. Completely private.",
+          "url": "https://joamorroco.netlify.app/kingdom-of-morocco",
+          "touristType": "Private group (2–7 travelers)",
+          "provider": { "@id": "https://joamorroco.netlify.app/#agency" },
+          "itinerary": {
+            "@type": "ItemList",
+            "numberOfItems": 11,
+            "itemListElement": [
+              { "@type": "City", "name": "Casablanca" },
+              { "@type": "City", "name": "Marrakech" },
+              { "@type": "TouristAttraction", "name": "Ait Ben Haddou" },
+              { "@type": "TouristAttraction", "name": "Erg Chebbi, Merzouga" },
+              { "@type": "City", "name": "Fes" },
+              { "@type": "City", "name": "Chefchaouen" },
+              { "@type": "City", "name": "Tangier" }
+            ]
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "USD",
+            "lowPrice": "1200",
+            "highPrice": "1700",
+            "description": "Per person by group size: $1,700 (2 guests), $1,500 (3–5), $1,200 (6–7). Children 3–11 half price, toddlers free."
+          }
+        },
+        {
+          "@type": "TouristTrip",
+          "name": "Sahara Dreams",
+          "description": "8 days / 7 nights round-trip from Casablanca: Fes medina, the Middle Atlas, two nights in a luxury Sahara camp at Erg Chebbi, and two days in Marrakech. Completely private.",
+          "url": "https://joamorroco.netlify.app/desert",
+          "touristType": "Private group (2–7 travelers)",
+          "provider": { "@id": "https://joamorroco.netlify.app/#agency" },
+          "itinerary": {
+            "@type": "ItemList",
+            "numberOfItems": 8,
+            "itemListElement": [
+              { "@type": "City", "name": "Casablanca" },
+              { "@type": "City", "name": "Fes" },
+              { "@type": "TouristAttraction", "name": "Erg Chebbi, Merzouga" },
+              { "@type": "City", "name": "Marrakech" }
+            ]
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "USD",
+            "lowPrice": "1000",
+            "highPrice": "1500",
+            "description": "Per person by group size: $1,500 (2 guests), $1,200 (3–5), $1,000 (6–7). Children 3–11 half price, toddlers free."
+          }
+        }
+      ]
+    }
+    </script>
+    <script type="module" crossorigin src="/assets/index-BjSW68W2.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CT3nzh94.css">
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
