@@ -39,11 +39,15 @@
 	pointer-events: none;
 }
 
-/* Photos ride above the artwork */
+/* Photos ride above the artwork. The body matches the sky card exactly and
+   clips to it, so nothing inside can paint past the rounded background.
+   Padding tracks the tent-door / kasbah opening so photos live inside it. */
 .gscene-body {
 	position: relative;
 	z-index: 2;
-	padding: clamp(96px, 19vw, 140px) clamp(28px, 6vw, 60px) clamp(30px, 6vw, 46px);
+	overflow: hidden;
+	border-radius: 18px;
+	padding: clamp(150px, 24vw, 175px) clamp(38px, 9vw, 92px) clamp(34px, 7vw, 56px);
 }
 
 /* ── Tent life ── */

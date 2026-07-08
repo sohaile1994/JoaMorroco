@@ -9,7 +9,11 @@ import "./GalleryScene.css";
 // Wind animation lives in CSS: swaying flaps, swinging tassels, flapping
 // flags, flickering fire.
 
-// ── Tent (Sahara Dreams) — a Berber haima standing over the photos ───────
+// ── Tent (Sahara Dreams) — a triangular Berber khaima, cel-shaded ────────
+// Silhouette: short top ridge between two pole finials, steep straight
+// slopes to a wide base, a tall arched opening framing the photos, rolled
+// door flaps tied at the sides. Bold clean outlines, flat fills, and one
+// shade/one light pass per face for the anime look.
 const TentFrame = () => (
 	<svg
 		className="gscene-frame"
@@ -19,104 +23,133 @@ const TentFrame = () => (
 		focusable="false"
 	>
 		<defs>
-			<pattern id="haimaStripes" width="46" height="700" patternUnits="userSpaceOnUse">
-				<rect width="46" height="700" fill="#8c4526" />
-				<rect width="20" height="700" fill="#6f3319" />
-				<rect x="20" width="4" height="700" fill="#d99a4e" opacity="0.55" />
+			<pattern id="haimaStripes" width="52" height="700" patternUnits="userSpaceOnUse">
+				<rect width="52" height="700" fill="#8c4526" />
+				<rect width="24" height="700" fill="#6f3319" />
+				<rect x="24" width="5" height="700" fill="#d99a4e" opacity="0.5" />
 			</pattern>
 			<radialGradient id="lanternGlow" r="0.5">
 				<stop offset="0%" stopColor="#ffcf8a" stopOpacity="0.85" />
 				<stop offset="100%" stopColor="#ffcf8a" stopOpacity="0" />
 			</radialGradient>
+			{/* Cloth band: triangular gable to the eaves, straight skirts below,
+			    minus a tall arched door opening for the photos */}
+			<path
+				id="tentCloth"
+				fillRule="evenodd"
+				d="M-14 700 L-14 342 L430 22 L570 22 L1014 342 L1014 700 Z
+				   M128 700 L128 372 Q136 210 320 168 Q420 148 500 148 Q580 148 680 168 Q864 210 872 372 L872 700 Z"
+			/>
 		</defs>
 
-		{/* Canopy: peaked cloth silhouette — transparent sky above the ridge */}
 		<g className="tent-canopy">
-			{/* pole finials above the two peaks */}
-			<circle cx="212" cy="30" r="7" fill="#e8b04b" />
-			<circle cx="788" cy="30" r="7" fill="#e8b04b" />
-			<rect x="208" y="30" width="8" height="26" fill="#5b3a22" />
-			<rect x="784" y="30" width="8" height="26" fill="#5b3a22" />
+			{/* Pole finials above the ridge */}
+			<g stroke="#38230f" strokeWidth="4">
+				<line x1="446" y1="24" x2="446" y2="-6" />
+				<line x1="554" y1="24" x2="554" y2="-6" />
+			</g>
+			<circle cx="446" cy="-8" r="9" fill="#e8b04b" stroke="#38230f" strokeWidth="3.5" />
+			<circle cx="554" cy="-8" r="9" fill="#e8b04b" stroke="#38230f" strokeWidth="3.5" />
 
-			{/* the cloth: rises to two peaks, sags between them */}
+			{/* Cloth: striped panels */}
+			<use href="#tentCloth" fill="url(#haimaStripes)" />
+			{/* Cel shading: darker right face */}
 			<path
-				d="M-14 168
-				   C 50 118, 130 66, 212 50
-				   C 320 70, 420 88, 500 90
-				   C 580 88, 680 70, 788 50
-				   C 870 66, 950 118, 1014 168
-				   L 1014 190
-				   C 946 168, 906 134, 836 158
-				   C 766 182, 706 138, 626 162
-				   C 546 186, 476 136, 396 160
-				   C 316 184, 246 134, 171 158
-				   C 101 180, 46 142, -14 176
-				   Z"
-				fill="url(#haimaStripes)"
+				fillRule="evenodd"
+				d="M500 22 L570 22 L1014 342 L1014 700 L500 700 Z
+				   M500 148 Q580 148 680 168 Q864 210 872 372 L872 700 L500 700 Z"
+				fill="#3a1e0d"
+				opacity="0.26"
 			/>
-			{/* ridge highlight along the profile */}
+			{/* Rim light along the left slope */}
+			<path d="M430 22 L-14 342 L18 342 L446 42 Z" fill="#ffd9a0" opacity="0.4" />
+			{/* Door-edge shadow (half falls on the cloth, half into the opening) */}
 			<path
-				d="M-14 168 C 50 118, 130 66, 212 50 C 320 70, 420 88, 500 90 C 580 88, 680 70, 788 50 C 870 66, 950 118, 1014 168"
+				d="M128 700 L128 372 Q136 210 320 168 Q420 148 500 148 Q580 148 680 168 Q864 210 872 372 L872 700"
 				fill="none"
-				stroke="#5b2f16"
-				strokeWidth="5"
+				stroke="#2b1507"
+				strokeWidth="20"
+				opacity="0.3"
 			/>
-			{/* scalloped hem trim */}
+			{/* Bold outlines: outer silhouette + opening edge */}
 			<path
-				d="M-14 176 C 46 142, 101 180, 171 158 C 246 134, 316 184, 396 160 C 476 136, 546 186, 626 162 C 706 138, 766 182, 836 158 C 906 134, 946 168, 1014 190"
+				d="M-14 342 L430 22 L570 22 L1014 342"
 				fill="none"
-				stroke="#e8b04b"
-				strokeWidth="5"
+				stroke="#38230f"
+				strokeWidth="7"
+				strokeLinejoin="round"
 			/>
-			{[120, 260, 400, 540, 680, 820].map((x, i) => (
-				<g key={x} className="tent-tassel" style={{ animationDelay: `${i * 0.35}s` }}>
-					<line x1={x} y1={158 + ((i % 3) * 7)} x2={x} y2={180 + ((i % 3) * 7)} stroke="#e8b04b" strokeWidth="2.5" />
-					<circle cx={x} cy={184 + ((i % 3) * 7)} r="4.5" fill="#e8b04b" />
-				</g>
-			))}
+			<path
+				d="M128 700 L128 372 Q136 210 320 168 Q420 148 500 148 Q580 148 680 168 Q864 210 872 372 L872 700"
+				fill="none"
+				stroke="#38230f"
+				strokeWidth="6"
+				strokeLinejoin="round"
+			/>
+			{/* Ridge cap */}
+			<path d="M424 30 L576 30 L564 12 L436 12 Z" fill="#5b3a22" stroke="#38230f" strokeWidth="4" strokeLinejoin="round" />
+			{/* Eave seam where the gable meets the skirts */}
+			<path d="M-14 348 L124 348 M876 348 L1014 348" stroke="#38230f" strokeWidth="4" opacity="0.6" />
+
+			{/* Kelim diamond trim along the skirt bases */}
+			<g fill="#e8b04b" stroke="#38230f" strokeWidth="1.5">
+				{[-4, 32, 68].map((x) => (
+					<path key={`l${x}`} d={`M${x} 676 l13 11 l13 -11 l-13 -11 Z`} />
+				))}
+				{[906, 942, 978].map((x) => (
+					<path key={`r${x}`} d={`M${x} 676 l13 11 l13 -11 l-13 -11 Z`} />
+				))}
+			</g>
 		</g>
 
-		{/* Side flaps: hang from under the peaks, bulging past the sky edges */}
+		{/* Rolled door flaps: slim rolls hugging the opening edges (they stay
+		    ON the cloth so the photos inside the door are never underlapped) */}
 		<g className="tent-flap tent-flap--left">
 			<path
-				d="M4 92 C 58 118, 84 210, 76 330 C 70 430, 80 540, 48 620 C 34 654, 14 672, 2 678 C -10 600, -6 300, 4 92 Z"
-				fill="url(#haimaStripes)"
+				d="M300 176 C 226 206, 162 262, 150 372 C 141 470, 143 580, 140 688 L 108 688 C 112 574, 110 462, 120 364 C 134 240, 210 178, 288 152 Z"
+				fill="#a3562e"
+				stroke="#38230f"
+				strokeWidth="5"
+				strokeLinejoin="round"
 			/>
-			<path d="M76 330 C 70 430, 80 540, 48 620" fill="none" stroke="#e8b04b" strokeWidth="3.5" opacity="0.8" />
+			<path d="M150 430 C 136 436, 128 446, 126 458 M146 540 C 132 546, 124 556, 122 568" fill="none" stroke="#38230f" strokeWidth="3.5" opacity="0.65" />
+			<path d="M136 616 C 118 622, 108 636, 110 652 C 128 646, 138 632, 136 616" fill="#e8b04b" stroke="#38230f" strokeWidth="3" />
 		</g>
 		<g className="tent-flap tent-flap--right">
 			<path
-				d="M996 92 C 942 118, 916 210, 924 330 C 930 430, 920 540, 952 620 C 966 654, 986 672, 998 678 C 1010 600, 1006 300, 996 92 Z"
-				fill="url(#haimaStripes)"
+				d="M700 176 C 774 206, 838 262, 850 372 C 859 470, 857 580, 860 688 L 892 688 C 888 574, 890 462, 880 364 C 866 240, 790 178, 712 152 Z"
+				fill="#a3562e"
+				stroke="#38230f"
+				strokeWidth="5"
+				strokeLinejoin="round"
 			/>
-			<path d="M924 330 C 930 430, 920 540, 952 620" fill="none" stroke="#e8b04b" strokeWidth="3.5" opacity="0.8" />
+			<path d="M850 430 C 864 436, 872 446, 874 458 M854 540 C 868 546, 876 556, 878 568" fill="none" stroke="#38230f" strokeWidth="3.5" opacity="0.65" />
+			<path d="M864 616 C 882 622, 892 636, 890 652 C 872 646, 862 632, 864 616" fill="#e8b04b" stroke="#38230f" strokeWidth="3" />
 		</g>
 
-		{/* Guy ropes + stakes below the hem */}
-		<g stroke="#7a5a38" strokeWidth="2.5" opacity="0.85">
-			<line x1="52" y1="600" x2="104" y2="682" />
-			<line x1="948" y1="600" x2="896" y2="682" />
+		{/* Guy ropes + stakes at the eaves */}
+		<g stroke="#7a5a38" strokeWidth="3">
+			<line x1="-4" y1="356" x2="-24" y2="430" />
+			<line x1="1004" y1="356" x2="1024" y2="430" />
 		</g>
-		<path d="M100 676 L114 676 L107 698 Z" fill="#5b3a22" />
-		<path d="M886 676 L900 676 L893 698 Z" fill="#5b3a22" />
 
-		{/* Hanging lantern under the ridge, softly lit */}
+		{/* Lantern hanging on the gable, over the door apex */}
 		<g className="tent-lantern">
-			<line x1="500" y1="94" x2="500" y2="132" stroke="#3d2a18" strokeWidth="2.5" />
-			<circle cx="500" cy="160" r="40" fill="url(#lanternGlow)" opacity="0.5" />
-			<path d="M489 132 L511 132 L516 152 C 516 164, 484 164, 484 152 Z" fill="#c9762e" stroke="#7a4116" strokeWidth="2" />
-			<rect x="493" y="137" width="14" height="14" rx="3" fill="#ffdf9e" opacity="0.8" />
-			<circle cx="500" cy="168" r="2.5" fill="#7a4116" />
+			<line x1="500" y1="30" x2="500" y2="72" stroke="#38230f" strokeWidth="3" />
+			<circle cx="500" cy="100" r="36" fill="url(#lanternGlow)" opacity="0.5" />
+			<path d="M488 72 L512 72 L518 94 C 518 107, 482 107, 482 94 Z" fill="#c9762e" stroke="#38230f" strokeWidth="3" />
+			<rect x="492" y="77" width="16" height="15" rx="3" fill="#ffdf9e" opacity="0.85" />
+			<circle cx="500" cy="110" r="3" fill="#38230f" />
 		</g>
 
-		{/* Campfire beside the tent's left flap */}
+		{/* Campfire in front of the left skirt */}
 		<g className="tent-fire">
-			<circle cx="108" cy="652" r="44" fill="url(#lanternGlow)" opacity="0.45" />
-			<line x1="86" y1="668" x2="130" y2="656" stroke="#5b3a22" strokeWidth="7" strokeLinecap="round" />
-			<line x1="88" y1="656" x2="128" y2="668" stroke="#6f4a2e" strokeWidth="7" strokeLinecap="round" />
+			<circle cx="66" cy="632" r="40" fill="url(#lanternGlow)" opacity="0.4" />
+			<line x1="44" y1="650" x2="88" y2="638" stroke="#5b3a22" strokeWidth="8" strokeLinecap="round" />
+			<line x1="46" y1="638" x2="86" y2="650" stroke="#6f4a2e" strokeWidth="8" strokeLinecap="round" />
 			<g className="fire-flame">
-				<path d="M108 618 C 98 632, 100 646, 108 654 C 116 646, 118 632, 108 618 Z" fill="#ff9d3b" />
-				<path d="M108 632 C 103 640, 104 648, 108 652 C 112 648, 113 640, 108 632 Z" fill="#ffd98a" />
+				<path d="M66 596 C 55 612, 57 628, 66 636 C 75 628, 77 612, 66 596 Z" fill="#ff9d3b" stroke="#38230f" strokeWidth="2.5" strokeLinejoin="round" />
+				<path d="M66 612 C 61 620, 62 628, 66 633 C 70 628, 71 620, 66 612 Z" fill="#ffd98a" />
 			</g>
 		</g>
 	</svg>
