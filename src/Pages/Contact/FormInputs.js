@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useSearchParams } from "react-router-dom";
 import emailjs from "emailjs-com";
 import { useToast } from "../../Components/Toast/ToastProvider";
 import { Stamp, PlaneTrail } from "../../Components/Motifs/Motifs";
@@ -12,7 +13,23 @@ const emailReady = configured(SERVICE) && configured(TEMPLATE) && configured(PUB
 
 const FormInputs = () => {
 	const toast = useToast();
-	const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
+	const [searchParams] = useSearchParams();
+	const consult = searchParams.get("topic") === "consultation";
+	const formRef = useRef(null);
+	const [formData, setFormData] = useState({
+		name: "",
+		email: "",
+		subject: consult ? "Free consultation" : "",
+		message: "",
+	});
+
+	// Arriving from the Free Consultation button: pre-fill and bring the form into view
+	useEffect(() => {
+		if (!consult) return;
+		setFormData((f) => ({ ...f, subject: f.subject || "Free consultation" }));
+		const id = setTimeout(() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 150);
+		return () => clearTimeout(id);
+	}, [consult, searchParams]);
 	const [busy, setBusy] = useState(false);
 
 	const handleChange = (e) => {
@@ -39,7 +56,7 @@ const FormInputs = () => {
 	};
 
 	return (
-		<section className="postcard-wrap">
+		<section className="postcard-wrap" ref={formRef}>
 			<div className="postcard-heading">
 				<h2>Send a postcard</h2>
 				<div className="postcard-plane" aria-hidden="true">

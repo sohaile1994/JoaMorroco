@@ -1,11 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import HeroSection from "./HeroSection";
-import MenuContent from "./Menu";
 import ContentSection from "./Content/ContentSection";
 
 import "./DestinationPageConstructor.css";
-import { MenuTypes } from "./Menu";
 
 const FloatingBookBtn = ({ tour }) => (
 	<Link className="floating-book-btn" to={`/book?tour=${tour}`} aria-label="Book this tour">
@@ -13,51 +11,19 @@ const FloatingBookBtn = ({ tour }) => (
 	</Link>
 );
 
-class DestinationPage extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			selectedContent: MenuTypes.INFORMATION,
-		};
-	}
-
-	handleMenuClick = (content) => {
-		this.setState({ selectedContent: content });
-	};
-
-	render() {
-		const { image, reviews, information, tourPlan, gallery, theme, tour } =
-			this.props;
-		const { selectedContent } = this.state;
-
-		return (
-			<div
-				className={`destination-page-container${theme ? ` theme-${theme}` : ""}`}
-			>
-				<HeroSection
-					image={image}
-					reviews={reviews}
-					title={information.title}
-					price={information.price}
-					duration={information.duration}
-					tour={tour}
-				/>
-				<MenuContent
-					onMenuClick={this.handleMenuClick}
-					selectedContent={selectedContent}
-				/>
-				<ContentSection
-					selectedContent={selectedContent}
-					information={information}
-					tourPlan={tourPlan}
-					gallery={gallery}
-					reviews={reviews}
-					tour={tour}
-				/>
-				<FloatingBookBtn tour={tour} />
-			</div>
-		);
-	}
-}
+// One continuous page: photo gallery on top, then information, tour plan and
+// reviews stacked in order — no tabs.
+const DestinationPage = ({ reviews, information, tourPlan, gallery, theme, tour }) => (
+	<div className={`destination-page-container${theme ? ` theme-${theme}` : ""}`}>
+		<HeroSection gallery={gallery} reviews={reviews} />
+		<ContentSection
+			information={information}
+			tourPlan={tourPlan}
+			reviews={reviews}
+			tour={tour}
+		/>
+		<FloatingBookBtn tour={tour} />
+	</div>
+);
 
 export default DestinationPage;

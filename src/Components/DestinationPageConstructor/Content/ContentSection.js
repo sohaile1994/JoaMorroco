@@ -1,10 +1,7 @@
-import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import InformationContent from "./Information";
 import TourPlanContent from "./TourPlan";
-import GalleryContent from "./Gallery";
 import ReviewsContent from "./Reviews";
-import { MenuTypes } from "../Menu";
 import { getTour, KIDS_PROMO } from "../../../data/tours";
 
 import "./ContentSection.css";
@@ -50,37 +47,21 @@ const BookCta = ({ tour }) => {
 	);
 };
 
-class ContentSection extends Component {
-	render() {
-		const { selectedContent, information, tourPlan, gallery, reviews, tour } =
-			this.props;
-
-		let content;
-		switch (selectedContent) {
-			case MenuTypes.TOURPLAN:
-				content = <TourPlanContent info={tourPlan} />;
-				break;
-			case MenuTypes.GALLERY:
-				content = <GalleryContent info={gallery} tour={tour} />;
-				break;
-			case MenuTypes.REVIEWS:
-				content = <ReviewsContent info={reviews} tour={tour} />;
-				break;
-			default:
-				content = <InformationContent info={information} gallery={gallery} tour={tour} />;
-		}
-
-		return (
-			<section className="content-section">
-				<div className="content-destination-page">
-					<div className="content-container">
-						<div className="content">{content}</div>
-						<BookCta tour={tour} />
-					</div>
+const ContentSection = ({ information, tourPlan, reviews, tour }) => (
+	<section className="content-section">
+		<div className="content-destination-page">
+			<div className="content-container">
+				<div className="content">
+					<InformationContent info={information} />
+					<h2 className="content-heading">Tour Plan</h2>
+					<TourPlanContent info={tourPlan} />
+					<h2 className="content-heading">Reviews</h2>
+					<ReviewsContent info={reviews} tour={tour} />
 				</div>
-			</section>
-		);
-	}
-}
+				<BookCta tour={tour} />
+			</div>
+		</div>
+	</section>
+);
 
 export default ContentSection;

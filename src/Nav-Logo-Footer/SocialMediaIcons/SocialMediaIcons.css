@@ -2,7 +2,9 @@
 
 .navbar .media-icons {
   position: absolute;
-  width: 132px;
+  width: 220px;
+  left: 50%;
+  transform: translateX(-50%);
   height: 28px;
   bottom: 10%;
 }

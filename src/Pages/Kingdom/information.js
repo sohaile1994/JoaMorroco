@@ -1,6 +1,6 @@
 const information = {
 	title: "The Kingdom of Morocco Tour",
-	price: "$1,200–$1,700 pp",
+	price: "$1,200–$1,700",
 	duration: 11,
 	destination: "Casablanca → Tangier — the full Kingdom, coast to Sahara to the blue north",
 	description: [

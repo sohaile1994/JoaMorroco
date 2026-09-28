@@ -1,5 +1,4 @@
 import useInView from "../../../hooks/useInView";
-import GalleryContent from "./Gallery.js";
 import "./Information.css";
 
 const InformationItem = ({ title, description, index }) => {
@@ -16,7 +15,7 @@ const InformationItem = ({ title, description, index }) => {
 	);
 };
 
-const InformationContent = ({ info, gallery, tour }) => {
+const InformationContent = ({ info }) => {
 	const [descRef, descInView] = useInView();
 	const {
 		title,
@@ -34,8 +33,8 @@ const InformationContent = ({ info, gallery, tour }) => {
 				ref={descRef}
 				className={`description anim fade-up ${descInView ? "anim-in" : ""}`}
 			>
-				<h2>{title}</h2>
-				<h4>{price} / per person</h4>
+				<h1>{title}</h1>
+				<h4>{price} / person</h4>
 				{(Array.isArray(description) ? description : [description]).map(
 					(paragraph, index) => (
 						<p key={index}>{paragraph}</p>
@@ -56,7 +55,6 @@ const InformationContent = ({ info, gallery, tour }) => {
 					description={included.join(", ")}
 				/>
 			</ul>
-			<GalleryContent info={gallery} tour={tour} />
 		</div>
 	);
 };

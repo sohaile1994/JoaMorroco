@@ -4,14 +4,12 @@ import information from "./information.js";
 import tourPlan from "./tourPlan.js";
 import gallery from "./gallery.js";
 import reviews from "./reviews.js";
-import Images from "../../images.js";
 
 function DesertPage() {
 	return (
 		<DestinationPage
 			tour="desert"
 			theme="desert"
-			image={Images.DesertHero}
 			information={information}
 			tourPlan={tourPlan}
 			gallery={gallery}

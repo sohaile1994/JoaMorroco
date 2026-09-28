@@ -41,7 +41,9 @@ export default function StepTour({ data, update, next }) {
 									{tour.tiers.map((row) => (
 										<div className="tct-row" key={row.guests}>
 											<span>{row.guests}</span>
-											<strong>{row.pp} pp</strong>
+											<span>
+												<strong>{row.pp}</strong> / person
+											</span>
 										</div>
 									))}
 								</div>

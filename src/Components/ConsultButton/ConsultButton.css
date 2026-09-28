@@ -1,0 +1,47 @@
+.floating-consult-btn {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 8; /* below the fixed header, so the open menu covers it */
+    background: #1a1208;
+    color: #f3d98b;
+    border: 1px solid #c9a24a;
+    padding: 0.85rem 1.4rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: var(--font-family);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+.floating-consult-btn:hover {
+    background: #2b1f10;
+    transform: translateY(-2px);
+}
+
+/* Tour pages on phones also float Book Now in this corner — sit above it */
+@media (max-width: 779px) {
+    .App:has(.floating-book-btn) .floating-consult-btn {
+        bottom: 5.25rem;
+    }
+}
+
+/* Leave room under the footer so the floating buttons never cover the
+   copyright line once the page is scrolled to the end */
+@media (max-width: 779px) {
+    .bottom-declaration {
+        padding-bottom: 5.5rem;
+    }
+    .App:has(.floating-book-btn) .bottom-declaration {
+        padding-bottom: 9.25rem;
+    }
+}
+
+/* Booking wizard pins Back/Continue to the bottom on phones — sit above it */
+@media (max-width: 700px) {
+    .App:has(.step-actions) .floating-consult-btn {
+        bottom: 6rem;
+    }
+}

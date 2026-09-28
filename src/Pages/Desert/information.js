@@ -1,6 +1,6 @@
 const information = {
 	title: "Sahara Dreams",
-	price: "$1,000–$1,500 pp",
+	price: "$1,000–$1,500",
 	duration: 8,
 	destination: "Casablanca → Casablanca — from imperial cities to the golden dunes",
 	description: [

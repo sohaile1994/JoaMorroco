@@ -202,7 +202,7 @@
 }
 
 .star-btn.active {
-    color: var(--primary-color);
+    color: #d4a437;
 }
 
 /* ── Review list ── */
@@ -255,7 +255,12 @@
 }
 
 .star { font-size: 1.1rem; }
-.star.filled { color: var(--primary-color); }
+.star.filled {
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
 .star.empty  { color: #ddd; }
 
 .review-review {

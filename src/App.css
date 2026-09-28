@@ -10,6 +10,7 @@
   --secondary-background-color: #f4f4f4;
   --surface-card: #ffffff;
   --line-soft: #ececec;
+  --gold-gradient: linear-gradient(180deg, #f7e7a1 0%, #e0b84f 45%, #b8862b 100%);
   --max-width-content: 1340px;
   --width-content: 80%;
 }

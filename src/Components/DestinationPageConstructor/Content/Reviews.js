@@ -59,7 +59,10 @@ const ReviewsContent = ({ info, tour }) => {
 	const [submitStatus, setSubmitStatus] = useState("idle");
 
 	const loadReviews = () => {
-		api.get(`/api/get-reviews?tour=${tour}`).then(setDbReviews).catch(() => {});
+		api
+			.get(`/api/get-reviews?tour=${tour}`)
+			.then((rows) => setDbReviews(Array.isArray(rows) ? rows : []))
+			.catch(() => {});
 	};
 
 	useEffect(() => {

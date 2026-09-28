@@ -14,6 +14,7 @@ import BookingWizard from "./Pages/Booking/BookingWizard";
 import AuthPage from "./Pages/Auth/AuthPage";
 import AccountPage from "./Pages/Account/AccountPage";
 import FindBookingPage from "./Pages/Account/FindBookingPage";
+import LegalPage from "./Pages/Legal/LegalPage";
 
 const router = createBrowserRouter([
 	{
@@ -31,6 +32,8 @@ const router = createBrowserRouter([
 			{ path: "login", element: <AuthPage /> },
 			{ path: "account", element: <AccountPage /> },
 			{ path: "find-booking", element: <FindBookingPage /> },
+			{ path: "terms", element: <LegalPage doc="terms" /> },
+			{ path: "privacy", element: <LegalPage doc="privacy" /> },
 
 			// Legacy redirect
 			{ path: "moroccan-odyssey", element: <Navigate to="/kingdom-of-morocco" replace /> },

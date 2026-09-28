@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 const Footer = () => {
@@ -19,13 +20,17 @@ const Footer = () => {
 							<a href="mailto:joamorocco@gmail.com">joamorocco@gmail.com</a>
 						</li>
 						<li>
-							<a href="tel:+212600000000">+212 600 000 000</a>
+							<a href="tel:+16143809363">+1 614-380-9363</a>
 						</li>
 						<li>
-							<span>Marrakech, Morocco</span>
+							<span>580 Riverview Dr, Columbus, OH, USA</span>
 						</li>
 					</ul>
 				</div>
+				<nav className="footer-legal">
+					<Link to="/terms">Terms &amp; Conditions</Link>
+					<Link to="/privacy">Privacy Policy</Link>
+				</nav>
 				<div className="bottom-declaration">
 					© {new Date().getFullYear()} JOA Morocco. All rights reserved.
 				</div>

@@ -11,8 +11,8 @@ const FormHeading = () => {
 			<h2>Find us</h2>
 			<ul className="contact-info-rows">
 				<li>
-					<span className="contact-info-label">Base</span>
-					<span>Marrakech, Morocco</span>
+					<span className="contact-info-label">Office</span>
+					<span>580 Riverview Dr, Columbus, OH, USA</span>
 				</li>
 				<li>
 					<span className="contact-info-label">Email</span>
@@ -20,7 +20,7 @@ const FormHeading = () => {
 				</li>
 				<li>
 					<span className="contact-info-label">Phone</span>
-					<a href="tel:+212600000000">+212 600 000 000</a>
+					<a href="tel:+16143809363">+1 614-380-9363</a>
 				</li>
 				<li>
 					<span className="contact-info-label">Replies</span>

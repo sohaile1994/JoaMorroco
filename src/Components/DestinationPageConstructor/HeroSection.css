@@ -1,86 +1,123 @@
-.hero-destination-page {
-    height: 88vh;
-    width: 100%;
+/* ── Top photo gallery ── */
+.hero-gallery {
     position: relative;
-    background-size: cover;
-    background-position: center;
+    width: 100%;
+    height: 60vh;
+    min-height: 320px;
+    max-height: 620px;
     background-color: #1a1208;
+    overflow: hidden;
 }
 
-/* Dark gradient so the info bar at the bottom is always readable */
-.hero-destination-page::after {
+.hero-gallery-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+}
+.hero-gallery-track::-webkit-scrollbar { display: none; }
+
+.hero-gallery-slide {
+    flex: 0 0 100%;
+    height: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.hero-gallery-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    user-select: none;
+}
+
+/* Soft shade top (logo + menu) and bottom (stars) — no solid bar */
+.hero-gallery::after {
     content: '';
     position: absolute;
     inset: 0;
     background: linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 0.15) 0%,
-        transparent 40%,
-        rgba(0, 0, 0, 0.55) 100%
+        rgba(0, 0, 0, 0.3) 0%,
+        transparent 25%,
+        transparent 70%,
+        rgba(0, 0, 0, 0.45) 100%
     );
     pointer-events: none;
 }
 
-.flex-center {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-}
-
-.flex-center h1 {
-    text-align: center;
-    font-size: clamp(3rem, 10vw, 6.5rem);
-    width: 100%;
-    color: white;
-    font-weight: 400;
-    font-family: var(--heading-font);
-    letter-spacing: 0.02em;
-    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
-    animation: fadeUp 1s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.flex-space-between {
+.hero-gallery-arrow {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 0.75rem 1.25rem;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 2;
-    animation: fadeUp 0.8s 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.35);
+    color: #fff;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s ease;
 }
+.hero-gallery-arrow:hover { background: rgba(0, 0, 0, 0.6); }
+.hero-gallery-arrow.prev { left: 0.75rem; }
+.hero-gallery-arrow.next { right: 0.75rem; }
 
-.flex-space-between ul {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+.hero-gallery-footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 1rem;
+    z-index: 2;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    gap: 0.6rem;
+    pointer-events: none;
 }
 
-.flex-space-between li {
-    padding: 0 0.75rem;
-}
-
-.flex-space-between * {
-    color: white;
-    font-size: 1rem;
-}
-
-/* Stars */
-.review-rating {
+.hero-gallery-dots {
     display: flex;
-    gap: 2px;
+    gap: 6px;
+    pointer-events: auto;
 }
-.star { font-size: 1.1rem; }
-.star.filled { color: var(--primary-color); }
-.star.empty  { color: rgba(255, 255, 255, 0.3); }
+.hero-gallery-dots button {
+    width: 7px;
+    height: 7px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+.hero-gallery-dots button.active { background: #fff; }
+
+/* ── Luxury gold stars (shared with reviews) ── */
+.hero-stars {
+    display: flex;
+    gap: 4px;
+}
+.hero-stars .gold-star {
+    font-size: 1.75rem;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.55));
+}
+.gold-star.filled {
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.hero-stars .gold-star.empty { color: rgba(255, 255, 255, 0.35); }
+
+@media (min-width: 780px) {
+    .hero-gallery { height: 65vh; }
+    .hero-gallery-arrow.prev { left: 1.5rem; }
+    .hero-gallery-arrow.next { right: 1.5rem; }
+}

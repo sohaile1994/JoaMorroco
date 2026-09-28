@@ -5,6 +5,7 @@ import Navbar from "./Nav-Logo-Footer/Navbar/Navbar";
 import Footer from "./Nav-Logo-Footer/Footer/Footer";
 import PopularAdventuresSection from "./Nav-Logo-Footer/PopularSection";
 import ScrollToTop from "./ScrollToTop";
+import ConsultButton from "./Components/ConsultButton/ConsultButton";
 import { AuthProvider } from "./context/AuthContext";
 import { ToastProvider } from "./Components/Toast/ToastProvider";
 import "./App.css";
@@ -20,13 +21,15 @@ const TITLES = {
 	"/login": "Log In | JOA Morocco",
 	"/account": "My Trips | JOA Morocco",
 	"/find-booking": "Find Your Booking | JOA Morocco",
+	"/terms": "Terms & Conditions | JOA Morocco",
+	"/privacy": "Privacy Policy | JOA Morocco",
 };
 
 function App() {
 	const pathname = useLocation().pathname;
 	const isHome = pathname === "/";
 	// Full-bleed app pages provide their own footer/spacing.
-	const isAppPage = ["/book", "/login", "/account", "/find-booking"].includes(pathname);
+	const isAppPage = ["/book", "/login", "/account", "/find-booking", "/terms", "/privacy"].includes(pathname);
 
 	useEffect(() => {
 		document.title = TITLES[pathname] || TITLES["/"];
@@ -49,6 +52,7 @@ function App() {
 						</>
 					)}
 					{isAppPage && <Footer />}
+					<ConsultButton />
 				</div>
 			</ToastProvider>
 		</AuthProvider>

@@ -7,4 +7,6 @@
   <url><loc>https://joamorocco.netlify.app/about</loc><priority>0.6</priority></url>
   <url><loc>https://joamorocco.netlify.app/contact</loc><priority>0.6</priority></url>
   <url><loc>https://joamorocco.netlify.app/find-booking</loc><priority>0.3</priority></url>
+  <url><loc>https://joamorocco.netlify.app/terms</loc><priority>0.2</priority></url>
+  <url><loc>https://joamorocco.netlify.app/privacy</loc><priority>0.2</priority></url>
 </urlset>

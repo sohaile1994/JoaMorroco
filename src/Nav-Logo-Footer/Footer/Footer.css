@@ -54,6 +54,25 @@ footer {
     color: var(--primary-color);
 }
 
+.footer-legal {
+    display: flex;
+    justify-content: center;
+    gap: 1.75rem;
+    padding: 1rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-legal a {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.82rem;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-legal a:hover {
+    color: var(--primary-color);
+}
+
 .bottom-declaration {
     display: block;
     color: rgba(255, 255, 255, 0.35);

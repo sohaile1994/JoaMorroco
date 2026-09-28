@@ -156,3 +156,11 @@
         top: 96px;
     }
 }
+
+/* Section headings on the continuous tour page */
+.content-heading {
+    font-family: var(--heading-font);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    margin: 3.5rem 0 1.5rem;
+}

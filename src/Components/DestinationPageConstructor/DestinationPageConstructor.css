@@ -16,19 +16,12 @@
     --primary-color: #ff681a;
 }
 
-@media (min-width: 780px) {
-    .hero-menu-divider {
-        height: 2dvh;
-        background-color: var(--secondary-background-color);
-    }
-}
-
 /* ── Floating Book Now button (mobile only) ── */
 .floating-book-btn {
     position: fixed;
     bottom: 1.5rem;
     right: 1.5rem;
-    z-index: 50;
+    z-index: 8; /* below the fixed header, so the open menu covers it */
     background: var(--primary-color);
     color: #fff;
     border: none;
