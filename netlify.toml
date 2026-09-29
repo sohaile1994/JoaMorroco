@@ -6,6 +6,10 @@
 # Port 8899 is deliberate: another local project (SimpleSchool) uses 5173,
 # so JOA gets its own port to avoid the two dev servers colliding.
 [dev]
+  # Naming the framework matters: without it netlify dev applies the SPA
+  # fallback below to Vite's module requests (/src/*.js → index.html) and the
+  # app loads blank. --offline in package.json skips the Netlify account lookup.
+  framework  = "vite"
   command    = "vite"
   targetPort = 3001
   port       = 8899

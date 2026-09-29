@@ -15,7 +15,7 @@
     "react-router-dom": "^6.26.0"
   },
   "scripts": {
-    "dev": "netlify dev",
+    "dev": "netlify dev --offline",
     "dev:vite": "vite",
     "build": "vite build",
     "preview": "vite preview",
